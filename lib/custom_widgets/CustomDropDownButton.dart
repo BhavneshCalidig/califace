@@ -14,18 +14,22 @@ class CustomDropDownButton extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(color: Theme.of(context).primaryColor)
+          border: Border(bottom: BorderSide(
+            color: Theme.of(context).primaryColor,
+            width: 3,
+          )),
       ),
 
-    padding: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
 
 
         child: DropdownButtonFormField<String>(
 
           decoration: InputDecoration.collapsed(hintText: ''),
         isExpanded: true,
-        hint: Text(hintText,style: TextStyle(color: Theme.of(context).indicatorColor),),
+        hint: Text(hintText,style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 18),),
         value: value,
+
         validator: (arg) {
         if (arg==null)
         return 'Please select $hintText';

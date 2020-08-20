@@ -33,10 +33,9 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-margin: EdgeInsets.all(5),
-      width: MediaQuery.of(context).size.width,
+    return SizedBox(
+
+      width: 300,
       child: TextFormField(
         controller: controller,
         readOnly: null == readOnly ? false : true,
@@ -54,21 +53,21 @@ margin: EdgeInsets.all(5),
           labelStyle: TextStyle(
             fontSize: 18
           ),
-          border: InputBorder.none,
-          errorText: validate ? null : errortxt,
-          focusedBorder: OutlineInputBorder(
 
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 1.0,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 1.0,
-            ),
-          ),
+          errorText: validate ? null : errortxt,
+//          focusedBorder: OutlineInputBorder(
+//
+//            borderSide: BorderSide(
+//              color: Theme.of(context).primaryColor,
+//              width: 1.0,
+//            ),
+//          ),
+//          enabledBorder: OutlineInputBorder(
+//            borderSide: BorderSide(
+//              color: Theme.of(context).primaryColor,
+//              width: 1.0,
+//            ),
+//          ),
 //          border: OutlineInputBorder(
 //            borderSide: BorderSide(
 //              color: null == borderColor ? Colors.teal : borderColor,

@@ -6,15 +6,16 @@ final bluePrimary         = Color(0xFF3F51B5);
 final blueAccent          = Color(0xFFFF9800);
 final blueBackground      = Color(0xFFFFFFFF);
 final blueTheme = ThemeData(
+    fontFamily: '',
     primaryColor: bluePrimary,
     accentColor: blueAccent,
     backgroundColor: blueBackground
 );
 
 /// ----  Spooky Theme  ----
-final spookyPrimary       = Color(0xFF000000);
-final spookyAccent        = Color(0xFFBB86FC);
-final spookyBackground    = Color(0xFF4A4A4A);
+final spookyPrimary       = Color(0xFF343D45);
+final spookyAccent        = Color(0xFFFFFFFF);
+final spookyBackground    = Color(0xFF38424A);
 final spookyTheme = ThemeData(
     primaryColor: spookyPrimary,
     accentColor: spookyAccent,

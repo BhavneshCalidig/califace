@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(ChangeNotifierProvider<ThemeNotifier>(
-      create: (_) => ThemeNotifier(blueTheme), child: MyApp()));
+      create: (_) => ThemeNotifier(spookyTheme), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

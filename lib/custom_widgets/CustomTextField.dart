@@ -33,9 +33,8 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-
-      width: 300,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
       child: TextFormField(
         controller: controller,
         readOnly: null == readOnly ? false : true,
@@ -49,8 +48,10 @@ class CustomTextField extends StatelessWidget {
         ),
         cursorColor: Theme.of(context).primaryColor,
         decoration: InputDecoration(
+
           labelText: labelText,
           labelStyle: TextStyle(
+            color: Theme.of(context).indicatorColor,
             fontSize: 18
           ),
 

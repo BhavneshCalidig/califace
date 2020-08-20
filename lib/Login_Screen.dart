@@ -4,7 +4,7 @@ import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oauth2/oauth2.dart'as oauth2;
+
 
 class LoginScreen extends StatefulWidget{
   @override
@@ -18,16 +18,7 @@ class _LoginScreen extends State<LoginScreen>{
 
   String Username;
   String password;
-  final tokenEndpoint =Uri.parse("https://virola-laravel.calidig.com/oauth/token");
-  final authorizationEndpoint=Uri.parse('https://virola-laravel.calidig.com/api/v1/user');
 
-  final identifier = "my client identifier";
-  final secret = "my client secret";
-  Future<oauth2.Client> getClient() async {
-    var grant = new oauth2.AuthorizationCodeGrant(
-        identifier, authorizationEndpoint, tokenEndpoint,
-        secret: secret);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +46,12 @@ class _LoginScreen extends State<LoginScreen>{
               CustomHomeButton(text: "Login",onpressed: (){
                 Map<String ,dynamic>dataBody={
 
-                  	"password": password,
-                  	"username": Username,
-                  	"grant_type": password
+                  "client_id": "2",
+                  "client_secret": "PZMbAud03HubaX8NIZN8vW0U7WZUYWq7SjKHSI5n",
+                  "grant_type": "password",
+                  "password": password,
+                  "scope": "",
+                  "username": Username
 
                 };
                 NetworkServices().postApi(context, loginUrl, dataBody);

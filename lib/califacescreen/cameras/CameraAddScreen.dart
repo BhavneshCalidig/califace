@@ -1,6 +1,7 @@
 import 'package:califace/custom_widgets/CustomButtonRc.dart';
 import 'package:califace/custom_widgets/CustomDropDownButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
+import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
 import 'package:flutter/material.dart';
 
 class CameraAddScreen extends StatefulWidget {
@@ -62,9 +63,9 @@ class _CameraAddScreenState extends State<CameraAddScreen> {
               },validate: true,),
              
 
-              CustomButtonRc(
-                text: "Submitt",
-                onpressed: () {},
+             Custom_Submit_Button(
+                text: "Submit",
+                onPressed: () {},
               ),
             ],
           ),

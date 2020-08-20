@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Theme.of(context).backgroundColor,
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text("Califace",style: TextStyle(color: Theme.of(context).accentColor),),
+        title: Text("Califace",style: TextStyle(color: Theme.of(context).indicatorColor),),
       ),
       drawer: CustomDrawer(),
       body: Container(
@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   CustomHomeButton(
+
                     text: "Employees",
                     size: 150,
                     onpressed: () {

@@ -2,24 +2,86 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropDownButton extends StatelessWidget {
-  CustomDropDownButton({this.items, this.onChanged, this.value});
+  CustomDropDownButton({this.hintText,this.items, this.onChanged, this.value});
 
   final List<String> items;
   final Function onChanged;
   final String value;
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return DropdownButton(
-      items: items.map((String item) {
-        return DropdownMenuItem<String>(
-          value: item,
-          child: Text(item),
+
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: Theme.of(context).primaryColor)
+      ),
+
+    padding: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+
+
+        child: DropdownButtonFormField<String>(
+
+          decoration: InputDecoration.collapsed(hintText: ''),
+        isExpanded: true,
+        hint: Text(hintText,style: TextStyle(color: Theme.of(context).indicatorColor),),
+        value: value,
+        validator: (arg) {
+        if (arg==null)
+        return 'Please select $hintText';
+        else
+        return null;
+        },
+        onChanged: ( Value) {
+//
+//    setState(() {
+//    selectedAddressType = Value;
+//    });
+        },
+        items: items
+            .map((String user) {
+        return DropdownMenuItem<
+        String>(
+        value: user,
+        child: Row(
+        children: <Widget>[
+        //user.icon,
+        SizedBox(
+        width: 10,
+        ),
+        Text(
+        user,
+        style: TextStyle(
+        color:Colors.black),
+        ),
+        ],
+        ),
         );
-      }).toList(),
-      onChanged: onChanged,
-      value: value,
+        }).toList(),
+        ),
+
+
     );
+
+
+//      Container(
+//      decoration: BoxDecoration(
+//
+//      ),
+//      child: DropdownButtonHideUnderline(
+//        child: DropdownButton(
+//
+//          hint: Text("Address Type"),
+//          items: items.map((String item) {
+//            return DropdownMenuItem<String>(
+//              value: item,
+//              child: Text(item),
+//            );
+//          }).toList(),
+//          onChanged: onChanged,
+//          value: value,
+//        ),
+//      ),
+//    );
   }
 }

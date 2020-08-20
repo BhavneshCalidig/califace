@@ -1,6 +1,7 @@
 import 'package:califace/custom_widgets/CustomButtonRc.dart';
 
 import 'package:califace/custom_widgets/CustomTextField.dart';
+import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
 import 'package:flutter/material.dart';
 
 class DesignationAddScreen extends StatefulWidget {
@@ -45,9 +46,9 @@ class _DesignationAddScreenState extends State<DesignationAddScreen> {
                 validate: true,
               ),
 
-              CustomButtonRc(
-                text: "Submitt",
-                onpressed: () {},
+              Custom_Submit_Button(
+                text: "Submit",
+                onPressed: () {},
               ),
             ],
           ),

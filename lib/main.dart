@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter Dynamic Theme",
       theme: themeNotifier.getTheme(),
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }

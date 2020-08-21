@@ -19,7 +19,7 @@ class Custom_Submit_Button extends StatelessWidget{
       child: RaisedButton(onPressed: onPressed,
         child: Text(text,style: (TextStyle(
           color: Theme.of(context).indicatorColor
-        )),),color:color ,),
+        )),),color:Theme.of(context).primaryColor ,),
     );
   }
 }

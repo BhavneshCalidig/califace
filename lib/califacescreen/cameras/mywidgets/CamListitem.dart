@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class CamListItem extends StatefulWidget {
-  @override
-  _CamListItemState createState() => _CamListItemState();
-}
+class CamListitem extends StatelessWidget{
+  CamListitem({this.title,this.subtittle});
+//  final NetworkImage networkImage;
+  final String title;
+  final String subtittle;
 
-class _CamListItemState extends State<CamListItem> {
+
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -22,13 +23,14 @@ class _CamListItemState extends State<CamListItem> {
 
 
         child: ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Theme.of(context).primaryColor,
-            child: Text('B'),
-            foregroundColor: Colors.white,
-          ),
-          title: Text('Name'),
-          subtitle: Text('one imp item'),
+//          leading:CircleAvatar(
+//            radius: 30.0,
+//            backgroundImage:
+//            NetworkImage("$networkImage"),
+//            backgroundColor: Colors.transparent,
+//          ),
+          title: Text(title),
+          subtitle: Text(subtittle),
         ),
       ),
 //      actions:

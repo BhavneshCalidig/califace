@@ -1,14 +1,14 @@
-import 'package:califace/califacescreen/employees/EmployeeHomeScreen.dart';
+import 'file:///E:/projects/califace/lib/califacescreen/employees/Screens/EmployeeHomeScreen.dart';
 import 'package:califace/califacescreen/visitors/VisitorsHomeScreen.dart';
 import 'package:califace/custom_widgets/CustomDrawer.dart';
 import 'package:califace/custom_widgets/CustomHomeButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
 import 'package:flutter/material.dart';
 
-import 'attandance/AttandanceHomeScreen.dart';
-import 'cameras/CameraHomeScreen.dart';
-import 'departments/DepartmentHomeScreen.dart';
-import 'designations/DesignationHomeScreen.dart';
+import 'attandance/Screens/AttandanceHomeScreen.dart';
+import 'cameras/Screens/CameraHomeScreen.dart';
+import 'departments/Screens/DepartmentHomeScreen.dart';
+import 'designations/Screens/DesignationHomeScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

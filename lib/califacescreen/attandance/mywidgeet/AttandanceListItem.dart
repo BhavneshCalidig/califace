@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class AttandanceListItem extends StatefulWidget {
-  @override
-  _AttandanceListItemState createState() => _AttandanceListItemState();
-}
-
-class _AttandanceListItemState extends State<AttandanceListItem> {
+import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+class AttandanceListItem extends StatelessWidget{
+  AttandanceListItem({this.Department,this.lasttname,this.Firstname,this.networkImage});
+  final String networkImage;
+  final String Firstname;
+  final String lasttname;
+  final String Department;
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -22,13 +24,100 @@ class _AttandanceListItemState extends State<AttandanceListItem> {
 
 
         child: ListTile(
+          onTap: (){
+            showModalBottomSheet<void>(
+                context: context,
+                builder: (BuildContext context) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height ,
+                    color: Theme.of(context).backgroundColor,
+
+                    child: Center(
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Text( "Name :",
+
+                                style: TextStyle(
+                                    color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                (Firstname+" "+lasttname),
+                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Divider(
+                              height: 2,
+                            ),
+                            ListTile(
+                              title: Text(
+                                "Department",
+                                style: TextStyle(
+                                    color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(Department,
+
+                                style: TextStyle(color: Colors.white70),
+                              ),
+                            ),
+                            Divider(
+                              height: 2,
+                            ),
+                            ListTile(
+                              title: Text(
+                                '',
+                                style: TextStyle(
+                                    color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                "Designation",
+                                style: TextStyle(color: Colors.white70),
+                              ),
+                            ),
+                            Divider(
+                              height: 2,
+                            ),
+                            ListTile(
+                              title: Text(
+                                '',
+                                style: TextStyle(
+                                    color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                "Employee Id",
+                                style: TextStyle(color: Colors.white70),
+                              ),
+                            ),
+                            Divider(
+                              height: 2,
+                            ),
+
+
+                            ListTile(
+                              title: Text(
+                                '',
+                                style: TextStyle(
+                                    color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                "Contact",
+                                style: TextStyle(color: Colors.white70),
+                              ),
+                            ),
+
+                          ],
+
+                        )),
+                  );});
+          },
           leading: CircleAvatar(
-            backgroundColor: Theme.of(context).primaryColor,
-            child: Text('B'),
-            foregroundColor: Colors.white,
+            radius: 30.0,
+            backgroundImage:
+            NetworkImage("$networkImage"),
+            backgroundColor: Colors.transparent,
           ),
-          title: Text('Name'),
-          subtitle: Text('one imp item'),
+          title: Text((Firstname+lasttname)),
+          subtitle: Text(Department),
         ),
       ),
 //      actions:

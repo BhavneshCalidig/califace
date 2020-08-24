@@ -24,6 +24,9 @@ String designationListUrl=baseUrl+"v1/designation/list";
 //post
 String designationStoreUrl=baseUrl+"v1/designation/store";
 
+//get
+String designationUpdateDAtaUrl =baseUrl+"v1/designation/edit/";
+
 //post
 String designationUpdateUrl=baseUrl+"v1/designation/update";
 

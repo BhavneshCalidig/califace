@@ -9,6 +9,7 @@ class AttandanceListItem extends StatelessWidget{
   final String Firstname;
   final String lasttname;
   final String Department;
+
   @override
   Widget build(BuildContext context) {
     return Slidable(

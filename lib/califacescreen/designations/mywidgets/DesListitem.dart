@@ -1,4 +1,5 @@
 import 'package:califace/califacescreen/designations/Models/DesignationDeleteItemModel.dart';
+import 'package:califace/califacescreen/designations/Screens/DesignationAddScreen.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class DesListItem extends StatelessWidget{
   final String title;
   final String subtittle;
   final int Id;
+
 
 
   @override
@@ -64,7 +66,12 @@ class DesListItem extends StatelessWidget{
           caption: 'Edit',
           color: Colors.black45,
           icon: Icons.more_horiz,
-          onTap: () => print('Edit'),
+          onTap: () async{
+           Navigator.push(context, MaterialPageRoute(builder: (context){
+             return DesignationAddScreen(Id: Id,Url: designationUpdateDAtaUrl+Id.toString(),);
+           }));
+
+          },
         ),
         IconSlideAction(
           caption: 'Delete',

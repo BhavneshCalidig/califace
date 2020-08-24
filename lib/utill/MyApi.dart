@@ -58,7 +58,10 @@ String cameraDestroyUrl=baseUrl+"v1/camera/destroy";
 String attandanceListUrl=baseUrl+"v1/attendance/get";
 
 //get
-String visitorsListUrl=baseUrl+"v1/visitor/today/get";
+String visitorsListUrl=baseUrl+"v1/visitor/get";
+
+//get
+String visitorListToday=baseUrl+"v1/visitor/today/get";
 
 //get
 String adminListUrl=baseUrl+"v1/admin/list";

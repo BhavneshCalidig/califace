@@ -1,15 +1,30 @@
+import 'package:califace/califacescreen/cameras/Models/CameraDeleteModel.dart';
+import 'package:califace/utill/MyApi.dart';
+import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class CamListitem extends StatelessWidget{
-  CamListitem({this.title,this.subtittle});
+  CamListitem({this.CameraIp,this.Status,this.Port,this.Protocol,this.Id});
 //  final NetworkImage networkImage;
-  final String title;
-  final String subtittle;
+  final String CameraIp;
+  final String Status;
+  final String Port;
+  final String Protocol;
+  final int Id;
 
 
   @override
   Widget build(BuildContext context) {
+    Future<CameraDeleteModel> deleteCamera(int Id) async{
+      Map<String,dynamic > databody={
+        "id": Id,
+
+      };
+      var Networkhelper=NetworkServices().postApi(context, cameraDestroyUrl, databody);
+      return CameraDeleteModel.fromJson(Networkhelper);
+    }
+
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.25,
@@ -23,14 +38,72 @@ class CamListitem extends StatelessWidget{
 
 
         child: ListTile(
-//          leading:CircleAvatar(
-//            radius: 30.0,
-//            backgroundImage:
-//            NetworkImage("$networkImage"),
-//            backgroundColor: Colors.transparent,
-//          ),
-          title: Text(title),
-          subtitle: Text(subtittle),
+onTap: (){
+  showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: MediaQuery.of(context).size.height ,
+          color: Theme.of(context).backgroundColor,
+
+          child: Center(
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    title: Text( "CameraIP : $CameraIp",
+
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+
+                  ),
+                  Divider(
+                    height: 2,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "Status : $Status",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+
+                  ),
+                  Divider(
+                    height: 2,
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Port : $Port',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+
+                  ),
+                  Divider(
+                    height: 2,
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Protocol : $Protocol',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Divider(
+                    height: 2,
+                  ),
+
+
+
+
+
+                ],
+
+              )),
+        );});
+},
+          title: Text(CameraIp),
+          subtitle: Text(Status),
         ),
       ),
 //      actions:
@@ -59,7 +132,9 @@ class CamListitem extends StatelessWidget{
           caption: 'Delete',
           color: Colors.red,
           icon: Icons.delete,
-          onTap: () => print('Delete'),
+          onTap: () async{
+          final  CameraDeleteModel cdm= await deleteCamera(Id);
+          },
         ),
       ],
     );

@@ -41,7 +41,7 @@ class _DepartmentListScreenState extends State<DepartmentListScreen> {
                 itemCount: snapshot.data.data.length,
                 itemBuilder: (context, index) {
                   var data=snapshot.data.data[index];
-                  return DepListItem(title: data.title.toString(),subtittle: data.description.toString(),);
+                  return DepListItem(Name: data.title.toString(),about: data.description.toString(),Hod: data.hod,email: data.email,date: data.startingDate,phNo: data.phone,totalEmployee: data.totalEmployee,Id: data.id,);
                 });
           }
           else{

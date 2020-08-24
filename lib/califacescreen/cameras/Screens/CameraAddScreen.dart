@@ -14,7 +14,7 @@ class CameraAddScreen extends StatefulWidget {
 
 class _CameraAddScreenState extends State<CameraAddScreen> {
 String CameraIP;
-String Protocol;
+String Protocol="";
 String Port;
 String Status;
 Future<CameraStoreModel>CeateUser(String CameraIP, String Protocol,String Port, String Status)async{
@@ -56,17 +56,29 @@ return(CameraStoreModel.fromJson(Response));
               SizedBox(
                 height: 10,
               ),
-              CustomTextField(
-                labelText: "Protocol",
-                onChanged: (Value) {
-                  setState(() {
-                    Protocol=Value.toString();
-                  });
-                  // value=Value.toString();
-                  print(Value.toString());
-                },
-                validate: true,
-              ),
+             CustomDropDownButton(hintText: "Protocol",
+
+               items: ["http","rtsp"],
+
+               onChanged: (val){
+                 if(val=="http"){
+                   setState(() {
+                     Protocol=val.toString();
+
+                   });
+                   print(Protocol);
+                   
+                 }
+                 else{
+                   setState(() {
+                     Protocol=val.toString();
+
+                   });
+                   print(Protocol);
+                 }
+
+               },
+             ),
               SizedBox(
                 height: 10,
               ),
@@ -83,6 +95,7 @@ return(CameraStoreModel.fromJson(Response));
                 height: 10,
               ),
 CustomDropDownButton(
+
   hintText: "Status",onChanged: (val){
     if(val=="In"){
       setState(() {
@@ -102,6 +115,8 @@ CustomDropDownButton(
              Custom_Submit_Button(
                 text: "Submit",
                 onPressed: () async{
+                  print(Protocol);
+                  print(Status);
                   final CameraStoreModel csm= await CeateUser(CameraIP,Protocol,Port,Status);
 
 

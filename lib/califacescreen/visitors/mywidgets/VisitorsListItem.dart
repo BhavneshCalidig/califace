@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+class Visitorslistitems extends StatelessWidget{
+  Visitorslistitems({this.Firstname,this.networkImage,this.checkOut,this.checkin});
+  final String networkImage;
+  final String Firstname;
+  final String checkin;
+  final String checkOut;
 
-class VisitorsListItem extends StatefulWidget {
-  @override
-  _VisitorsListItemState createState() => _VisitorsListItemState();
-}
 
-class _VisitorsListItemState extends State<VisitorsListItem> {
+
+
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -22,30 +25,83 @@ class _VisitorsListItemState extends State<VisitorsListItem> {
 
 
         child: ListTile(
+          onTap: (){
+            showModalBottomSheet<void>(
+                context: context,
+                builder: (BuildContext context) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height ,
+                    color: Theme.of(context).backgroundColor,
+
+                    child: Center(
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Text( "LastVisited Date : $Firstname ",
+
+                                style: TextStyle(
+                                    color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+
+                            ),
+                            Divider(
+                              height: 2,
+                            ),
+                            ListTile(
+                              title: Text(
+                                "Chechkin : $checkin",
+                                style: TextStyle(
+                                    color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+
+                            ),
+                            Divider(
+                              height: 2,
+                            ),
+                            ListTile(
+                              title: Text(
+                                'Check Out : $checkOut',
+                                style: TextStyle(
+                                    color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+
+                            ),
+                            Divider(
+                              height: 2,
+                            ),
+
+
+                          ],
+
+                        )),
+                  );});
+          },
+
           leading: CircleAvatar(
-            backgroundColor: Theme.of(context).primaryColor,
-            child: Text('B'),
-            foregroundColor: Colors.white,
+            radius: 30.0,
+            backgroundImage:
+            NetworkImage("$networkImage"),
+            backgroundColor: Colors.transparent,
           ),
-          title: Text('Name'),
-          subtitle: Text('one imp item'),
+          title: Text("Last Visited : $Firstname"),
+
         ),
       ),
-//      actions:
-//      <Widget>[
-//        IconSlideAction(
-//          caption: 'Archive',
-//          color: Colors.blue,
-//          icon: Icons.archive,
-//          onTap: () => print('Archive'),
-//        ),
-//        IconSlideAction(
-//          caption: 'Share',
-//          color: Colors.indigo,
-//          icon: Icons.share,
-//          onTap: () => print('Share'),
-//        ),
-//      ],
+      actions:
+      <Widget>[
+        IconSlideAction(
+          caption: 'Archive',
+          color: Colors.blue,
+          icon: Icons.archive,
+          onTap: () => print('Archive'),
+        ),
+        IconSlideAction(
+          caption: 'Share',
+          color: Colors.indigo,
+          icon: Icons.share,
+          onTap: () => print('Share'),
+        ),
+      ],
       secondaryActions: <Widget>[
         IconSlideAction(
           caption: 'Edit',

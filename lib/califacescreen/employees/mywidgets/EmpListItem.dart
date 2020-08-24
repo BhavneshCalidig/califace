@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class EmpListItem extends StatelessWidget{
-  EmpListItem({this.Department,this.lasttname,this.Firstname,this.networkImage});
+  EmpListItem({this.gender,this.email,this.Department,this.lasttname,this.Firstname,this.networkImage,this.EmployeeID,this.Conatct,this.Designation});
   final String networkImage;
   final String Firstname;
 final String lasttname;
 final String Department;
+  final String Designation;
+  final String Conatct;
+  final String EmployeeID;
+  final String gender;
+  final String email;
+
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -35,56 +41,43 @@ final String Department;
                             child: Column(
                               children: <Widget>[
                                 ListTile(
-                                  title: Text( "Name :",
+                                  title: Text( "Name : $Firstname $lasttname",
 
                                     style: TextStyle(
                                         color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
-                                  subtitle: Text(
-                                    (Firstname+" "+lasttname),
-                                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                Divider(
-                                  height: 2,
-                                ),
-                                ListTile(
-                                  title: Text(
-                                    "Department",
-                                    style: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold),
-                                  ),
-                                  subtitle: Text(Department,
 
-                                    style: TextStyle(color: Colors.white70),
-                                  ),
                                 ),
                                 Divider(
                                   height: 2,
                                 ),
                                 ListTile(
                                   title: Text(
-                                    '',
+                                    "Department : $EmployeeID",
                                     style: TextStyle(
                                         color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
-                                  subtitle: Text(
-                                    "Designation",
-                                    style: TextStyle(color: Colors.white70),
-                                  ),
+
                                 ),
                                 Divider(
                                   height: 2,
                                 ),
                                 ListTile(
                                   title: Text(
-                                    '',
+                                    'Designation : $Designation',
                                     style: TextStyle(
                                         color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
-                                  subtitle: Text(
-                                    "Employee Id",
-                                    style: TextStyle(color: Colors.white70),
+
+                                ),
+                                Divider(
+                                  height: 2,
+                                ),
+                                ListTile(
+                                  title: Text(
+                                    'Employee Id : $EmployeeID',
+                                    style: TextStyle(
+                                        color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 Divider(
@@ -94,14 +87,27 @@ final String Department;
 
                                 ListTile(
                                   title: Text(
-                                    '',
+                                    'Contact : $Conatct',
                                     style: TextStyle(
                                         color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
-                                  subtitle: Text(
-                                    "Contact",
-                                    style: TextStyle(color: Colors.white70),
+
+                                ),
+                                ListTile(
+                                  title: Text(
+                                    'gender : $gender',
+                                    style: TextStyle(
+                                        color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
+
+                                ),
+                                ListTile(
+                                  title: Text(
+                                    'email : $email',
+                                    style: TextStyle(
+                                        color: Colors.white, fontWeight: FontWeight.bold),
+                                  ),
+
                                 ),
 
                               ],

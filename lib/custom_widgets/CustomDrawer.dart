@@ -8,6 +8,7 @@ import 'file:///E:/projects/califace/lib/califacescreen/designations/Screens/Des
 import 'file:///E:/projects/califace/lib/califacescreen/designations/Screens/DesignationListScreen.dart';
 import 'file:///E:/projects/califace/lib/califacescreen/employees/Screens/EmployeeAddScreen.dart';
 import 'file:///E:/projects/califace/lib/califacescreen/employees/Screens/EmployeeListScreen.dart';
+import 'package:califace/califacescreen/visitors/Screens/AllVisitor_Screen.dart';
 import 'package:califace/califacescreen/visitors/mywidgets/VisitorsListItem.dart';
 import 'package:califace/thems/ThemeScreen.dart';
 import 'package:flutter/material.dart';
@@ -126,7 +127,7 @@ class CustomDrawer extends StatelessWidget {
                 ListTile(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return VisitorsListItem();
+                      return AllVisitor_Screen();
                     }));
                   },
                   title: Text("Today Visitors",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),

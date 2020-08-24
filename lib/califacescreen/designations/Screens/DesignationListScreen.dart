@@ -43,7 +43,7 @@ class _DesignationListScrenState extends State<DesignationListScren> {
                   itemCount: snapshot.data.data.length,
                   itemBuilder: (context, index) {
                     var data=snapshot.data.data[index];
-                    return DesListItem(title: data.title,subtittle: data.description.toString(),);
+                    return DesListItem(title: data.title,subtittle: data.description.toString(),Id: data.id,);
                   });
             }
             else{

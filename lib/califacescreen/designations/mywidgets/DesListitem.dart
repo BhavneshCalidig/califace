@@ -1,14 +1,26 @@
+import 'package:califace/califacescreen/designations/Models/DesignationDeleteItemModel.dart';
+import 'package:califace/utill/MyApi.dart';
+import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 class DesListItem extends StatelessWidget{
-  DesListItem({this.title,this.subtittle});
+  DesListItem({this.title,this.subtittle,this.Id});
 //  final NetworkImage networkImage;
   final String title;
   final String subtittle;
+  final int Id;
 
 
   @override
   Widget build(BuildContext context) {
+    Future<DesignationItemDeleteModel> deletedesignation(int Id) async{
+      Map<String,dynamic > databody={
+        "id": Id,
+
+      };
+      var Networkhelper=NetworkServices().postApi(context, designationDestroyUrl, databody);
+      return DesignationItemDeleteModel.fromJson(Networkhelper);
+    }
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.25,
@@ -58,7 +70,10 @@ class DesListItem extends StatelessWidget{
           caption: 'Delete',
           color: Colors.red,
           icon: Icons.delete,
-          onTap: () => print('Delete'),
+          onTap: () async{
+           final DesignationItemDeleteModel didm = await deletedesignation(Id);
+           return didm;
+          },
         ),
       ],
     );

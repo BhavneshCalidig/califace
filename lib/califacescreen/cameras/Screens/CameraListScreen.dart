@@ -39,7 +39,7 @@ class _CameraListScrenState extends State<CameraListScren> {
                   itemCount: snapshot.data.data.length,
                   itemBuilder: (context, index) {
                     var data=snapshot.data.data[index];
-                    return CamListitem(title: data.cameraIp.toString(),subtittle: data.status.toString(),);
+                    return CamListitem(CameraIp: data.cameraIp.toString(),Status: data.status.toString(),Id: data.id,Port: data.port,Protocol:data.protocol,);
                   });
             }
             else{

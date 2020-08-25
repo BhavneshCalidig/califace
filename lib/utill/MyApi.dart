@@ -12,6 +12,9 @@ String empListUrl=baseUrl+"v1/employe/list";
 //post
 String empStoreUrl=baseUrl+"v1/employe/store";
 
+//get
+String empUpdateDataUrl=baseUrl+"v1/employe/edit/";
+
 //post
 String empUpdateUrl=baseUrl+"v1/employe/update";
 
@@ -39,6 +42,9 @@ String departmentListUrl=baseUrl+"v1/department/list";
 //post
 String departmentStoreUrl=baseUrl+"v1/department/store";
 
+//get
+String departmentUpdateDataUrl=baseUrl+"v1/department/edit/";
+
 //post
 String departmentUpdateUrl=baseUrl+"v1/department/update";
 
@@ -50,6 +56,9 @@ String cameraListUrl =baseUrl+"v1/camera/list";
 
 //post
 String cameraStoreUrl=baseUrl+"v1/camera/store";
+
+//get
+String cameraUpdateDataUrl=baseUrl+"v1/camera/edit/";
 
 //post
 String cameraUpdateUrl=baseUrl+"v1/camera/update";

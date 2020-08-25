@@ -1,4 +1,6 @@
 import 'package:califace/califacescreen/cameras/Models/CameraStoreModel.dart';
+import 'package:califace/califacescreen/cameras/Models/CameraUpdateDataModel.dart';
+import 'package:califace/califacescreen/cameras/Models/CameraUpdateModel.dart';
 import 'package:califace/custom_widgets/CustomButtonRc.dart';
 import 'package:califace/custom_widgets/CustomDropDownButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
@@ -8,6 +10,9 @@ import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
 
 class CameraAddScreen extends StatefulWidget {
+  CameraAddScreen({this.Id,this.Url});
+  final String Id;
+  final String Url;
   @override
   _CameraAddScreenState createState() => _CameraAddScreenState();
 }
@@ -17,6 +22,10 @@ String CameraIP;
 String Protocol="";
 String Port;
 String Status;
+String Id;
+var response;
+var UpdateList;
+Future<CameraUpdateDataModel> _cudm;
 Future<CameraStoreModel>CeateUser(String CameraIP, String Protocol,String Port, String Status)async{
 Map<String,dynamic > databody={
   "camera_ip": CameraIP,
@@ -27,6 +36,23 @@ Map<String,dynamic > databody={
 var Response=await NetworkServices().postApi(context,cameraStoreUrl, databody);
 return(CameraStoreModel.fromJson(Response));
 
+}
+Future<CameraUpdateModel>UpdateCamera(String Id,String CameraIP, String Protocol,String Port, String Status)async{
+  Map<String,dynamic > databody={
+    "camera_ip": CameraIP,
+    "id":Id=widget.Id,
+    "status": Status,
+    "protocol": Protocol,
+    "port": Port
+  };
+  var Response=await NetworkServices().postApi(context,cameraUpdateUrl, databody);
+  return(CameraUpdateModel.fromJson(Response));
+
+}
+Future<CameraUpdateDataModel>getData()async{
+  response= await NetworkServices().getApi(context, widget.Url);
+  UpdateList = CameraUpdateDataModel.fromJson(response);
+  return UpdateList;
 }
 
 

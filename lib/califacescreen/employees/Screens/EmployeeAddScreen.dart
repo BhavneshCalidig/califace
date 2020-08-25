@@ -1,4 +1,8 @@
 import 'file:///E:/projects/califace/lib/califacescreen/employees/Models/employeDataModel.dart';
+import 'package:califace/califacescreen/employees/Models/EmployeeStoreDataModel.dart';
+import 'package:califace/califacescreen/employees/Models/EmployeeUpdateDataModel.dart';
+import 'package:califace/califacescreen/employees/Models/EmployeeUpdateModel.dart';
+import 'package:califace/califacescreen/employees/Models/employeDataModel.dart';
 import 'package:califace/custom_widgets/CustomButtonRc.dart';
 import 'package:califace/custom_widgets/CustomDropDownButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
@@ -11,6 +15,9 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 class EmployeeAddScreen extends StatefulWidget {
+  EmployeeAddScreen({this.Id,this.Url});
+  final String Id;
+  final String Url;
   @override
   _EmployeeAddScreenState createState() => _EmployeeAddScreenState();
 }
@@ -27,6 +34,51 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
   String email;
   String contact;
   String employId;
+ var Updatelist;
+ Future<EmployeeUpdateDataModel> _eudm;
+
+  Future<EmployeeStoreDataModel>StoreEmployee ( String department, String designation, String gender, String Firstname, String lastname, String email, String contact, String employId,)async{
+    Map<String,dynamic > databody={
+      "first_name":Firstname,
+      "last_name":lastname,
+      "email":email,
+      "gender":gender,
+      "department_id":department,
+      "designation_id":designation,
+      "contact_no":contact,
+      "employee_id":employId,
+    };
+
+    var Respose=await NetworkServices().postApi(context, empCreateUrl, databody);
+    return EmployeeStoreDataModel.fromJson(Respose);
+  }
+  Future<EmployeeUpdateModel>UpdateEmployee ( String Id,String department, String designation, String gender, String Firstname, String lastname, String email, String contact, String employId,)async{
+    Map<String,dynamic > databody={
+      "first_name":Firstname,
+      "last_name":lastname,
+      "id":Id,
+      "email":email,
+      "gender":gender,
+      "department_id":department,
+      "designation_id":designation,
+      "contact_no":contact,
+      "employee_id":employId,
+    };
+
+    var Respose=await NetworkServices().postApi(context, empUpdateUrl, databody);
+    return EmployeeUpdateModel.fromJson(Respose);
+  }
+  Future<EmployeeUpdateDataModel> getData()async{
+    var response= await NetworkServices().getApi(context, widget.Url);
+    Updatelist =EmployeeUpdateDataModel.fromJson(response);
+    return Updatelist;
+  }
+  @override
+  void initState() {
+    _eudm=getData();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

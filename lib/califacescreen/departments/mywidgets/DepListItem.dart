@@ -1,4 +1,5 @@
 import 'package:califace/califacescreen/departments/Model/DepartmentItemDeleteModel.dart';
+import 'package:califace/califacescreen/departments/Screens/DepartmentAddScreen.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +16,13 @@ class DepListItem extends StatelessWidget{
   final String email;
   final String date;
   final String totalEmployee;
-  final int Id;
+  final String Id;
 
 
 
   @override
   Widget build(BuildContext context) {
-    Future<DepartmentItemDeleteModel> deleteDepartment(int Id) async{
+    Future<DepartmentItemDeleteModel> deleteDepartment(String Id) async{
       Map<String,dynamic > databody={
         "id": Id,
 
@@ -148,7 +149,11 @@ class DepListItem extends StatelessWidget{
           caption: 'Edit',
           color: Colors.black45,
           icon: Icons.more_horiz,
-          onTap: () => print('Edit'),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return DepartmentAddScreen(Id: Id,Url: departmentUpdateDataUrl+Id.toString(),);
+            }));
+          },
         ),
         IconSlideAction(
           caption: 'Delete',

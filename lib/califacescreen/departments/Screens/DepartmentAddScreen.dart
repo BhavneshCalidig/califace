@@ -1,4 +1,6 @@
 import 'package:califace/califacescreen/departments/Model/DepartmentStoreData_Model.dart';
+import 'package:califace/califacescreen/departments/Model/DepartmentUpdateDataModel.dart';
+import 'package:califace/califacescreen/departments/Model/DepartmentUpdateModel.dart';
 import 'package:califace/custom_widgets/CustomButtonRc.dart';
 import 'package:califace/custom_widgets/CustomDropDownButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
@@ -8,6 +10,10 @@ import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
 
 class DepartmentAddScreen extends StatefulWidget {
+  DepartmentAddScreen({this.Id,this.Url});
+  final String Id;
+  final String Url;
+
   @override
   _DepartmentAddScreenState createState() => _DepartmentAddScreenState();
 }
@@ -20,6 +26,17 @@ String Contact;
 String Date;
 String TotalEmploye;
 String About;
+var NetworkHelper;
+var updateList;
+Future<DepartmentUpdateDataModel> _dupdm;
+var department =TextEditingController();
+var hod =TextEditingController();
+var email =TextEditingController();
+var contact =TextEditingController();
+var date =TextEditingController();
+var totalEmploye =TextEditingController();
+var about=TextEditingController();
+
 
 Future<DepartmentStoreDataModel>StoreDepartment (String About,String Email,String Hod,String Contact,String Date,String Deaprtment,String TotalEmploye)async{
   Map<String,dynamic > databody={
@@ -35,6 +52,32 @@ Future<DepartmentStoreDataModel>StoreDepartment (String About,String Email,Strin
   var Respose=await NetworkServices().postApi(context, departmentStoreUrl, databody);
   return DepartmentStoreDataModel.fromJson(Respose);
 }
+Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Email,String Hod,String Contact,String Date,String Deaprtment,String TotalEmploye)async{
+  Map<String,dynamic > databody={
+    "description": About,
+    "email": Email,
+    "hod": Hod,
+    "id": id=widget.Id,
+    "phone": Contact,
+    "starting_date": Date,
+    "title": Deaprtment,
+    "total_employee": TotalEmploye,
+  };
+
+  var Respose=await NetworkServices().postApi(context, departmentUpdateUrl, databody);
+  return DepartmentUpdateModel.fromJson(Respose);
+}
+ Future<DepartmentUpdateDataModel>getData()async{
+   NetworkHelper=await NetworkServices().getApi(context, widget.Url);
+   updateList=DepartmentUpdateDataModel.fromJson(NetworkHelper);
+   return updateList;
+ }
+ @override
+  void initState() {
+  _dupdm=getData();
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,95 +88,126 @@ Future<DepartmentStoreDataModel>StoreDepartment (String About,String Email,Strin
         padding: EdgeInsets.only(top: 20, left: 10, right: 10),
         margin: EdgeInsets.only(top: 10),
         child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              CustomTextField(
-                labelText: "Department Name",
-                onChanged: (Value) {
-                  setState(() {
-                    Deaprtment=Value.toString();
-                  });
-                  // value=Value.toString();
-                  print(Value.toString());
-                },
-                validate: true,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              CustomTextField(
-                labelText: "Head of Department",
-                onChanged: (Value) {
-                  setState(() {
-                    Hod=Value.toString();
-                  });
-                  // value=Value.toString();
-                  print(Value.toString());
-                },
-                validate: true,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              CustomTextField(labelText: "Email",hintText: "Email",onChanged: (Value) {
-                // value=Value.toString();
-                setState(() {
-                  Email=Value.toString();
-                });
-                print(Value.toString());
-              },validate: true,),
+          child: FutureBuilder<DepartmentUpdateDataModel>(
+            future: _dupdm,
+            builder: (context, snapshot) {
+              if(snapshot.hasData){
+                var data=snapshot.data.data;
+               department.text=data.title;
+               about.text=data.description;
+               hod.text=data.hod;
+               email.text=data.email;
+               date.text=data.startingDate;
+               contact.text=data.phone;
+               totalEmploye.text=data.totalEmployee;
+
+                return   Column(
+                  children: <Widget>[
+                    CustomTextField(
+                      controller: department,
+                      labelText: "Department Name",
+                      onChanged: (Value) {
+                        setState(() {
+                          department=Value;
+                        });
+                        // value=Value.toString();
+                        print(Value.toString());
+                      },
+                      validate: true,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(
+                      controller: hod,
+                      labelText: "Head of Department",
+                      onChanged: (Value) {
+                        setState(() {
+                          hod=Value;
+                        });
+                        // value=Value.toString();
+                        print(Value.toString());
+                      },
+                      validate: true,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(controller: email,labelText: "Email",hintText: "Email",onChanged: (Value) {
+                      // value=Value.toString();
+                      setState(() {
+                        email=Value;
+                      });
+                      print(Value.toString());
+                    },validate: true,),
 
 
-              SizedBox(
-                height: 10,
-              ),
-              CustomTextField(labelText: "Contact",hintText: "Contact No:",onChanged: (Value) {
-                setState(() {
-                  Contact=Value.toString();
-                });
-                // value=Value.toString();
-                print(Value.toString());
-              },validate: true,),
-              SizedBox(
-                height: 10,
-              ),
-              CustomTextField(labelText: "Starting Date:",hintText: "Starting Date",onChanged: (Value) {
-                // value=Value.toString();
-                setState(() {
-                  Date=Value.toString();
-                });
-                print(Value.toString());
-              },validate: true,),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(controller: contact,labelText: "Contact",hintText: "Contact No:",onChanged: (Value) {
+                      setState(() {
+                        contact=Value;
+                      });
+                      // value=Value.toString();
+                      print(Value.toString());
+                    },validate: true,),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(controller: date,labelText: "Starting Date:",hintText: "Starting Date",onChanged: (Value) {
+                      // value=Value.toString();
+                      setState(() {
+                        date=Value;
+                      });
+                      print(Value.toString());
+                    },validate: true,),
 
-              SizedBox(
-                height: 10,
-              ),
-              CustomTextField(labelText: "Total Employee",hintText: "Total Employee",onChanged: (Value) {
-                setState(() {
-                  TotalEmploye=Value.toString();
-                });
-                // value=Value.toString();
-                print(Value.toString());
-              },validate: true,),
-              CustomTextField(labelText: "About",hintText: "More About Department",onChanged: (Value) {
-                // value=Value.toString();
-                setState(() {
-                  About=Value.toString();
-                });
-                print(Value.toString());
-              },validate: true,),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(controller:totalEmploye,labelText: "Total Employee",hintText: "Total Employee",onChanged: (Value) {
+                      setState(() {
+                        totalEmploye=Value;
+                      });
+                      // value=Value.toString();
+                      print(Value.toString());
+                    },validate: true,),
+                    CustomTextField(controller: about,labelText: "About",hintText: "More About Department",onChanged: (Value) {
+                      // value=Value.toString();
+                      setState(() {
+                        about=Value;
+                      });
+                      print(Value.toString());
+                    },validate: true,),
 
 
 
-              Custom_Submit_Button(
-                text: "Submit",
-                onPressed: () async{
-                  final DepartmentStoreDataModel model= await StoreDepartment(About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
-print(model);
+                    Custom_Submit_Button(
+                      text: "Submit",
+                      onPressed: () async{
+                        Deaprtment=department.text;
+                        Hod=hod.text;
+                        Email=email.text;
+                        Contact=contact.text;
+                        Date=date.text;
+                        About=about.text;
+                        TotalEmploye=totalEmploye.text;
+//                        final DepartmentStoreDataModel model= await StoreDepartment(About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
+//                        print(model);
+                       final DepartmentUpdateModel md= await updateDepartment(widget.Id, About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
+                      },
+                    ),
+                  ],
+                );
 
-                },
-              ),
-            ],
+              }
+              else{
+                return Center(child: CircularProgressIndicator());
+              }
+
+            },
+
           ),
         ),
       ),

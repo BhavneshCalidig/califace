@@ -1,4 +1,5 @@
 import 'package:califace/califacescreen/cameras/Models/CameraDeleteModel.dart';
+import 'package:califace/califacescreen/cameras/Screens/CameraAddScreen.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -126,7 +127,11 @@ onTap: (){
           caption: 'Edit',
           color: Colors.black45,
           icon: Icons.more_horiz,
-          onTap: () => print('Edit'),
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return CameraAddScreen(Id: Id.toString(),Url: cameraUpdateDataUrl+Id.toString(),);
+            }));
+          },
         ),
         IconSlideAction(
           caption: 'Delete',

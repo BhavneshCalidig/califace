@@ -1,9 +1,13 @@
 
+import 'package:califace/califacescreen/employees/Models/EmployeeDeleteModel.dart';
+import 'package:califace/califacescreen/employees/Screens/EmployeeAddScreen.dart';
+import 'package:califace/utill/MyApi.dart';
+import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class EmpListItem extends StatelessWidget{
-  EmpListItem({this.gender,this.email,this.Department,this.lasttname,this.Firstname,this.networkImage,this.EmployeeID,this.Conatct,this.Designation});
+  EmpListItem({this.Id,this.gender,this.email,this.Department,this.lasttname,this.Firstname,this.networkImage,this.EmployeeID,this.Conatct,this.Designation});
   final String networkImage;
   final String Firstname;
 final String lasttname;
@@ -13,9 +17,20 @@ final String Department;
   final String EmployeeID;
   final String gender;
   final String email;
+  final String Id;
 
   @override
   Widget build(BuildContext context) {
+
+    Future<EmployeeDeleteModel> deleteemployee(String Id) async{
+      Map<String,dynamic > databody={
+        "id": Id,
+
+      };
+      var Networkhelper=NetworkServices().postApi(context, empDestroyUrl, databody);
+      return EmployeeDeleteModel.fromJson(Networkhelper);
+    }
+
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.25,
@@ -145,13 +160,20 @@ final String Department;
           caption: 'Edit',
           color: Colors.black45,
           icon: Icons.more_horiz,
-          onTap: () => print('Edit'),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return EmployeeAddScreen();
+            }));
+          },
         ),
         IconSlideAction(
           caption: 'Delete',
           color: Colors.red,
           icon: Icons.delete,
-          onTap: () => print('Delete'),
+          onTap: () async{
+            EmployeeDeleteModel didm= await deleteemployee(Id);
+
+          },
         ),
       ],
     );

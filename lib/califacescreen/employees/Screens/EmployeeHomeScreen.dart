@@ -7,6 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class EmployeeHomeScreen extends StatefulWidget {
+
+ final int whichscreen;
+
+ EmployeeHomeScreen(this.whichscreen);
+
+
   @override
   _EmployeeHomeScreenState createState() => _EmployeeHomeScreenState();
 }
@@ -18,6 +24,12 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen>
   @override
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
+    if(widget.whichscreen==1){
+      _tabController.animateTo(1);
+      }
+    else{
+      _tabController.animateTo(0);
+    }
 
     super.initState();
   }

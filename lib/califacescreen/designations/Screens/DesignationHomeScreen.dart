@@ -1,4 +1,4 @@
-import 'file:///E:/projects/califace/lib/califacescreen/cameras/Screens/CameraListScreen.dart';
+
 import 'file:///E:/projects/califace/lib/califacescreen/designations/Screens/DesignationAddScreen.dart';
 import 'file:///E:/projects/califace/lib/califacescreen/designations/Screens/DesignationListScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 
 
 class DesignationHomeScreen extends StatefulWidget {
+  final int whichscreen;
+  DesignationHomeScreen({this.whichscreen});
   @override
   DesignationHomeScreenState createState() => DesignationHomeScreenState();
 }
@@ -18,6 +20,9 @@ class DesignationHomeScreenState extends State<DesignationHomeScreen>
   @override
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
+    if(widget.whichscreen==1){
+      _tabController.animateTo(1);
+    }
     super.initState();
   }
 

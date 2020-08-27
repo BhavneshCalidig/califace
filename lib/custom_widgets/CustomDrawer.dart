@@ -1,16 +1,13 @@
-import 'file:///E:/projects/califace/lib/califacescreen/attandance/Screens/AttandanceListScreen.dart';
-import 'file:///E:/projects/califace/lib/califacescreen/cameras/Screens/CameraAddScreen.dart';
-import 'file:///E:/projects/califace/lib/califacescreen/cameras/Screens/CameraListScreen.dart';
-import 'file:///E:/projects/califace/lib/califacescreen/departments/Screens/DepartmentAddScreen.dart';
+
 import 'file:///E:/projects/califace/lib/califacescreen/departments/Screens/DepartmentHomeScreen.dart';
-import 'file:///E:/projects/califace/lib/califacescreen/departments/Screens/DepartmentListScreen.dart';
-import 'file:///E:/projects/califace/lib/califacescreen/designations/Screens/DesignationAddScreen.dart';
-import 'file:///E:/projects/califace/lib/califacescreen/designations/Screens/DesignationListScreen.dart';
-import 'file:///E:/projects/califace/lib/califacescreen/employees/Screens/EmployeeAddScreen.dart';
-import 'file:///E:/projects/califace/lib/califacescreen/employees/Screens/EmployeeListScreen.dart';
-import 'package:califace/califacescreen/visitors/Screens/AllVisitor_Screen.dart';
-import 'package:califace/califacescreen/visitors/mywidgets/VisitorsListItem.dart';
+import 'package:califace/califacescreen/HomeScreen.dart';
+import 'package:califace/califacescreen/attandance/Screens/AttandanceHomeScreen.dart';
+import 'package:califace/califacescreen/cameras/Screens/CameraHomeScreen.dart';
+import 'package:califace/califacescreen/designations/Screens/DesignationHomeScreen.dart';
+import 'package:califace/califacescreen/employees/Screens/EmployeeHomeScreen.dart';
+import 'package:califace/califacescreen/visitors/Screens/VisitorsHomeScreen.dart';
 import 'package:califace/thems/ThemeScreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -25,118 +22,185 @@ class CustomDrawer extends StatelessWidget {
 
             children: <Widget>[
               DrawerHeader(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/iottechsoftware.png"),
-                        fit: BoxFit.contain
-                    )
+//                decoration: BoxDecoration(
+//                    image: DecorationImage(
+//                        image: AssetImage("assets/images/logo.png"),
+//                        
+//                    )`
+//                ),
+                child: Row(
+                  children: <Widget>[
+                    Image(image: AssetImage("assets/images/logo.png")),
+                    Padding(padding: EdgeInsets.only(left: 4 ),child: Text("Califace",style: TextStyle(fontSize: 35,color:Theme.of(context).indicatorColor,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),))
+                  ],
                 ),
-                child: Text("Hi Everyone"),
               ),
               ListTile(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+
+                    return HomeScreen();
+                  }));
+                },
                 title: Text("Dashboard",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),
                 trailing: Icon(Icons.arrow_forward),
               ),
               Divider(),
              ExpansionTile(title: Text("Employee",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),children: <Widget>[
                ListTile(
+                 contentPadding: EdgeInsets.only(left: 5),
                  onTap: (){
                    Navigator.push(context, MaterialPageRoute(builder: (context){
-                     return EmployeeAddScreen();
+                     return EmployeeHomeScreen(1);
                    }));
                  },
-                 title: Text("Add Employee",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                 title: Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Text("Add Employee",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                 ),
                ),
                ListTile(
-                 onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>EmployeeListScreen())),
-                 title: Text("All Employee",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                 contentPadding: EdgeInsets.only(left: 5),
+                 onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>EmployeeHomeScreen(0))),
+                 title: Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Text("All Employee",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                 ),
                )
              ],),
               Divider(),
               ExpansionTile(title: Text("Designation",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),children: <Widget>[
                 ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return DesignationAddScreen();
+                      return DesignationHomeScreen(whichscreen: 1);
                     }));
                   },
-                  title: Text("Add Designation",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Add Designation",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
                 ),
                 ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return DesignationListScren();
+                      return DesignationHomeScreen(whichscreen: 0,);
                     }));
                   },
-                  title: Text("All Designation",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("All Designation",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
                 )
               ],),
               Divider(),
               ExpansionTile(title: Text("Department",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),children: <Widget>[
                 ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return DepartmentAddScreen();
+                      return DepartmentHomeScreen(whichscreen: 1,);
                     }));
                   },
-                  title: Text("Add Department",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Add Department",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
                 ),
                 ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return DepartmentListScreen();
+                      return DesignationHomeScreen(whichscreen: 0,);
                     }));
                   },
-                  title: Text("All Department",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("All Department",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
                 )
               ],),
 
               Divider(),
               ExpansionTile(title: Text("Cameras",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),children: <Widget>[
                 ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return CameraAddScreen();
+                      return CameraHomeScreen(whichscreen: 1,);
                     }));
                   },
-                  title: Text("Add Camera",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Add Camera",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
                 ),
                 ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return CameraListScren();
+                      return CameraHomeScreen(whichscreen: 0,);
                     }));
                   },
-                  title: Text("All Cameras",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("All Cameras",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
                 )
               ],),
               Divider(),
               ExpansionTile(title: Text("Attandance",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),children: <Widget>[
 
                 ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return AttandanceListScreen();
+                      return AttandanceHomeScreen();
                     }));
                   },
-                  title: Text("Todays Attandance",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Todays Attandance",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
                 )
               ],),
               Divider(),
               ExpansionTile(title: Text("Visitors",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),children: <Widget>[
                 ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return AllVisitor_Screen();
+                      return VisitorsHomeScreen(whichscreen: 0,);
                     }));
                   },
-                  title: Text("Today Visitors",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("All Visitors",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.only(left: 5),
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return VisitorsHomeScreen(whichscreen: 1,);
+                    }));
+                  },
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Today Visitors",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20)),
+                  ),
                 ),
 
               ],),
               Divider(),
               ListTile(
-                title: Text("Settings",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),
+                contentPadding: EdgeInsets.only(left: 5),
+                title: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Settings",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),
+                ),
                 trailing: Icon(Icons.arrow_forward),
                 onTap: ()
                 {

@@ -27,15 +27,25 @@ class Visitorslistitems extends StatelessWidget{
         child: ListTile(
           onTap: (){
             showModalBottomSheet<void>(
+                backgroundColor: Colors.transparent,
                 context: context,
                 builder: (BuildContext context) {
                   return Container(
                     height: MediaQuery.of(context).size.height ,
-                    color: Theme.of(context).backgroundColor,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).backgroundColor,
+                      borderRadius:  BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+                    ),
 
                     child: Center(
                         child: Column(
+
                           children: <Widget>[
+                            Center(
+                              child: IconButton(icon: Icon(Icons.clear), onPressed: (){
+                                return Navigator.pop(context);
+                              }),
+                            ),
                             ListTile(
                               title: Text( "LastVisited Date : $Firstname ",
 

@@ -2,37 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e336fd91-404f-46ec-a435-5c5b54b2254c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraUpdateDataModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraUpdateModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentUpdateDataModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentUpdateModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeDeleteModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeStoreDataModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeUpdateDataModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeUpdateModel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/hs_err_pid18668.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/hs_err_pid19012.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/hs_err_pid25036.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/hs_err_pid9088.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/replay_pid18668.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/replay_pid19012.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/replay_pid9088.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/califacescreen/Login/Model/LoginModel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/califacescreen/Login/Model/LoginSingleton.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/califacescreen/Login/Model/UserLoginDataModel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/mywidgets/CameraSingleton.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/califacescreen/departments/mywidgets/DepartmentSingleton.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/califacescreen/designations/mywidgets/SingletonData.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/califacescreen/employees/mywidgets/EmployeSingleton.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/.filecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/debug_android_application.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/flutter_assets.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/kernel_snapshot.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/kernel_snapshot.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/app.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Login_Screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/Login/Login_Screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/HomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/HomeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/attandance/mywidgeet/AttandanceListItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/attandance/mywidgeet/AttandanceListItem.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraListModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraListModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Screens/CameraAddScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Screens/CameraAddScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Screens/CameraHomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Screens/CameraHomeScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/mywidgets/CamListitem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/mywidgets/CamListitem.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentAddScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentAddScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentListScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentListScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentHomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentHomeScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/mywidgets/DepListItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/mywidgets/DepListItem.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Models/employeDataModel.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationListModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationListModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Screens/DesignationAddScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Screens/DesignationAddScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Screens/DesignationHomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Screens/DesignationHomeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/mywidgets/DesListitem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/mywidgets/DesListitem.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeStoreDataModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeStoreDataModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeAddScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeAddScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeHomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeHomeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeListScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeListScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/mywidgets/EmpListItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/mywidgets/EmpListItem.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/visitors/Screens/VisitorsHomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/visitors/Screens/VisitorsHomeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/visitors/mywidgets/VisitorsListItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/visitors/mywidgets/VisitorsListItem.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/custom_widgets/CustomDrawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/custom_widgets/CustomDrawer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/custom_widgets/CustomDropDownButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/custom_widgets/CustomDropDownButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/utill/MyApi.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utill/MyApi.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utill/NetworkServices.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utill/NetworkServices.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +107,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../c" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../fary" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -85,11 +116,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\projects\califace\lib\califacescreen\Login" />
+      <recent name="E:\projects\califace\assets\images" />
       <recent name="E:\projects\califace\lib\califacescreen\visitors\Screens" />
       <recent name="E:\projects\califace\lib\califacescreen\attandance\Screens" />
       <recent name="E:\projects\califace\lib\califacescreen\cameras\Screens" />
-      <recent name="E:\projects\califace\lib\califacescreen\designations\Screens" />
-      <recent name="E:\projects\califace\lib\califacescreen\employees\Models" />
     </key>
   </component>
   <component name="RunManager">
@@ -165,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598292449660</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="New Added">
+      <created>1598334069220</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1598334069221</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -185,7 +223,8 @@
     <MESSAGE value="Addded" />
     <MESSAGE value="Added api" />
     <MESSAGE value="added" />
-    <option name="LAST_COMMIT_MESSAGE" value="added" />
+    <MESSAGE value="New Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="22" key="#Notifications" timestamp="1598199943184">
@@ -200,18 +239,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="375" y="97" key="#main.dart/0.0.1366.728@0.0.1366.728" timestamp="1598199686779" />
-    <state x="322" y="0" key="CommitChangelistDialog2" timestamp="1598292427002">
+    <state x="322" y="0" key="CommitChangelistDialog2" timestamp="1598334050457">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="322" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1598292427002" />
+    <state x="322" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1598334050457" />
     <state x="129" y="55" width="1092" height="610" key="DiffContextDialog" timestamp="1597985363124">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="129" y="55" width="1092" height="610" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1597985363124" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1598291423369">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1598356338762">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598291423369" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598356338762" />
     <state x="544" y="267" key="Github.Dialog.Accounts.Choose" timestamp="1597903506537">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -220,22 +259,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="498" y="240" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1597982650248" />
-    <state width="1323" height="91" key="GridCell.Tab.0.bottom" timestamp="1598330818229">
+    <state width="1323" height="70" key="GridCell.Tab.0.bottom" timestamp="1598528077594">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="91" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1598330818229" />
-    <state width="1323" height="91" key="GridCell.Tab.0.center" timestamp="1598330818229">
+    <state width="1323" height="70" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1598528077594" />
+    <state width="1323" height="70" key="GridCell.Tab.0.center" timestamp="1598528077594">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="91" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1598330818229" />
-    <state width="1323" height="91" key="GridCell.Tab.0.left" timestamp="1598330818224">
+    <state width="1323" height="70" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1598528077594" />
+    <state width="1323" height="70" key="GridCell.Tab.0.left" timestamp="1598528077593">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="91" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1598330818224" />
-    <state width="1323" height="91" key="GridCell.Tab.0.right" timestamp="1598330818229">
+    <state width="1323" height="70" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1598528077593" />
+    <state width="1323" height="70" key="GridCell.Tab.0.right" timestamp="1598528077594">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="91" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1598330818229" />
+    <state width="1323" height="70" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1598528077594" />
     <state x="356" y="63" key="NewModule_or_Project.wizard" timestamp="1598260673950">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -244,10 +283,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598245463447" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1598259553516">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1598334211348">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1598259553516" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1598334211348" />
+    <state x="92" y="92" width="1182" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1598519227948">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1366.728@0.0.1366.728" timestamp="1598519227948" />
     <state x="267" y="199" key="com.intellij.ide.util.TipDialog" timestamp="1598200661262">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -268,9 +311,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="227" key="git4idea.rebase.GitRebaseDialog/0.0.1366.728@0.0.1366.728" timestamp="1597946897643" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1598278301526">
+    <state x="324" y="89" width="700" height="530" key="recent.locations.popup" timestamp="1598471209820">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598278301526" />
+    <state x="324" y="89" width="700" height="530" key="recent.locations.popup/0.0.1366.728@0.0.1366.728" timestamp="1598471209820" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1598518281761">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1598518281761" />
   </component>
 </project>

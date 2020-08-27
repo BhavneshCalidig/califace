@@ -1,6 +1,7 @@
 import 'package:califace/califacescreen/designations/Models/DesignationEditModel.dart';
 import 'package:califace/califacescreen/designations/Models/DesignationStoreModel.dart';
 import 'package:califace/califacescreen/designations/Models/DesignationUpdateDataModel.dart';
+import 'package:califace/califacescreen/designations/mywidgets/SingletonData.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
 import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
 import 'package:califace/utill/MyApi.dart';
@@ -8,9 +9,6 @@ import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
 
 class DesignationAddScreen extends StatefulWidget {
-  DesignationAddScreen({this.Id,this.Url});
- final int Id;
- final String Url;
 
   @override
   _DesignationAddScreenState createState() => _DesignationAddScreenState();
@@ -23,19 +21,28 @@ var NetworkHelper;
 var UpdateDataList;
  var tittle=TextEditingController();
  var Descriptin=TextEditingController();
-
+String Id;
+String Url;
 
 Future<DesignationUpdateDataModel> _dudm;
 
 void initState() {
+  getID();
+  print(Id);
   _dudm=getData();
   // TODO: implement initState
- print(widget.Id);
- print(widget.Url);
+
   super.initState();
 }
+
+void getID(){
+  IdSingleton idSingleton=IdSingleton();
+  Id=idSingleton.id;
+  Url =idSingleton.Url;
+
+}
 Future<DesignationUpdateDataModel> getData()async{
-  NetworkHelper=await NetworkServices().getApi(context, widget.Url);
+  NetworkHelper=await NetworkServices().getApi(context, Url);
   UpdateDataList=DesignationUpdateDataModel.fromJson(NetworkHelper);
   return UpdateDataList;
 
@@ -63,10 +70,10 @@ Future<DesignationStoretModel> CeateDesignation(String Title,String Description)
   return DesignationStoretModel.fromJson(Respose);
 
 }
-Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description,int id) async{
+Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description,String id) async{
   Map<String,dynamic > databody={
     "title": Title,
-  	"id" :id= widget.Id,
+  	"id" :id,
   "description": Description
 
   };
@@ -132,7 +139,7 @@ Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description
                               Description=Descriptin.text;
 
 //                              final DesignationStoretModel model= await createDesignation(Title, Description);
-                              final DesignationUpdateModel md=await UpdateDesignation(Title, Description, widget.Id);
+                              final DesignationUpdateModel md=await UpdateDesignation(Title, Description, Id);
 
 
                             },
@@ -142,7 +149,53 @@ Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description
 
               }
               else{
-                return Center(child: CircularProgressIndicator());
+                return Column(
+                  children: <Widget>[
+                    CustomTextField(
+
+                      labelText: "Title",
+                      onChanged: (Value) {
+                        setState(() {
+
+
+                        });
+                        // value=Value.toString();
+                        print(Value.toString());
+                      },
+                      validate: true,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(
+
+                      labelText: "Role and Responsibilities",
+                      onChanged: (Value) {
+                        setState(() {
+                          Descriptin=Value;
+
+                        });
+                        // value=Value.toString();
+                        print(Value.toString());
+                      },
+                      validate: true,
+                    ),
+
+                    Custom_Submit_Button(
+
+                      text: "Submit",
+                      onPressed: () async{
+                        Title=tittle.text;
+                        Description=Descriptin.text;
+
+//                              final DesignationStoretModel model= await createDesignation(Title, Description);
+                        final DesignationUpdateModel md=await UpdateDesignation(Title, Description, Id);
+
+
+                      },
+                    ),
+                  ],
+                );
               }
 
             },

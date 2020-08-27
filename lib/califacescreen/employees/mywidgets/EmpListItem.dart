@@ -1,8 +1,9 @@
-
 import 'package:califace/califacescreen/employees/Models/EmployeeDeleteModel.dart';
-import 'package:califace/califacescreen/employees/Screens/EmployeeAddScreen.dart';
+import 'package:califace/califacescreen/employees/Screens/EmployeeHomeScreen.dart';
+import 'package:califace/califacescreen/employees/mywidgets/EmployeSingleton.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -46,15 +47,27 @@ final String Department;
         child: ListTile(
           onTap: (){
             showModalBottomSheet<void>(
+              backgroundColor: Colors.transparent,
                 context: context,
                 builder: (BuildContext context) {
                   return Container(
                       height: MediaQuery.of(context).size.height ,
-                      color: Theme.of(context).backgroundColor,
+
+
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).backgroundColor,
+                        borderRadius:  BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+                    ),
+
 
                         child: Center(
                             child: Column(
                               children: <Widget>[
+                                Center(
+                                  child: IconButton(icon: Icon(Icons.clear), onPressed: (){
+                                    return Navigator.pop(context);
+                                  }),
+                                ),
                                 ListTile(
                                   title: Text( "Name : $Firstname $lasttname",
 
@@ -68,7 +81,7 @@ final String Department;
                                 ),
                                 ListTile(
                                   title: Text(
-                                    "Department : $EmployeeID",
+                                    "Department : $Designation",
                                     style: TextStyle(
                                         color: Colors.white, fontWeight: FontWeight.bold),
                                   ),
@@ -108,14 +121,14 @@ final String Department;
                                   ),
 
                                 ),
-                                ListTile(
-                                  title: Text(
-                                    'gender : $gender',
-                                    style: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold),
-                                  ),
-
-                                ),
+//                                ListTile(
+//                                  title: Text(
+//                                    'gender : $gender',
+//                                    style: TextStyle(
+//                                        color: Colors.white, fontWeight: FontWeight.bold),
+//                                  ),
+//
+//                                ),
                                 ListTile(
                                   title: Text(
                                     'email : $email',
@@ -161,8 +174,10 @@ final String Department;
           color: Colors.black45,
           icon: Icons.more_horiz,
           onTap: () {
+            EmployeeSingleton e=EmployeeSingleton();
+            e.id=Id;
             Navigator.push(context, MaterialPageRoute(builder: (context){
-              return EmployeeAddScreen();
+              return EmployeeHomeScreen(1);
             }));
           },
         ),
@@ -172,6 +187,7 @@ final String Department;
           icon: Icons.delete,
           onTap: () async{
             EmployeeDeleteModel didm= await deleteemployee(Id);
+            return didm;
 
           },
         ),

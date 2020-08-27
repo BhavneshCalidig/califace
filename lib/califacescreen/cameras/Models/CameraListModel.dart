@@ -1,5 +1,4 @@
 
-
 import 'dart:convert';
 
 CameraListModel cameraListModelFromJson(String str) => CameraListModel.fromJson(json.decode(str));

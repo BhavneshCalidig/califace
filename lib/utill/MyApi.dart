@@ -89,3 +89,5 @@ String adminDestroyUrl=baseUrl+"v1/admin/destroy";
 
 //post
 String loginUrl="https://virola-laravel.calidig.com/oauth/token";
+
+String userUrl=baseUrl+"v1/user";

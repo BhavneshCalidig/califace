@@ -47,7 +47,8 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                   itemCount: snapshot.data.data.length,
                   itemBuilder: (context, index) {
                     var data=snapshot.data.data[index];
-                    return EmpListItem(Firstname: data.firstName,lasttname: data.lastName,networkImage: data.img,EmployeeID: data.employeeId,Conatct: data.contactNo,Department: data.department.toString(),Designation: data.designation.toString(),email: data.email,gender: data.gender.toString(),);
+
+                    return EmpListItem(Id: data.id.toString(),Firstname: data.firstName,lasttname: data.lastName,networkImage: data.img,EmployeeID: data.employeeId,Conatct: data.contactNo,Department: data.department.title,Designation: data.designation.title,email: data.email,gender: data.gender.toString(),);
                   });
             }
             else{

@@ -4,6 +4,8 @@ import 'file:///E:/projects/califace/lib/califacescreen/visitors/Screens/Todays_
 import 'package:flutter/material.dart';
 
 class VisitorsHomeScreen extends StatefulWidget {
+  final int whichscreen;
+  VisitorsHomeScreen({this.whichscreen});
   @override
   _VisitorsHomeScreenState createState() => _VisitorsHomeScreenState();
 }
@@ -15,6 +17,12 @@ class _VisitorsHomeScreenState extends State<VisitorsHomeScreen>
   @override
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
+    if(widget.whichscreen==1){
+      _tabController.animateTo(1);
+    }
+    else{
+      _tabController.animateTo(0);
+    }
     super.initState();
   }
 

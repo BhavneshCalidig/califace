@@ -38,104 +38,56 @@ class EmployeeStoreDataModel {
 
 class Data {
   Data({
-    this.department,
-    this.designation,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.gender,
+    this.departmentId,
+    this.designationId,
+    this.contactNo,
+    this.employeeId,
+    this.updatedAt,
+    this.createdAt,
+    this.id,
   });
 
-  List<Department> department;
-  List<Designation> designation;
+  String firstName;
+  String lastName;
+  String email;
+  String gender;
+  String departmentId;
+  String designationId;
+  String contactNo;
+  String employeeId;
+  DateTime updatedAt;
+  DateTime createdAt;
+  int id;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    department: List<Department>.from(json["department"].map((x) => Department.fromJson(x))),
-    designation: List<Designation>.from(json["designation"].map((x) => Designation.fromJson(x))),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "department": List<dynamic>.from(department.map((x) => x.toJson())),
-    "designation": List<dynamic>.from(designation.map((x) => x.toJson())),
-  };
-}
-
-class Department {
-  Department({
-    this.id,
-    this.title,
-    this.description,
-    this.hod,
-    this.phone,
-    this.email,
-    this.startingDate,
-    this.totalEmployee,
-    this.createdAt,
-    this.updatedAt,
-  });
-
-  int id;
-  String title;
-  String description;
-  String hod;
-  String phone;
-  String email;
-  String startingDate;
-  String totalEmployee;
-  DateTime createdAt;
-  DateTime updatedAt;
-
-  factory Department.fromJson(Map<String, dynamic> json) => Department(
-    id: json["id"],
-    title: json["title"],
-    description: json["description"],
-    hod: json["hod"],
-    phone: json["phone"],
+    firstName: json["first_name"],
+    lastName: json["last_name"],
     email: json["email"],
-    startingDate: json["starting_date"],
-    totalEmployee: json["total_employee"],
-    createdAt: DateTime.parse(json["created_at"]),
+    gender: json["gender"],
+    departmentId: json["department_id"],
+    designationId: json["designation_id"],
+    contactNo: json["contact_no"],
+    employeeId: json["employee_id"],
     updatedAt: DateTime.parse(json["updated_at"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "description": description,
-    "hod": hod,
-    "phone": phone,
-    "email": email,
-    "starting_date": startingDate,
-    "total_employee": totalEmployee,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-  };
-}
-
-class Designation {
-  Designation({
-    this.id,
-    this.title,
-    this.description,
-    this.createdAt,
-    this.updatedAt,
-  });
-
-  int id;
-  String title;
-  String description;
-  DateTime createdAt;
-  DateTime updatedAt;
-
-  factory Designation.fromJson(Map<String, dynamic> json) => Designation(
+    createdAt: DateTime.parse(json["created_at"]),
     id: json["id"],
-    title: json["title"],
-    description: json["description"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "description": description,
-    "created_at": createdAt.toIso8601String(),
+    "first_name": firstName,
+    "last_name": lastName,
+    "email": email,
+    "gender": gender,
+    "department_id": departmentId,
+    "designation_id": designationId,
+    "contact_no": contactNo,
+    "employee_id": employeeId,
     "updated_at": updatedAt.toIso8601String(),
+    "created_at": createdAt.toIso8601String(),
+    "id": id,
   };
 }

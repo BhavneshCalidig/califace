@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'CameraAddScreen.dart';
 
 class CameraHomeScreen extends StatefulWidget {
+  final int whichscreen;
+  CameraHomeScreen({this.whichscreen});
   @override
   CameraHomeScreenState createState() => CameraHomeScreenState();
 }
@@ -16,6 +18,13 @@ class CameraHomeScreenState extends State<CameraHomeScreen>
   @override
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
+
+    if(widget.whichscreen==1){
+      _tabController.animateTo(1);
+    }
+    else{
+      _tabController.animateTo(0);
+    }
     super.initState();
   }
 

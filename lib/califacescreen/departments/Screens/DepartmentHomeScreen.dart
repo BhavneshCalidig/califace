@@ -5,17 +5,26 @@ import 'package:flutter/material.dart';
 import 'DepartmentListScreen.dart';
 
 class DepartmentHomeScreen extends StatefulWidget {
+  final int whichscreen;
+  DepartmentHomeScreen({this.whichscreen});
   @override
-  _DepartmentHomeScreenState createState() =>  _DepartmentHomeScreenState();
+  DepartmentHomeScreenState createState() =>  DepartmentHomeScreenState();
 }
 
-class _DepartmentHomeScreenState extends State<DepartmentHomeScreen>
+class DepartmentHomeScreenState extends State<DepartmentHomeScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   @override
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
+    if(widget.whichscreen==1){
+      _tabController.animateTo(1);
+    }
+    else{
+      _tabController.animateTo(0);
+    }
+
     super.initState();
   }
 

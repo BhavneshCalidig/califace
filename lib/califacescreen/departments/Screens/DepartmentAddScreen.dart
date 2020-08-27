@@ -1,7 +1,8 @@
 import 'package:califace/califacescreen/departments/Model/DepartmentStoreData_Model.dart';
 import 'package:califace/califacescreen/departments/Model/DepartmentUpdateDataModel.dart';
 import 'package:califace/califacescreen/departments/Model/DepartmentUpdateModel.dart';
-import 'package:califace/custom_widgets/CustomButtonRc.dart';
+import 'package:califace/califacescreen/departments/mywidgets/DepartmentSingleton.dart';
+
 import 'package:califace/custom_widgets/CustomDropDownButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
 import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
@@ -10,9 +11,7 @@ import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
 
 class DepartmentAddScreen extends StatefulWidget {
-  DepartmentAddScreen({this.Id,this.Url});
-  final String Id;
-  final String Url;
+
 
   @override
   _DepartmentAddScreenState createState() => _DepartmentAddScreenState();
@@ -28,6 +27,8 @@ String TotalEmploye;
 String About;
 var NetworkHelper;
 var updateList;
+String Id;
+String Url;
 Future<DepartmentUpdateDataModel> _dupdm;
 var department =TextEditingController();
 var hod =TextEditingController();
@@ -36,7 +37,22 @@ var contact =TextEditingController();
 var date =TextEditingController();
 var totalEmploye =TextEditingController();
 var about=TextEditingController();
+@override
+void initState() {
 
+  getId();
+  print(Id);
+  print(Url);
+
+  super.initState();
+  _dupdm=getdata();
+}
+
+void getId(){
+  DepartmentSingleton departmentSingleton =DepartmentSingleton();
+  Id=departmentSingleton.id;
+  Url= departmentSingleton.Url;
+}
 
 Future<DepartmentStoreDataModel>StoreDepartment (String About,String Email,String Hod,String Contact,String Date,String Deaprtment,String TotalEmploye)async{
   Map<String,dynamic > databody={
@@ -57,7 +73,7 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
     "description": About,
     "email": Email,
     "hod": Hod,
-    "id": id=widget.Id,
+    "id": id,
     "phone": Contact,
     "starting_date": Date,
     "title": Deaprtment,
@@ -67,17 +83,12 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
   var Respose=await NetworkServices().postApi(context, departmentUpdateUrl, databody);
   return DepartmentUpdateModel.fromJson(Respose);
 }
- Future<DepartmentUpdateDataModel>getData()async{
-   NetworkHelper=await NetworkServices().getApi(context, widget.Url);
-   updateList=DepartmentUpdateDataModel.fromJson(NetworkHelper);
+ Future<DepartmentUpdateDataModel>getdata()async{
+   var networkHelper=await NetworkServices().getApi(context, Url);
+   updateList=DepartmentUpdateDataModel.fromJson(networkHelper);
    return updateList;
  }
- @override
-  void initState() {
-  _dupdm=getData();
-    // TODO: implement initState
-    super.initState();
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -195,7 +206,7 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                         TotalEmploye=totalEmploye.text;
 //                        final DepartmentStoreDataModel model= await StoreDepartment(About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
 //                        print(model);
-                       final DepartmentUpdateModel md= await updateDepartment(widget.Id, About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
+                       final DepartmentUpdateModel md= await updateDepartment(Id, About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
                       },
                     ),
                   ],

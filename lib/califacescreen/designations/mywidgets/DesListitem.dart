@@ -1,5 +1,7 @@
 import 'package:califace/califacescreen/designations/Models/DesignationDeleteItemModel.dart';
 import 'package:califace/califacescreen/designations/Screens/DesignationAddScreen.dart';
+import 'package:califace/califacescreen/designations/Screens/DesignationHomeScreen.dart';
+import 'package:califace/califacescreen/designations/mywidgets/SingletonData.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -67,8 +69,11 @@ class DesListItem extends StatelessWidget{
           color: Colors.black45,
           icon: Icons.more_horiz,
           onTap: () async{
+            IdSingleton i =IdSingleton();
+            i.id=Id.toString();
+            i.Url=designationUpdateDAtaUrl+Id.toString();
            Navigator.push(context, MaterialPageRoute(builder: (context){
-             return DesignationAddScreen(Id: Id,Url: designationUpdateDAtaUrl+Id.toString(),);
+             return DesignationHomeScreen(whichscreen: 1,);
            }));
 
           },

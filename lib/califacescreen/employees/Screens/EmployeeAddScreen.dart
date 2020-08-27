@@ -1,12 +1,11 @@
-import 'file:///E:/projects/califace/lib/califacescreen/employees/Models/employeDataModel.dart';
+import 'package:califace/califacescreen/departments/Model/DepartmentListData_Model.dart';
+import 'package:califace/califacescreen/designations/Models/DesignationListModel.dart';
 import 'package:califace/califacescreen/employees/Models/EmployeeStoreDataModel.dart';
 import 'package:califace/califacescreen/employees/Models/EmployeeUpdateDataModel.dart';
 import 'package:califace/califacescreen/employees/Models/EmployeeUpdateModel.dart';
-import 'package:califace/califacescreen/employees/Models/employeDataModel.dart';
-import 'package:califace/custom_widgets/CustomButtonRc.dart';
+import 'package:califace/califacescreen/employees/mywidgets/EmployeSingleton.dart';
 import 'package:califace/custom_widgets/CustomDropDownButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
-import 'package:califace/custom_widgets/Custom_DropDownForm.dart';
 import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/MyColor.dart';
@@ -15,17 +14,16 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 class EmployeeAddScreen extends StatefulWidget {
-  EmployeeAddScreen({this.Id,this.Url});
-  final String Id;
-  final String Url;
+
   @override
   _EmployeeAddScreenState createState() => _EmployeeAddScreenState();
 }
 
 class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
-  String Gender ="Male";
-  String Designation='Select';
-  String Department='Select';
+  var Gender ;
+  String Male="Male";
+  String female="Female";
+  String ge;
   String department;
   String designation;
   String gender;
@@ -34,22 +32,38 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
   String email;
   String contact;
   String employId;
+  var Department=TextEditingController();
+  var Designation=TextEditingController();
+  var geender=TextEditingController();
+  var firstname=TextEditingController();
+  var Lastname=TextEditingController();
+  var Email=TextEditingController();
+  var Contact=TextEditingController();
+  var EmployId=TextEditingController();
+  String Id;
+  int DesID;
+  int DepID;
  var Updatelist;
+ List<DesignationListModel> designationlist;
+ List<Datum> departmentlist;
+ Datum dep;
+  DesignationListModel des;
  Future<EmployeeUpdateDataModel> _eudm;
+ Future<DesignationlistModel> _dlm;
 
-  Future<EmployeeStoreDataModel>StoreEmployee ( String department, String designation, String gender, String Firstname, String lastname, String email, String contact, String employId,)async{
+  Future<EmployeeStoreDataModel>StoreEmployee ( int DepID, int DesID, String ge, String Firstname, String lastname, String email, String contact, String employId,)async{
     Map<String,dynamic > databody={
       "first_name":Firstname,
       "last_name":lastname,
       "email":email,
-      "gender":gender,
-      "department_id":department,
-      "designation_id":designation,
+      "gender":ge,
+      "department_id":DepID,
+      "designation_id":DepID,
       "contact_no":contact,
       "employee_id":employId,
     };
 
-    var Respose=await NetworkServices().postApi(context, empCreateUrl, databody);
+    var Respose=await NetworkServices().postApi(context, empStoreUrl, databody);
     return EmployeeStoreDataModel.fromJson(Respose);
   }
   Future<EmployeeUpdateModel>UpdateEmployee ( String Id,String department, String designation, String gender, String Firstname, String lastname, String email, String contact, String employId,)async{
@@ -69,13 +83,37 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
     return EmployeeUpdateModel.fromJson(Respose);
   }
   Future<EmployeeUpdateDataModel> getData()async{
-    var response= await NetworkServices().getApi(context, widget.Url);
+    var response= await NetworkServices().getApi(context, empUpdateDataUrl+Id);
     Updatelist =EmployeeUpdateDataModel.fromJson(response);
     return Updatelist;
   }
+  Future<DepartmentListDataModel> getDepartmentData()async{
+    var response= await NetworkServices().getApi(context, departmentListUrl);
+
+    setState(() {
+      departmentlist =DepartmentListDataModel.fromJson(response).data;
+    });
+  }
+  Future<DesignationlistModel> geData()async{
+    var response= await NetworkServices().getApi(context, designationListUrl);
+   // print("DesignatioN lISt>>> "+response);
+    setState(() {
+      designationlist =DesignationlistModel.fromJson(response).data;
+    });
+
+   // return designationlist;
+  }
+   getID(){
+    EmployeeSingleton employeeSingleton=EmployeeSingleton();
+  return Id= employeeSingleton.id;
+  }
   @override
   void initState() {
+    getID();
+    print(Id);
     _eudm=getData();
+geData();
+getDepartmentData();
     // TODO: implement initState
     super.initState();
   }
@@ -85,373 +123,452 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.only(top: 20, left: 10, right: 10),
-        margin: EdgeInsets.only(top: 10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              CustomTextField(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.only(top: 20, left: 10, right: 10),
+          margin: EdgeInsets.only(top: 10),
+          child: SingleChildScrollView(
+            child: FutureBuilder<EmployeeUpdateDataModel>(future:_eudm ,builder:(context ,snapshots){
+              if(snapshots.hasData){
+                var data=snapshots.data.data;
+                firstname.text=data.firstName;
+                Lastname.text=data.lastName;
+                Email.text=data.email;
+                EmployId.text=data.employeeId;
+                Contact.text=data.contactNo;
+                return Column(
+                  children: <Widget>[
+                    CustomTextField(controller: firstname,
 
-                labelText: "First Name",
-                onChanged: (Value) {
-            setState(() {
-              Firstname=Value;
-            });
-                  // value=Value.toString();
-                  print(Value.toString());
-                },
-                validate: true,
-              ),
+                      labelText: "First Name",
+                      onChanged: (Value) {
+                        setState(() {
+                          firstname=Value;
 
-              CustomTextField(
-                labelText: "Last Name",
-                onChanged: (Value) {
-               setState(() {
-                 lastname=Value;
-               });
-                  // value=Value.toString();
-                  print(Value.toString());
-                },
-                validate: true,
-              ),
+                        });
+                        // value=Value.toString();
+                        print(Value.toString());
+                      },
+                      validate: true,
+                    ),
 
-              CustomTextField(labelText: "Email",onChanged: (Value) {
-                setState(() {
-                  email=Value;
-                });
-                // value=Value.toString();
-                print(Value.toString());
-              },validate: true,),
+                    CustomTextField(controller: Lastname,
+                      labelText: "Last Name",
+                      onChanged: (Value) {
+                        setState(() {
+                          Lastname=Value;
+
+                        });
+                        // value=Value.toString();
+                        print(Value.toString());
+                      },
+                      validate: true,
+                    ),
+
+                    CustomTextField(controller: Email,labelText: "Email",onChanged: (Value) {
+                      setState(() {
+                       email=Value;
+
+                      });
+                      // value=Value.toString();
+                      print(Value.toString());
+                    },validate: false,),
 
 
+                    CustomTextField(controller: Contact,labelText: "Contact",onChanged: (Value) {
+                      // value=Value.toString();
+                      setState(() {
+                        Contact=Value;
+                      });
+                      print(Value.toString());
+                    },validate: true,),
+
+                    CustomTextField(controller: EmployId,labelText: "Employee ID:",onChanged: (Value) {
+                      // value=Value.toString();
+                      setState(() {
+                        EmployId=Value;
+                      });
+                      print(Value.toString());
+                    },validate: true,),
+
+                    Row(
+                      children: <Widget>[
+                        designationlist!=null? Expanded(
+
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border(bottom: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3,
+                              )),
+                            ),
+                            child: DropdownButton<DesignationListModel>(
+                              isExpanded: true,
+                              hint: Text("Address Type"),
+                              value: des,
+//                            validator: (arg) {
+//                              if (arg==null)
+//                                return 'Please select Address type';
+//                              else
+//                                return null;
+//                            },
+                              onChanged: (DesignationListModel Value) {
 //
-////              Row(
-////                children: <Widget>[
-////                  Padding(
-////                      padding: EdgeInsets.only( left: 10, right: 10),
-////                      child: Text(
-////                        "Gender",
-////                        style: TextStyle(fontSize: 18),
-////                      )),
-////                  Padding(
-////                    padding: EdgeInsets.only( left: 10, right: 10),
-////                    child: CustomDropDownButton(
-////                      items: ['Select', 'Male', 'Female'],
-////                      value:Gender,
-////                      onChanged: (val) {
-////                       if(val=='Male'){
-////                         setState(() {
-////
-////                           Gender = val;
-////                           gender='m';
-////                           print(gender);
-////                         });
-////                       }
-////                       else if(val=='Female'){
-////                         setState(() {
-////
-////                           Gender = val;
-////                          gender ='f';
-////                          print(gender);
-////                         });
-////                       }
-////                      },
-////                    ),
-////                  )
-////                ],
-////              ),
+                                setState(() {
+                                  des = Value;
+                                  DesID=des.id;
+                                });
+                                print(DesID);
+                              },
+                              items: designationlist
+                                  .map((DesignationListModel user) {
+                                return DropdownMenuItem<DesignationListModel>(
+                                  value: user,
+                                  child: Row(
+                                    children: <Widget>[
+                                      //user.icon,
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          user.title,
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      )],
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ):Text("failed"),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        departmentlist!=null? Expanded(
+
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border(bottom: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3,
+                              )),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                            child: DropdownButton<Datum>(
+                              isExpanded: true,
+                              hint: Text("Address Type"),
+                              value: dep,
+//                            validator: (arg) {
+//                              if (arg==null)
+//                                return 'Please select Address type';
+//                              else
+//                                return null;
+//                            },
+                              onChanged: (Datum Value) {
+//
+                                setState(() {
+                                  dep = Value ;
+                                  DepID=dep.id;
+                                });
+                                print(DepID);
+                              },
+                              items: departmentlist
+                                  .map((Datum user) {
+                                return DropdownMenuItem<Datum>(
+                                  value: user,
+                                  child: Row(
+                                    children: <Widget>[
+                                      //user.icon,
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          user.title,
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      )],
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ):Text("failed"),
+                      ],
+                    ),
+
+                    CustomDropDownButton(value: Gender,items: [Male, female],hintText: "Select Gender",onChanged: (val){
+                      if(val==Male){
+                        Gender=val;
+                        setState(() {
+                          ge="m";
+                        });
+                        print(ge);
+                      }
+                      else{
+                        setState(() {
+                          ge="f";
+                        });
+                        print(ge);
+                      }
+
+                    },),
+
+                    Custom_Submit_Button(
+                      text: "Submit",
+                      color: darkgrey,
+
+                      onPressed: ()async {
+                        Firstname=firstname.toString();
+                        lastname=Lastname.toString();
+//                        email=Email.toString();
+                        contact=Contact.toString();
+                        employId=EmployId.toString();
+//
+//                        final EmployeeStoreDataModel stemp=await StoreEmployee(DepID, DesID, ge, Firstname, lastname, email, contact, employId);
+//                        print(stemp);
+                        final EmployeeUpdateModel eum=await UpdateEmployee(Id, department, designation, gender, Firstname, lastname, email, contact, employId);
+
+                        print(eum);
+//                    Map<String,dynamic > databody={
+//                      "first_name":Firstname,
+//                      "last_name":lastname,
+//                      "email":email,
+//                      "gender":gender,
+//                      "department_id":department,
+//                      "designation_id":designation,
+//                      "contact_no":contact,
+//                      "employee_id":employId,
 //
 //
-              CustomTextField(labelText: "Contact",onChanged: (Value) {
-                // value=Value.toString();
-                setState(() {
-                  contact=Value;
-                });
-                print(Value.toString());
-              },validate: true,),
+//                    };
+//await NetworkServices().postApi(context, empCreateUrl, databody);
+//print(databody);
 
-              CustomTextField(labelText: "Employee ID:",onChanged: (Value) {
-                // value=Value.toString();
-                setState(() {
-                  employId=Value;
-                });
-                print(Value.toString());
-              },validate: true,),
-//              SizedBox(
-//                height: 5,
-//              ),
-////              Row(
-////                children: <Widget>[
-////                  Padding(
-////                      padding: EdgeInsets.only( left: 10, right: 10),
-////                      child: Text(
-////                        "Designation",
-////                        style: TextStyle(fontSize: 18),
-////                      )),
-////                  Padding(
-////                    padding: EdgeInsets.only( left: 10, right: 10),
-////                    child: CustomDropDownButton(
-////                      items: ['Select', 'Php Developer', 'Flutter Developer','HR Executive','Manger','Assistant','Executive'],
-////                      value:Designation,
-////                      onChanged: (val) {
-////                       if(val=='Php Developer'){
-////                         setState(() {
-////
-////                           Designation = val;
-////                           designation='1';
-////                          print(designation);
-////                         });
-////                       }
-////                       else if(val=='Flutter Developer'){
-////                         setState(() {
-////                           Designation = val;
-////                           designation='2';
-////                           print(designation);
-////                         });
-////                       }
-////                       else if(val=='HR Executive'){
-////                         setState(() {
-////                           Designation = val;
-////                           designation='3';
-////                           print(designation);
-////                         });
-////                       }
-////                       else if(val=='Manger'){
-////                         setState(() {
-////                           Designation = val;
-////                           designation='4';
-////                           print(designation);
-////                         });
-////                       }
-////                       else if(val=='Assistant'){
-////                         setState(() {
-////                           Designation = val;
-////                           designation='5';
-////                           print(designation);
-////                         });
-////                       }
-////                       else if(val=='Executive'){
-////                         setState(() {
-////                           Designation = val;
-////                           designation='6';
-////                           print(designation);
-////                         });
-////                       }
-////                      },
-////
-////                    ),
-////                  )
-////                ],
-////              ),
-////              SizedBox(
-////                height: 5,
-////              ),
-////              Row(
-////                children: <Widget>[
-////                  Padding(
-////                      padding: EdgeInsets.only( left: 10, right: 10),
-////                      child: Text(
-////                        "Department",
-////                        style: TextStyle(fontSize: 18),
-////                      )),
-////                  Padding(
-////                    padding: EdgeInsets.only( left: 10, right: 10),
-////                    child: CustomDropDownButton(
-////                      items: ['Select', 'Php ', 'Android','HR ','Manger','Accounts','IT'],
-////                      value:Department,
-////                      onChanged: (val) {
-////                       if(val=='Php'){
-////                         setState(() {
-////
-////                           Department = val;
-////                           department='1';
-////                           print(department);
-////                         });
-////                       }
-////                       else if(val=='Android'){
-////                         setState(() {
-////                           Department = val;
-////                           department='2';
-////                           print(department);
-////                         });
-////                       }
-////                       else if(val=='HR'){
-////                         setState(() {
-////                           Department = val;
-////                           department='3';
-////                           print(department);
-////                         });
-////                       }
-////                       else if(val=='Manager'){
-////                         setState(() {
-////                           Department = val;
-////                           department='4';
-////                           print(department);
-////                         });
-////                       }
-////                       else if(val=='Accounts'){
-////                         setState(() {
-////                           Department = val;
-////                           department='5';
-////                           print(department);
-////                         });
-////                       }
-////                       else if(val=='IT'){
-////                         setState(() {
-////                           Department = val;
-////                           department='6';
-////                           print(department);
-////                         });
-////                       }
-////                      },
-////                    ),
-////                  )
-////                ],
-////              ),
-//              SizedBox(
-//                height: 25,
-//              ),
-//              Custom_DropDownForm(text: "Please Select Gender",value: Gender,items:["Male","Female"],onChanged: (val){
-//                setState(() {
-//                  Gender=val;
-//                });
-//              },),
-//              SizedBox(
-//                height: 15,
-//              ),
-//              Custom_DropDownForm(text: "please Select Designation",items:  [ 'Php Developer', 'Flutter Developer','HR Executive','Manger','Assistant','Executive'],onChanged: (val){
-//                if(val=='Php Developer'){
-//                  setState(() {
+                      },
+                    ),
+                  ],
+                );
+              }
+              else{
+                return Column(
+                  children: <Widget>[
+                    CustomTextField(
+
+                      labelText: "First Name",
+                      onChanged: (Value) {
+                        setState(() {
+                          Firstname=Value;
+                        });
+                        // value=Value.toString();
+                        print(Value.toString());
+                      },
+                      validate: true,
+                    ),
+
+                    CustomTextField(
+                      labelText: "Last Name",
+                      onChanged: (Value) {
+                        setState(() {
+                          lastname=Value;
+                        });
+                        // value=Value.toString();
+                        print(Value.toString());
+                      },
+                      validate: true,
+                    ),
+
+                    CustomTextField(labelText: "Email",onChanged: (Value) {
+                      setState(() {
+                        email=Value;
+                      });
+                      // value=Value.toString();
+                      print(Value.toString());
+                    },validate: true,),
+
+
+                    CustomTextField(labelText: "Contact",onChanged: (Value) {
+                      // value=Value.toString();
+                      setState(() {
+                        contact=Value;
+                      });
+                      print(Value.toString());
+                    },validate: true,),
+
+                    CustomTextField(labelText: "Employee ID:",onChanged: (Value) {
+                      // value=Value.toString();
+                      setState(() {
+                        employId=Value;
+                      });
+                      print(Value.toString());
+                    },validate: true,),
+
+                    Row(
+                      children: <Widget>[
+                        designationlist!=null? Expanded(
+
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border(bottom: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3,
+                              )),
+                            ),
+                            child: DropdownButton<DesignationListModel>(
+                              isExpanded: true,
+                              hint: Text("Address Type"),
+                              value: des,
+//                            validator: (arg) {
+//                              if (arg==null)
+//                                return 'Please select Address type';
+//                              else
+//                                return null;
+//                            },
+                              onChanged: (DesignationListModel Value) {
 //
-//                    Designation = val;
-//                    designation='1';
-//                    print(designation);
-//                  });
-//                }
-//                else if(val=='Flutter Developer'){
-//                  setState(() {
-//                    Designation = val;
-//                    designation='2';
-//                    print(designation);
-//                  });
-//                }
-//                else if(val=='HR Executive'){
-//                  setState(() {
-//                    Designation = val;
-//                    designation='3';
-//                    print(designation);
-//                  });
-//                }
-//                else if(val=='Manger'){
-//                  setState(() {
-//                    Designation = val;
-//                    designation='4';
-//                    print(designation);
-//                  });
-//                }
-//                else if(val=='Assistant'){
-//                  setState(() {
-//                    Designation = val;
-//                    designation='5';
-//                    print(designation);
-//                  });
-//                }
-//                else if(val=='Executive'){
-//                  setState(() {
-//                    Designation = val;
-//                    designation='6';
-//                    print(designation);
-//                  });
+                                setState(() {
+                                  des = Value;
+                                  DesID=des.id;
+                                });
+                                print(DesID);
+                              },
+                              items: designationlist
+                                  .map((DesignationListModel user) {
+                                return DropdownMenuItem<DesignationListModel>(
+                                  value: user,
+                                  child: Row(
+                                    children: <Widget>[
+                                      //user.icon,
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          user.title,
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      )],
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ):Text("failed"),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        departmentlist!=null? Expanded(
+
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border(bottom: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3,
+                              )),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                            child: DropdownButton<Datum>(
+                              isExpanded: true,
+                              hint: Text("Address Type"),
+                              value: dep,
+//                            validator: (arg) {
+//                              if (arg==null)
+//                                return 'Please select Address type';
+//                              else
+//                                return null;
+//                            },
+                              onChanged: (Datum Value) {
 //
-//                }}),
-//              SizedBox(
-//                height: 25,
-//              ),
-//              Custom_DropDownForm(items:[ 'Php ', 'Android','HR ','Manger','Accounts','IT'],text: "Please Select Department",onChanged: (val){
+                                setState(() {
+                                  dep = Value ;
+                                  DepID=dep.id;
+                                });
+                                print(DepID);
+                              },
+                              items: departmentlist
+                                  .map((Datum user) {
+                                return DropdownMenuItem<Datum>(
+                                  value: user,
+                                  child: Row(
+                                    children: <Widget>[
+                                      //user.icon,
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          user.title,
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      )],
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ):Text("failed"),
+                      ],
+                    ),
+
+                    CustomDropDownButton(value: Gender,items: [Male, female],hintText: "Select Gender",onChanged: (val){
+                      if(val==Male){
+                        Gender=val;
+                        setState(() {
+                          ge="m";
+                        });
+                        print(ge);
+                      }
+                      else{
+                        setState(() {
+                          ge="f";
+                        });
+                        print(ge);
+                      }
+
+                    },),
+
+                    Custom_Submit_Button(
+                      text: "Submit",
+                      color: darkgrey,
+
+                      onPressed: ()async {
+
+                        final EmployeeStoreDataModel stemp=await StoreEmployee(DepID, DesID, ge, Firstname, lastname, email, contact, employId);
+                        print(stemp);
 //
-//                if(val=='Php'){
-//                  setState(() {
+//                    Map<String,dynamic > databody={
+//                      "first_name":Firstname,
+//                      "last_name":lastname,
+//                      "email":email,
+//                      "gender":gender,
+//                      "department_id":department,
+//                      "designation_id":designation,
+//                      "contact_no":contact,
+//                      "employee_id":employId,
 //
-//                    Department = val;
-//                    department='1';
-//                    print(department);
-//                  });
-//                }
-//                else if(val=='Android'){
-//                  setState(() {
-//                    Department = val;
-//                    department='2';
-//                    print(department);
-//                  });
-//                }
-//                else if(val=='HR'){
-//                  setState(() {
-//                    Department = val;
-//                    department='3';
-//                    print(department);
-//                  });
-//                }
-//                else if(val=='Manager'){
-//                  setState(() {
-//                    Department = val;
-//                    department='4';
-//                    print(department);
-//                  });
-//                }
-//                else if(val=='Accounts'){
-//                  setState(() {
-//                    Department = val;
-//                    department='5';
-//                    print(department);
-//                  });
-//                }
-//                else if(val=='IT'){
-//                  setState(() {
-//                    Department = val;
-//                    department='6';
-//                    print(department);
-//                  });
-//                }
-//              },)
-//              ,SizedBox(
-//                height: 25,
-//              ),
+//
+//                    };
+//await NetworkServices().postApi(context, empCreateUrl, databody);
+//print(databody);
 
-            CustomDropDownButton(items: ['Male', 'Female'],hintText: "Select Gender",),
-
-            CustomDropDownButton(items:[ 'Php ', 'Android','HR ','Manger','Accounts','IT'],onChanged: (val){},hintText: "Enter Department",),
-
-               CustomDropDownButton( items: [ 'Php Developer', 'Flutter Developer','HR Executive','Manger','Assistant','Executive'],hintText: "Enter Designation",onChanged: (val){},),
-
-               Custom_Submit_Button(
-                text: "Submit",
-                color: darkgrey,
-
-                onPressed: ()async {
-
-//                  final StoreEmployeData stemp=await createEmploye(firtsname, Lastname, Email, gender, Contact, designation, department, Employid);
-//print(stemp);
-
-                  Map<String,dynamic > databody={
-                    "first_name":Firstname,
-                    "last_name":lastname,
-                    "email":email,
-                    "gender":gender,
-                    "department_id":department,
-                    "designation_id":designation,
-                    "contact_no":contact,
-                    "employee_id":employId,
-
-
-                  };
-await NetworkServices().postApi(context, empCreateUrl, databody);
-print(databody);
-
-                },
-              ),
-            ],
+                      },
+                    ),
+                  ],
+                );
+              }
+            })
           ),
         ),
       ),

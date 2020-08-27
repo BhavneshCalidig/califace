@@ -1,5 +1,7 @@
 import 'package:califace/califacescreen/cameras/Models/CameraDeleteModel.dart';
 import 'package:califace/califacescreen/cameras/Screens/CameraAddScreen.dart';
+import 'package:califace/califacescreen/cameras/Screens/CameraHomeScreen.dart';
+import 'package:califace/califacescreen/cameras/mywidgets/CameraSingleton.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -41,15 +43,25 @@ class CamListitem extends StatelessWidget{
         child: ListTile(
 onTap: (){
   showModalBottomSheet<void>(
+      backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
         return Container(
           height: MediaQuery.of(context).size.height ,
-          color: Theme.of(context).backgroundColor,
+          decoration: BoxDecoration(
+            color: Theme.of(context).backgroundColor,
+            borderRadius:  BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+          ),
 
           child: Center(
               child: Column(
+
                 children: <Widget>[
+                  Center(
+                    child: IconButton(icon: Icon(Icons.clear), onPressed: (){
+                      return Navigator.pop(context);
+                    }),
+                  ),
                   ListTile(
                     title: Text( "CameraIP : $CameraIp",
 
@@ -128,8 +140,10 @@ onTap: (){
           color: Colors.black45,
           icon: Icons.more_horiz,
           onTap: (){
+            CameraSingleton c=CameraSingleton();
+            c.id=Id.toString();
             Navigator.push(context, MaterialPageRoute(builder: (context){
-              return CameraAddScreen(Id: Id.toString(),Url: cameraUpdateDataUrl+Id.toString(),);
+              return CameraHomeScreen(whichscreen: 1,);
             }));
           },
         ),

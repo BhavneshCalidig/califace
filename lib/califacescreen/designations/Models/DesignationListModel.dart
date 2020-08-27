@@ -18,14 +18,14 @@ class DesignationlistModel {
   bool success;
   String title;
   String message;
-  List<Datum> data;
+  List<DesignationListModel> data;
   dynamic again;
 
   factory DesignationlistModel.fromJson(Map<String, dynamic> json) => DesignationlistModel(
     success: json["success"],
     title: json["title"],
     message: json["message"],
-    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+    data: List<DesignationListModel>.from(json["data"].map((x) => DesignationListModel.fromJson(x))),
     again: json["again"],
   );
 
@@ -38,8 +38,8 @@ class DesignationlistModel {
   };
 }
 
-class Datum {
-  Datum({
+class DesignationListModel {
+  DesignationListModel({
     this.id,
     this.title,
     this.description,
@@ -53,7 +53,7 @@ class Datum {
   DateTime createdAt;
   DateTime updatedAt;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory DesignationListModel.fromJson(Map<String, dynamic> json) => DesignationListModel(
     id: json["id"],
     title: json["title"],
     description: json["description"],

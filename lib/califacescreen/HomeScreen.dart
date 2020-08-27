@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     text: "Employees",
                     size: 150,
                     onpressed: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context)=>EmployeeHomeScreen()));
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=>EmployeeHomeScreen(0)));
                     },
                   ),
                   CustomHomeButton(

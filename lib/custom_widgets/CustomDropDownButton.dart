@@ -36,12 +36,7 @@ class CustomDropDownButton extends StatelessWidget {
         else
         return null;
         },
-        onChanged: ( Value) {
-//
-//    setState(() {
-//    selectedAddressType = Value;
-//    });
-        },
+        onChanged:onChanged,
         items: items
             .map((String user) {
         return DropdownMenuItem<

@@ -1,5 +1,8 @@
 import 'package:califace/califacescreen/departments/Model/DepartmentItemDeleteModel.dart';
 import 'package:califace/califacescreen/departments/Screens/DepartmentAddScreen.dart';
+import 'package:califace/califacescreen/departments/Screens/DepartmentHomeScreen.dart';
+import 'package:califace/califacescreen/departments/mywidgets/DepartmentSingleton.dart';
+import 'package:califace/califacescreen/designations/mywidgets/SingletonData.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -46,15 +49,24 @@ class DepListItem extends StatelessWidget{
         child: ListTile(
           onTap: (){
             showModalBottomSheet<void>(
+                backgroundColor: Colors.transparent,
                 context: context,
                 builder: (BuildContext context) {
                   return Container(
                     height: MediaQuery.of(context).size.height ,
-                    color: Theme.of(context).backgroundColor,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).backgroundColor,
+                      borderRadius:  BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+                    ),
 
                     child: Center(
                         child: Column(
                           children: <Widget>[
+                            Center(
+                              child: IconButton(icon: Icon(Icons.clear), onPressed: (){
+                                return Navigator.pop(context);
+                              }),
+                            ),
                             ListTile(
                               title: Text( "Name : $Name",
 
@@ -149,9 +161,12 @@ class DepListItem extends StatelessWidget{
           caption: 'Edit',
           color: Colors.black45,
           icon: Icons.more_horiz,
-          onTap: () {
+          onTap: () async{
+            DepartmentSingleton d=DepartmentSingleton();
+            d.id=Id.toString();
+            d.Url=departmentUpdateDataUrl+Id.toString();
             Navigator.push(context, MaterialPageRoute(builder: (context){
-              return DepartmentAddScreen(Id: Id,Url: departmentUpdateDataUrl+Id.toString(),);
+              return DepartmentHomeScreen(whichscreen: 1,);
             }));
           },
         ),

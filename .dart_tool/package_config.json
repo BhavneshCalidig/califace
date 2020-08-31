@@ -80,6 +80,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "flutter_slidable",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_slidable-0.5.5",
       "packageUri": "lib/",
@@ -98,6 +104,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-7.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "http",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
       "packageUri": "lib/",
@@ -114,6 +126,18 @@
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.12",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "image_picker",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+7",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "image_picker_platform_interface",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.5"
     },
     {
       "name": "intl",
@@ -302,7 +326,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-08-25T12:37:04.772839Z",
+  "generated": "2020-08-29T07:49:39.459899Z",
   "generator": "pub",
   "generatorVersion": "2.8.4"
 }

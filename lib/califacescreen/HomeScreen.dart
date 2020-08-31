@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  CustomHomeButton(
+                  CustomHomeButton(iconData: Icons.sentiment_satisfied,
 
                     text: "Employees",
                     size: 150,
@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                   CustomHomeButton(
+                    iconData: Icons.sentiment_satisfied,
                     text: "Departments",
                     size: 150,
                     onpressed: () {
@@ -59,13 +60,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   CustomHomeButton(
+                    iconData: Icons.sentiment_satisfied,
                     text: "Designations",
                     size: 150,
                     onpressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>DesignationHomeScreen()));
                     },
                   ),
-                  CustomHomeButton(
+                  CustomHomeButton( iconData: Icons.sentiment_satisfied,
                     text: "Cameras",
                     size: 150,
                     onpressed: () {
@@ -78,13 +80,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   CustomHomeButton(
+
+                    iconData: Icons.sentiment_satisfied,
                     text: "Attendance",
                     size: 150,
                     onpressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>AttandanceHomeScreen()));
                     },
                   ),
+
                   CustomHomeButton(
+                    iconData: Icons.sentiment_satisfied,
                     text: "Visitors",
                     size: 150,
                     onpressed: () {

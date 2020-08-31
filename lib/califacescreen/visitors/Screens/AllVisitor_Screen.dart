@@ -13,11 +13,11 @@ class AllVisitor_Screen extends StatefulWidget {
 
 class _AllVisitor_ScreenState extends State<AllVisitor_Screen> {
   var NetworkHelper;
-  var VisitorList;
-  Future<VisitorListModel> _vlm;
+ VisitorListModel VisitorList;
+  Future<VisitorListModel> _VisitorListModel;
   @override
   void initState() {
-    _vlm=getData();
+    _VisitorListModel=getData();
     // TODO: implement initState
     super.initState();
   }
@@ -33,7 +33,7 @@ class _AllVisitor_ScreenState extends State<AllVisitor_Screen> {
       body: Container(
         padding: EdgeInsets.only(top: 20),
         child: FutureBuilder<VisitorListModel>(
-          future: _vlm,
+          future: _VisitorListModel,
           builder: (context, snapshot) {
             if(snapshot.hasData){
               return ListView.builder(
@@ -44,7 +44,7 @@ class _AllVisitor_ScreenState extends State<AllVisitor_Screen> {
                   });
             }
             else{
-              return Center(child: CircularProgressIndicator());
+              return Center(child: Text("Nothing To Show"));
             }
 
           },

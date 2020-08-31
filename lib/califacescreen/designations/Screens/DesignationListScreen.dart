@@ -40,14 +40,14 @@ class _DesignationListScrenState extends State<DesignationListScren> {
           builder: (context, snapshot) {
             if(snapshot.hasData){
               return ListView.builder(
-                  itemCount: snapshot.data.data.length,
+                  itemCount: snapshot.data.designationList.length,
                   itemBuilder: (context, index) {
-                    var data=snapshot.data.data[index];
+                    var data=snapshot.data.designationList[index];
                     return DesListItem(title: data.title,subtittle: data.description.toString(),Id: data.id,);
                   });
             }
             else{
-              return Center(child: CircularProgressIndicator());
+              return Center(child: Text("Nothing to Show"));
             }
 
           },

@@ -11,20 +11,20 @@ class AttandanceListScreen extends StatefulWidget {
 }
 
 class _AttandanceListScreenState extends State<AttandanceListScreen> {
-  var NetworkHelper;
-  var AttandanceList=null;
-  Future<AttandanceListModel> _alm;
+
+  AttandanceListModel attandanceList;
+  Future<AttandanceListModel> _attandanceListModel;
   @override
   void initState() {
-    _alm=getData();
+    _attandanceListModel=getData();
     // TODO: implement initState
     super.initState();
   }
-  Future<AttandanceListModel>getData()async{
-    NetworkHelper= await NetworkServices().getApi(context, attandanceListUrl,);
-    AttandanceList=AttandanceListModel.fromJson(NetworkHelper);
-    print(AttandanceList);
-    return AttandanceList;
+ Future<AttandanceListModel> getData()async{
+   Map<String,dynamic> NetworkHelper= await NetworkServices().getApi(context, attandanceListUrl,);
+    attandanceList = AttandanceListModel.fromJson(NetworkHelper);
+    return attandanceList;
+
   }
   @override
   Widget build(BuildContext context) {
@@ -33,18 +33,18 @@ class _AttandanceListScreenState extends State<AttandanceListScreen> {
       body: Container(
         padding: EdgeInsets.only(top: 20),
         child: FutureBuilder<AttandanceListModel>(
-          future: _alm,
+          future: _attandanceListModel,
           builder: (context, snapshot) {
             if(snapshot.hasData){
               return ListView.builder(
-                  itemCount: snapshot.data.data.length,
+                  itemCount: snapshot.data.attandanceData.length,
                   itemBuilder: (context, index) {
-                    var data=snapshot.data.data[index];
-                    return AttandanceListItem(Firstname: data.firstName,lasttname: data.lastName,Department: data.department.toString(),networkImage: data.img,);
+                    var Item=snapshot.data.attandanceData[index];
+                    return AttandanceListItem(Firstname: Item.firstName,lasttname: Item.lastName,Department: Item.department.toString(),networkImage: Item.img,);
                   });
             }
             else{
-              return Center(child: CircularProgressIndicator());
+              return Center(child: Text("No Data TO Show"));
             }
 
           },

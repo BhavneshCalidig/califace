@@ -42,7 +42,7 @@ class _TodaysVisitorsState extends State<TodaysVisitors> {
                   });
             }
             else{
-              return Center(child: CircularProgressIndicator());
+              return Center(child: Text("Nothing To Show"));
             }
 
           },

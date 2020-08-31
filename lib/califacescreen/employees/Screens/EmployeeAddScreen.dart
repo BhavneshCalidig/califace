@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:califace/califacescreen/departments/Model/DepartmentListData_Model.dart';
 import 'package:califace/califacescreen/designations/Models/DesignationListModel.dart';
 import 'package:califace/califacescreen/employees/Models/EmployeeStoreDataModel.dart';
@@ -12,6 +14,8 @@ import 'package:califace/utill/MyColor.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
+
+import 'package:image_picker/image_picker.dart';
 
 class EmployeeAddScreen extends StatefulWidget {
 
@@ -43,13 +47,22 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
   String Id;
   int DesID;
   int DepID;
- var Updatelist;
- List<DesignationListModel> designationlist;
- List<Datum> departmentlist;
- Datum dep;
-  DesignationListModel des;
- Future<EmployeeUpdateDataModel> _eudm;
- Future<DesignationlistModel> _dlm;
+  EmployeeUpdateDataModel Updatelist;
+  File _image;
+  List<DesignationList> designationlist;
+  List<DepartmentListData> departmentlist;
+  DepartmentListData dep;
+  DesignationList des;
+  Future<EmployeeUpdateDataModel> _employeeupdateDataModel;
+  Future<DesignationlistModel> _dlm;
+  getImage() async {
+// ignore: deprecated_member_use
+    var pic = await ImagePicker.pickImage(
+        source: ImageSource.gallery, maxHeight: 200, maxWidth: 200);
+    this.setState(() {
+      _image = pic;
+    });
+  }
 
   Future<EmployeeStoreDataModel>StoreEmployee ( int DepID, int DesID, String ge, String Firstname, String lastname, String email, String contact, String employId,)async{
     Map<String,dynamic > databody={
@@ -63,10 +76,10 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
       "employee_id":employId,
     };
 
-    var Respose=await NetworkServices().postApi(context, empStoreUrl, databody);
+   Map<String,dynamic> Respose=await NetworkServices().postApi(context, empStoreUrl, databody);
     return EmployeeStoreDataModel.fromJson(Respose);
   }
-  Future<EmployeeUpdateModel>UpdateEmployee ( String Id,String department, String designation, String gender, String Firstname, String lastname, String email, String contact, String employId,)async{
+ UpdateEmployee ( String Id,String department, String designation, String gender, String Firstname, String lastname, String email, String contact, String employId,)  async {
     Map<String,dynamic > databody={
       "first_name":Firstname,
       "last_name":lastname,
@@ -79,41 +92,41 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
       "employee_id":employId,
     };
 
-    var Respose=await NetworkServices().postApi(context, empUpdateUrl, databody);
+    Map<String,dynamic>Respose=await NetworkServices().postApi(context, empUpdateUrl, databody);
     return EmployeeUpdateModel.fromJson(Respose);
   }
-  Future<EmployeeUpdateDataModel> getData()async{
-    var response= await NetworkServices().getApi(context, empUpdateDataUrl+Id);
+  Future<EmployeeUpdateDataModel> getData() async {
+    Map<String,dynamic> response= await NetworkServices().getApi(context, empUpdateDataUrl+Id);
     Updatelist =EmployeeUpdateDataModel.fromJson(response);
     return Updatelist;
   }
-  Future<DepartmentListDataModel> getDepartmentData()async{
-    var response= await NetworkServices().getApi(context, departmentListUrl);
+  Future<DepartmentListDataModel> getDepartmentData() async {
+    Map<String,dynamic> response = await NetworkServices().getApi(context, departmentListUrl);
 
     setState(() {
-      departmentlist =DepartmentListDataModel.fromJson(response).data;
+      departmentlist = DepartmentListDataModel.fromJson(response).departmentListData;
     });
   }
   Future<DesignationlistModel> geData()async{
-    var response= await NetworkServices().getApi(context, designationListUrl);
-   // print("DesignatioN lISt>>> "+response);
+    Map<String,dynamic> response= await NetworkServices().getApi(context, designationListUrl);
+    // print("DesignatioN lISt>>> "+response);
     setState(() {
-      designationlist =DesignationlistModel.fromJson(response).data;
+      designationlist =DesignationlistModel.fromJson(response).designationList;
     });
 
-   // return designationlist;
+    // return designationlist;
   }
-   getID(){
+  getID(){
     EmployeeSingleton employeeSingleton=EmployeeSingleton();
-  return Id= employeeSingleton.id;
+    return Id= employeeSingleton.id;
   }
   @override
   void initState() {
     getID();
     print(Id);
-    _eudm=getData();
-geData();
-getDepartmentData();
+    _employeeupdateDataModel=getData();
+    geData();
+    getDepartmentData();
     // TODO: implement initState
     super.initState();
   }
@@ -129,214 +142,225 @@ getDepartmentData();
           padding: EdgeInsets.only(top: 20, left: 10, right: 10),
           margin: EdgeInsets.only(top: 10),
           child: SingleChildScrollView(
-            child: FutureBuilder<EmployeeUpdateDataModel>(future:_eudm ,builder:(context ,snapshots){
-              if(snapshots.hasData){
-                var data=snapshots.data.data;
-                firstname.text=data.firstName;
-                Lastname.text=data.lastName;
-                Email.text=data.email;
-                EmployId.text=data.employeeId;
-                Contact.text=data.contactNo;
-                return Column(
-                  children: <Widget>[
-                    CustomTextField(controller: firstname,
+              child: FutureBuilder<EmployeeUpdateDataModel>(future:_employeeupdateDataModel ,builder:(context ,snapshots){
+                if(snapshots.hasData){
+                  var Item=snapshots.data.employeupdateData;
+                  firstname.text=Item.firstName;
+                  Lastname.text=Item.lastName;
+                  Email.text=Item.email;
+                  EmployId.text=Item.employeeId;
+                  Contact.text=Item.contactNo;
+                  return Column(
+                    children: <Widget>[
+                      CustomTextField(controller: firstname,
 
-                      labelText: "First Name",
-                      onChanged: (Value) {
+                        labelText: "First Name",
+                        onChanged: (Value) {
+                          setState(() {
+                            firstname=Value;
+
+                          });
+                          // value=Value.toString();
+                          print(Value.toString());
+                        },
+                        validate: true,
+                      ),
+
+                      CustomTextField(controller: Lastname,
+                        labelText: "Last Name",
+                        onChanged: (Value) {
+                          setState(() {
+                            Lastname=Value;
+
+                          });
+                          // value=Value.toString();
+                          print(Value.toString());
+                        },
+                        validate: true,
+                      ),
+
+                      CustomTextField(controller: Email,labelText: "Email",onChanged: (Value) {
                         setState(() {
-                          firstname=Value;
+                          email=Value;
 
                         });
                         // value=Value.toString();
                         print(Value.toString());
-                      },
-                      validate: true,
-                    ),
+                      },validate: false,),
 
-                    CustomTextField(controller: Lastname,
-                      labelText: "Last Name",
-                      onChanged: (Value) {
-                        setState(() {
-                          Lastname=Value;
 
-                        });
+                      CustomTextField(controller: Contact,labelText: "Contact",onChanged: (Value) {
                         // value=Value.toString();
+                        setState(() {
+                          Contact=Value;
+                        });
                         print(Value.toString());
-                      },
-                      validate: true,
-                    ),
+                      },validate: true,),
 
-                    CustomTextField(controller: Email,labelText: "Email",onChanged: (Value) {
-                      setState(() {
-                       email=Value;
+                      CustomTextField(controller: EmployId,labelText: "Employee ID:",onChanged: (Value) {
+                        // value=Value.toString();
+                        setState(() {
+                          EmployId=Value;
+                        });
+                        print(Value.toString());
+                      },validate: true,),
 
-                      });
-                      // value=Value.toString();
-                      print(Value.toString());
-                    },validate: false,),
+                      Row(
+                        children: <Widget>[
+                          designationlist!=null? Expanded(
 
-
-                    CustomTextField(controller: Contact,labelText: "Contact",onChanged: (Value) {
-                      // value=Value.toString();
-                      setState(() {
-                        Contact=Value;
-                      });
-                      print(Value.toString());
-                    },validate: true,),
-
-                    CustomTextField(controller: EmployId,labelText: "Employee ID:",onChanged: (Value) {
-                      // value=Value.toString();
-                      setState(() {
-                        EmployId=Value;
-                      });
-                      print(Value.toString());
-                    },validate: true,),
-
-                    Row(
-                      children: <Widget>[
-                        designationlist!=null? Expanded(
-
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border(bottom: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              )),
-                            ),
-                            child: DropdownButton<DesignationListModel>(
-                              isExpanded: true,
-                              hint: Text("Address Type"),
-                              value: des,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(bottom: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                )),
+                              ),
+                              child: DropdownButton<DesignationList>(
+                                isExpanded: true,
+                                hint: Text("Address Type"),
+                                value: des,
 //                            validator: (arg) {
 //                              if (arg==null)
 //                                return 'Please select Address type';
 //                              else
 //                                return null;
 //                            },
-                              onChanged: (DesignationListModel Value) {
+                                onChanged: (DesignationList Value) {
 //
-                                setState(() {
-                                  des = Value;
-                                  DesID=des.id;
-                                });
-                                print(DesID);
-                              },
-                              items: designationlist
-                                  .map((DesignationListModel user) {
-                                return DropdownMenuItem<DesignationListModel>(
-                                  value: user,
-                                  child: Row(
-                                    children: <Widget>[
-                                      //user.icon,
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          user.title,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                          ),
+                                  setState(() {
+                                    des = Value;
+                                    DesID=des.id;
+                                  });
+                                  print(DesID);
+                                },
+                                items: designationlist
+                                    .map((DesignationList user) {
+                                  return DropdownMenuItem<DesignationList>(
+                                    value: user,
+                                    child: Row(
+                                      children: <Widget>[
+                                        //user.icon,
+                                        SizedBox(
+                                          width: 10,
                                         ),
-                                      )],
-                                  ),
-                                );
-                              }).toList(),
+                                        Expanded(
+                                          child: Text(
+                                            user.title,
+                                            style: TextStyle(
+                                              color: Colors.blue,
+                                            ),
+                                          ),
+                                        )],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
                             ),
-                          ),
-                        ):Text("failed"),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        departmentlist!=null? Expanded(
+                          ):Text("failed"),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          departmentlist!=null? Expanded(
 
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border(bottom: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              )),
-                            ),
-                            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-                            child: DropdownButton<Datum>(
-                              isExpanded: true,
-                              hint: Text("Address Type"),
-                              value: dep,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(bottom: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                )),
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                              child: DropdownButton<DepartmentListData>(
+                                isExpanded: true,
+                                hint: Text("Address Type"),
+                                value: dep,
 //                            validator: (arg) {
 //                              if (arg==null)
 //                                return 'Please select Address type';
 //                              else
 //                                return null;
 //                            },
-                              onChanged: (Datum Value) {
+                                onChanged: (DepartmentListData Value) {
 //
-                                setState(() {
-                                  dep = Value ;
-                                  DepID=dep.id;
-                                });
-                                print(DepID);
-                              },
-                              items: departmentlist
-                                  .map((Datum user) {
-                                return DropdownMenuItem<Datum>(
-                                  value: user,
-                                  child: Row(
-                                    children: <Widget>[
-                                      //user.icon,
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          user.title,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                          ),
+                                  setState(() {
+                                    dep = Value ;
+                                    DepID=dep.id;
+                                  });
+                                  print(DepID);
+                                },
+                                items: departmentlist
+                                    .map((DepartmentListData user) {
+                                  return DropdownMenuItem<DepartmentListData>(
+                                    value: user,
+                                    child: Row(
+                                      children: <Widget>[
+                                        //user.icon,
+                                        SizedBox(
+                                          width: 10,
                                         ),
-                                      )],
-                                  ),
-                                );
-                              }).toList(),
+                                        Expanded(
+                                          child: Text(
+                                            user.title,
+                                            style: TextStyle(
+                                              color: Colors.blue,
+                                            ),
+                                          ),
+                                        )],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
                             ),
-                          ),
-                        ):Text("failed"),
-                      ],
-                    ),
+                          ):Text("failed"),
+                        ],
+                      ),
 
-                    CustomDropDownButton(value: Gender,items: [Male, female],hintText: "Select Gender",onChanged: (val){
-                      if(val==Male){
-                        Gender=val;
-                        setState(() {
-                          ge="m";
-                        });
-                        print(ge);
-                      }
-                      else{
-                        setState(() {
-                          ge="f";
-                        });
-                        print(ge);
-                      }
+                      CustomDropDownButton(value: Gender,items: [Male, female],hintText: "Select Gender",onChanged: (val){
+                        if(val==Male){
+                          Gender=val;
+                          setState(() {
+                            ge="m";
+                          });
+                          print(ge);
+                        }
+                        else{
+                          setState(() {
+                            ge="f";
+                          });
+                          print(ge);
+                        }
 
-                    },),
+                      },),
+                      Container(
+                        color: Colors.white,
+                        width: 150,
+                        height: 50
+                        ,
+child: Center(
+  child: IconButton(icon: Icon(Icons.add_a_photo),onPressed: (){
+    return getImage();
+  },),
+),
+                      ),
 
-                    Custom_Submit_Button(
-                      text: "Submit",
-                      color: darkgrey,
+                      Custom_Submit_Button(
+                        text: "Submit",
+                        color: darkgrey,
 
-                      onPressed: ()async {
-                        Firstname=firstname.toString();
-                        lastname=Lastname.toString();
+                        onPressed: ()async {
+                          Firstname=firstname.toString();
+                          lastname=Lastname.toString();
 //                        email=Email.toString();
-                        contact=Contact.toString();
-                        employId=EmployId.toString();
+                          contact=Contact.toString();
+                          employId=EmployId.toString();
 //
 //                        final EmployeeStoreDataModel stemp=await StoreEmployee(DepID, DesID, ge, Firstname, lastname, email, contact, employId);
 //                        print(stemp);
-                        final EmployeeUpdateModel eum=await UpdateEmployee(Id, department, designation, gender, Firstname, lastname, email, contact, employId);
+                          final EmployeeUpdateModel eum = await UpdateEmployee(Id, department, designation, gender, Firstname, lastname, email, contact, employId);
 
-                        print(eum);
+                          print(eum);
 //                    Map<String,dynamic > databody={
 //                      "first_name":Firstname,
 //                      "last_name":lastname,
@@ -352,201 +376,201 @@ getDepartmentData();
 //await NetworkServices().postApi(context, empCreateUrl, databody);
 //print(databody);
 
-                      },
-                    ),
-                  ],
-                );
-              }
-              else{
-                return Column(
-                  children: <Widget>[
-                    CustomTextField(
+                        },
+                      ),
+                    ],
+                  );
+                }
+                else{
+                  return Column(
+                    children: <Widget>[
+                      CustomTextField(
 
-                      labelText: "First Name",
-                      onChanged: (Value) {
+                        labelText: "First Name",
+                        onChanged: (Value) {
+                          setState(() {
+                            Firstname=Value;
+                          });
+                          // value=Value.toString();
+                          print(Value.toString());
+                        },
+                        validate: true,
+                      ),
+
+                      CustomTextField(
+                        labelText: "Last Name",
+                        onChanged: (Value) {
+                          setState(() {
+                            lastname=Value;
+                          });
+                          // value=Value.toString();
+                          print(Value.toString());
+                        },
+                        validate: true,
+                      ),
+
+                      CustomTextField(labelText: "Email",onChanged: (Value) {
                         setState(() {
-                          Firstname=Value;
+                          email=Value;
                         });
                         // value=Value.toString();
                         print(Value.toString());
-                      },
-                      validate: true,
-                    ),
+                      },validate: true,),
 
-                    CustomTextField(
-                      labelText: "Last Name",
-                      onChanged: (Value) {
-                        setState(() {
-                          lastname=Value;
-                        });
+
+                      CustomTextField(labelText: "Contact",onChanged: (Value) {
                         // value=Value.toString();
+                        setState(() {
+                          contact=Value;
+                        });
                         print(Value.toString());
-                      },
-                      validate: true,
-                    ),
+                      },validate: true,),
 
-                    CustomTextField(labelText: "Email",onChanged: (Value) {
-                      setState(() {
-                        email=Value;
-                      });
-                      // value=Value.toString();
-                      print(Value.toString());
-                    },validate: true,),
+                      CustomTextField(labelText: "Employee ID:",onChanged: (Value) {
+                        // value=Value.toString();
+                        setState(() {
+                          employId=Value;
+                        });
+                        print(Value.toString());
+                      },validate: true,),
 
+                      Row(
+                        children: <Widget>[
+                          designationlist!=null? Expanded(
 
-                    CustomTextField(labelText: "Contact",onChanged: (Value) {
-                      // value=Value.toString();
-                      setState(() {
-                        contact=Value;
-                      });
-                      print(Value.toString());
-                    },validate: true,),
-
-                    CustomTextField(labelText: "Employee ID:",onChanged: (Value) {
-                      // value=Value.toString();
-                      setState(() {
-                        employId=Value;
-                      });
-                      print(Value.toString());
-                    },validate: true,),
-
-                    Row(
-                      children: <Widget>[
-                        designationlist!=null? Expanded(
-
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border(bottom: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              )),
-                            ),
-                            child: DropdownButton<DesignationListModel>(
-                              isExpanded: true,
-                              hint: Text("Address Type"),
-                              value: des,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(bottom: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                )),
+                              ),
+                              child: DropdownButton<DesignationList>(
+                                isExpanded: true,
+                                hint: Text("Address Type"),
+                                value: des,
 //                            validator: (arg) {
 //                              if (arg==null)
 //                                return 'Please select Address type';
 //                              else
 //                                return null;
 //                            },
-                              onChanged: (DesignationListModel Value) {
+                                onChanged: (DesignationList Value) {
 //
-                                setState(() {
-                                  des = Value;
-                                  DesID=des.id;
-                                });
-                                print(DesID);
-                              },
-                              items: designationlist
-                                  .map((DesignationListModel user) {
-                                return DropdownMenuItem<DesignationListModel>(
-                                  value: user,
-                                  child: Row(
-                                    children: <Widget>[
-                                      //user.icon,
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          user.title,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                          ),
+                                  setState(() {
+                                    des = Value;
+                                    DesID=des.id;
+                                  });
+                                  print(DesID);
+                                },
+                                items: designationlist
+                                    .map((DesignationList user) {
+                                  return DropdownMenuItem<DesignationList>(
+                                    value: user,
+                                    child: Row(
+                                      children: <Widget>[
+                                        //user.icon,
+                                        SizedBox(
+                                          width: 10,
                                         ),
-                                      )],
-                                  ),
-                                );
-                              }).toList(),
+                                        Expanded(
+                                          child: Text(
+                                            user.title,
+                                            style: TextStyle(
+                                              color: Colors.blue,
+                                            ),
+                                          ),
+                                        )],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
                             ),
-                          ),
-                        ):Text("failed"),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        departmentlist!=null? Expanded(
+                          ):Text("failed"),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          departmentlist!=null? Expanded(
 
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border(bottom: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              )),
-                            ),
-                            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-                            child: DropdownButton<Datum>(
-                              isExpanded: true,
-                              hint: Text("Address Type"),
-                              value: dep,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(bottom: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                )),
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                              child: DropdownButton<DepartmentListData>(
+                                isExpanded: true,
+                                hint: Text("Address Type"),
+                                value: dep,
 //                            validator: (arg) {
 //                              if (arg==null)
 //                                return 'Please select Address type';
 //                              else
 //                                return null;
 //                            },
-                              onChanged: (Datum Value) {
+                                onChanged: (DepartmentListData Value) {
 //
-                                setState(() {
-                                  dep = Value ;
-                                  DepID=dep.id;
-                                });
-                                print(DepID);
-                              },
-                              items: departmentlist
-                                  .map((Datum user) {
-                                return DropdownMenuItem<Datum>(
-                                  value: user,
-                                  child: Row(
-                                    children: <Widget>[
-                                      //user.icon,
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          user.title,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                          ),
+                                  setState(() {
+                                    dep = Value ;
+                                    DepID=dep.id;
+                                  });
+                                  print(DepID);
+                                },
+                                items: departmentlist
+                                    .map((DepartmentListData user) {
+                                  return DropdownMenuItem<DepartmentListData>(
+                                    value: user,
+                                    child: Row(
+                                      children: <Widget>[
+                                        //user.icon,
+                                        SizedBox(
+                                          width: 10,
                                         ),
-                                      )],
-                                  ),
-                                );
-                              }).toList(),
+                                        Expanded(
+                                          child: Text(
+                                            user.title,
+                                            style: TextStyle(
+                                              color: Colors.blue,
+                                            ),
+                                          ),
+                                        )],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
                             ),
-                          ),
-                        ):Text("failed"),
-                      ],
-                    ),
+                          ):Text("failed"),
+                        ],
+                      ),
 
-                    CustomDropDownButton(value: Gender,items: [Male, female],hintText: "Select Gender",onChanged: (val){
-                      if(val==Male){
-                        Gender=val;
-                        setState(() {
-                          ge="m";
-                        });
-                        print(ge);
-                      }
-                      else{
-                        setState(() {
-                          ge="f";
-                        });
-                        print(ge);
-                      }
+                      CustomDropDownButton(value: Gender,items: [Male, female],hintText: "Select Gender",onChanged: (val){
+                        if(val==Male){
+                          Gender=val;
+                          setState(() {
+                            ge="m";
+                          });
+                          print(ge);
+                        }
+                        else{
+                          setState(() {
+                            ge="f";
+                          });
+                          print(ge);
+                        }
 
-                    },),
+                      },),
 
-                    Custom_Submit_Button(
-                      text: "Submit",
-                      color: darkgrey,
+                      Custom_Submit_Button(
+                        text: "Submit",
+                        color: darkgrey,
 
-                      onPressed: ()async {
+                        onPressed: ()async {
 
-                        final EmployeeStoreDataModel stemp=await StoreEmployee(DepID, DesID, ge, Firstname, lastname, email, contact, employId);
-                        print(stemp);
+                          final EmployeeStoreDataModel stemp=await StoreEmployee(DepID, DesID, ge, Firstname, lastname, email, contact, employId);
+                          print(stemp);
 //
 //                    Map<String,dynamic > databody={
 //                      "first_name":Firstname,
@@ -563,12 +587,12 @@ getDepartmentData();
 //await NetworkServices().postApi(context, empCreateUrl, databody);
 //print(databody);
 
-                      },
-                    ),
-                  ],
-                );
-              }
-            })
+                        },
+                      ),
+                    ],
+                  );
+                }
+              })
           ),
         ),
       ),

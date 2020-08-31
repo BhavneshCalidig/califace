@@ -1,71 +1,63 @@
-
-
-import 'dart:convert';
-
-DesignationlistModel designationlistModelFromJson(String str) => DesignationlistModel.fromJson(json.decode(str));
-
-String designationlistModelToJson(DesignationlistModel data) => json.encode(data.toJson());
-
 class DesignationlistModel {
-  DesignationlistModel({
-    this.success,
-    this.title,
-    this.message,
-    this.data,
-    this.again,
-  });
-
   bool success;
   String title;
   String message;
-  List<DesignationListModel> data;
-  dynamic again;
+  List<DesignationList> designationList;
+  Null again;
 
-  factory DesignationlistModel.fromJson(Map<String, dynamic> json) => DesignationlistModel(
-    success: json["success"],
-    title: json["title"],
-    message: json["message"],
-    data: List<DesignationListModel>.from(json["data"].map((x) => DesignationListModel.fromJson(x))),
-    again: json["again"],
-  );
+  DesignationlistModel(
+      {this.success, this.title, this.message, this.designationList, this.again});
 
-  Map<String, dynamic> toJson() => {
-    "success": success,
-    "title": title,
-    "message": message,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
-    "again": again,
-  };
+  DesignationlistModel.fromJson(Map<String, dynamic> json) {
+    success = json['success'];
+    title = json['title'];
+    message = json['message'];
+    if (json['data'] != null) {
+      designationList = new List<DesignationList>();
+      json['data'].forEach((v) {
+        designationList.add(new DesignationList.fromJson(v));
+      });
+    }
+    again = json['again'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['success'] = this.success;
+    data['title'] = this.title;
+    data['message'] = this.message;
+    if (this.designationList != null) {
+      data['data'] = this.designationList.map((v) => v.toJson()).toList();
+    }
+    data['again'] = this.again;
+    return data;
+  }
 }
 
-class DesignationListModel {
-  DesignationListModel({
-    this.id,
-    this.title,
-    this.description,
-    this.createdAt,
-    this.updatedAt,
-  });
-
+class DesignationList {
   int id;
   String title;
   String description;
-  DateTime createdAt;
-  DateTime updatedAt;
+  String createdAt;
+  String updatedAt;
 
-  factory DesignationListModel.fromJson(Map<String, dynamic> json) => DesignationListModel(
-    id: json["id"],
-    title: json["title"],
-    description: json["description"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-  );
+  DesignationList({this.id, this.title, this.description, this.createdAt, this.updatedAt});
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "description": description,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-  };
+  DesignationList.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    description = json['description'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['description'] = this.description;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    return data;
+  }
 }

@@ -1,5 +1,6 @@
 
 import 'file:///E:/projects/califace/lib/califacescreen/Login/Login_Screen.dart';
+import 'package:califace/Login.dart';
 import 'package:califace/califacescreen/HomeScreen.dart';
 import 'package:califace/thems/ThemeScreen.dart';
 import 'package:califace/thems/theme_notifier.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter Dynamic Theme",
       theme: themeNotifier.getTheme(),
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }

@@ -11,16 +11,16 @@ class CameraListScren extends StatefulWidget {
 }
 
 class _CameraListScrenState extends State<CameraListScren> {
-  var NetworkHelper;
-  var CameraList;
-  Future<CameraListModel> _clm;
+
+  CameraListModel CameraList;
+  Future<CameraListModel> _cameralistmodel;
   @override
   void initState() {
-    _clm=getData();
+    _cameralistmodel=getData();
     super.initState();
   }
   Future<CameraListModel> getData()async{
-    NetworkHelper= await NetworkServices().getApi(context, cameraListUrl,);
+   Map<String , dynamic> NetworkHelper= await NetworkServices().getApi(context, cameraListUrl,);
     CameraList =CameraListModel.fromJson(NetworkHelper);
     print(CameraList);
     return CameraList;
@@ -32,18 +32,18 @@ class _CameraListScrenState extends State<CameraListScren> {
       body: Container(
         padding: EdgeInsets.only(top: 20),
         child: FutureBuilder<CameraListModel>(
-          future: _clm,
+          future: _cameralistmodel,
           builder: (context, snapshot) {
             if(snapshot.hasData){
               return ListView.builder(
-                  itemCount: snapshot.data.data.length,
+                  itemCount: snapshot.data.cameralist.length,
                   itemBuilder: (context, index) {
-                    var data=snapshot.data.data[index];
-                    return CamListitem(CameraIp: data.cameraIp.toString(),Status: data.status.toString(),Id: data.id,Port: data.port,Protocol:data.protocol,);
+                    var Item=snapshot.data.cameralist[index];
+                    return CamListitem(CameraIp: Item.cameraIp.toString(),Status: Item.status.toString(),Id: Item.id,Port: Item.port,Protocol:Item.protocol,);
                   });
             }
             else{
-              return Center(child: CircularProgressIndicator());
+              return Center(child: Text("No Data To Show"));
             }
 
           },

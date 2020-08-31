@@ -81,7 +81,7 @@ final String Department;
                                 ),
                                 ListTile(
                                   title: Text(
-                                    "Department : $Designation",
+                                    "Department : $Department",
                                     style: TextStyle(
                                         color: Colors.white, fontWeight: FontWeight.bold),
                                   ),

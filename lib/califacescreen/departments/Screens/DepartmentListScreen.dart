@@ -13,17 +13,17 @@ class DepartmentListScreen extends StatefulWidget {
 }
 
 class _DepartmentListScreenState extends State<DepartmentListScreen> {
-  var NetworkHelper;
-  var DepartmentList=null;
-  Future<DepartmentListDataModel> _dldm;
+
+ DepartmentListDataModel DepartmentList;
+  Future<DepartmentListDataModel> _departmentListDataModel;
   @override
   void initState() {
-    _dldm =getData() ;
+    _departmentListDataModel =getData() ;
     super.initState();
 
   }
   Future<DepartmentListDataModel> getData()async{
-    NetworkHelper= await NetworkServices().getApi(context, departmentListUrl,);
+   Map<String,dynamic> NetworkHelper= await NetworkServices().getApi(context, departmentListUrl,);
     DepartmentList =DepartmentListDataModel.fromJson(NetworkHelper);
     print(DepartmentList);
     return DepartmentList;
@@ -34,14 +34,14 @@ class _DepartmentListScreenState extends State<DepartmentListScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: FutureBuilder<DepartmentListDataModel>(
-        future: _dldm,
+        future: _departmentListDataModel,
         builder: (context, snapshot) {
           if(snapshot.hasData){
             return ListView.builder(
-                itemCount: snapshot.data.data.length,
+                itemCount: snapshot.data.departmentListData.length,
                 itemBuilder: (context, index) {
-                  var data=snapshot.data.data[index];
-                  return DepListItem(Name: data.title.toString(),about: data.description.toString(),Hod: data.hod,email: data.email,date: data.startingDate,phNo: data.phone,totalEmployee: data.totalEmployee,Id: data.id.toString(),);
+                  var Item=snapshot.data.departmentListData[index];
+                  return DepListItem(Name: Item.title.toString(),about: Item.description.toString(),Hod: Item.hod,email: Item.email,date: Item.startingDate,phNo: Item.phone,totalEmployee: Item.totalEmployee,Id: Item.id.toString(),);
                 });
           }
           else{

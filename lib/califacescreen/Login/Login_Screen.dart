@@ -1,6 +1,5 @@
 import 'package:califace/califacescreen/Login/Model/LoginModel.dart';
-import 'package:califace/califacescreen/Login/Model/LoginSingleton.dart';
-import 'package:califace/califacescreen/Login/Model/UserLoginDataModel.dart';
+
 import 'package:califace/custom_widgets/CustomHomeButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
 import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
@@ -26,7 +25,7 @@ class _LoginScreen extends State<LoginScreen>{
   String TokenType;
   String password;
 
-  UserDataLoginModel userDataLoginModel;
+ LoginDataModel userDataLoginModel;
   var NetworkHelper;
   Future<LoginDataModel> _ldm;
 
@@ -43,7 +42,7 @@ class _LoginScreen extends State<LoginScreen>{
     };
 
     Map<String, dynamic> map  =await NetworkServices().postLoginApi(context, loginUrl, dataBody);
-    userDataLoginModel=UserDataLoginModel.fromJson(map);
+    userDataLoginModel=LoginDataModel.fromJson(map);
 
     try{
       String token=userDataLoginModel.accessToken;
@@ -102,7 +101,7 @@ class _LoginScreen extends State<LoginScreen>{
                 Custom_Submit_Button(color: darkgrey,text: "Login",onPressed: () async {
                  // LoginSingleton l=LoginSingleton();
 
-                 LoginDataModel ldm= await
+                // LoginDataModel ldm= await
                  LoginData(Username, password);
 //                 AccesToken=ldm.accessToken;
 //

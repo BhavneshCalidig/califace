@@ -1,59 +1,35 @@
-import 'dart:convert';
-
-EmployeeUpdateDataModel employeeUpdateDataModelFromJson(String str) => EmployeeUpdateDataModel.fromJson(json.decode(str));
-
-String employeeUpdateDataModelToJson(EmployeeUpdateDataModel data) => json.encode(data.toJson());
-
 class EmployeeUpdateDataModel {
-  EmployeeUpdateDataModel({
-    this.success,
-    this.title,
-    this.message,
-    this.data,
-    this.again,
-  });
-
   bool success;
   String title;
   String message;
-  Data data;
-  dynamic again;
+  EmployeupdateData employeupdateData;
+  Null again;
 
-  factory EmployeeUpdateDataModel.fromJson(Map<String, dynamic> json) => EmployeeUpdateDataModel(
-    success: json["success"],
-    title: json["title"],
-    message: json["message"],
-    data: Data.fromJson(json["data"]),
-    again: json["again"],
-  );
+  EmployeeUpdateDataModel(
+      {this.success, this.title, this.message, this.employeupdateData, this.again});
 
-  Map<String, dynamic> toJson() => {
-    "success": success,
-    "title": title,
-    "message": message,
-    "data": data.toJson(),
-    "again": again,
-  };
+  EmployeeUpdateDataModel.fromJson(Map<String, dynamic> json) {
+    success = json['success'];
+    title = json['title'];
+    message = json['message'];
+    employeupdateData = json['data'] != null ? new EmployeupdateData.fromJson(json['data']) : null;
+    again = json['again'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['success'] = this.success;
+    data['title'] = this.title;
+    data['message'] = this.message;
+    if (this.employeupdateData != null) {
+      data['data'] = this.employeupdateData.toJson();
+    }
+    data['again'] = this.again;
+    return data;
+  }
 }
 
-class Data {
-  Data({
-    this.id,
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.designationId,
-    this.departmentId,
-    this.gender,
-    this.contactNo,
-    this.employeeId,
-    this.createdAt,
-    this.updatedAt,
-    this.designation,
-    this.department,
-    this.employeeMedia,
-  });
-
+class EmployeupdateData {
   int id;
   String firstName;
   String lastName;
@@ -63,61 +39,111 @@ class Data {
   String gender;
   String contactNo;
   String employeeId;
-  DateTime createdAt;
-  DateTime updatedAt;
+  String createdAt;
+  String updatedAt;
   Designation designation;
   Department department;
   List<EmployeeMedia> employeeMedia;
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-    id: json["id"],
-    firstName: json["first_name"],
-    lastName: json["last_name"],
-    email: json["email"],
-    designationId: json["designation_id"],
-    departmentId: json["department_id"],
-    gender: json["gender"],
-    contactNo: json["contact_no"],
-    employeeId: json["employee_id"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-    designation: Designation.fromJson(json["designation"]),
-    department: Department.fromJson(json["department"]),
-    employeeMedia: List<EmployeeMedia>.from(json["employee_media"].map((x) => EmployeeMedia.fromJson(x))),
-  );
+  EmployeupdateData(
+      {this.id,
+        this.firstName,
+        this.lastName,
+        this.email,
+        this.designationId,
+        this.departmentId,
+        this.gender,
+        this.contactNo,
+        this.employeeId,
+        this.createdAt,
+        this.updatedAt,
+        this.designation,
+        this.department,
+        this.employeeMedia});
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "first_name": firstName,
-    "last_name": lastName,
-    "email": email,
-    "designation_id": designationId,
-    "department_id": departmentId,
-    "gender": gender,
-    "contact_no": contactNo,
-    "employee_id": employeeId,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-    "designation": designation.toJson(),
-    "department": department.toJson(),
-    "employee_media": List<dynamic>.from(employeeMedia.map((x) => x.toJson())),
-  };
+  EmployeupdateData.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    firstName = json['first_name'];
+    lastName = json['last_name'];
+    email = json['email'];
+    designationId = json['designation_id'];
+    departmentId = json['department_id'];
+    gender = json['gender'];
+    contactNo = json['contact_no'];
+    employeeId = json['employee_id'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    designation = json['designation'] != null
+        ? new Designation.fromJson(json['designation'])
+        : null;
+    department = json['department'] != null
+        ? new Department.fromJson(json['department'])
+        : null;
+    if (json['employee_media'] != null) {
+      employeeMedia = new List<EmployeeMedia>();
+      json['employee_media'].forEach((v) {
+        employeeMedia.add(new EmployeeMedia.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['first_name'] = this.firstName;
+    data['last_name'] = this.lastName;
+    data['email'] = this.email;
+    data['designation_id'] = this.designationId;
+    data['department_id'] = this.departmentId;
+    data['gender'] = this.gender;
+    data['contact_no'] = this.contactNo;
+    data['employee_id'] = this.employeeId;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    if (this.designation != null) {
+      data['designation'] = this.designation.toJson();
+    }
+    if (this.department != null) {
+      data['department'] = this.department.toJson();
+    }
+    if (this.employeeMedia != null) {
+      data['employee_media'] =
+          this.employeeMedia.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Designation {
+  int id;
+  String title;
+  String description;
+  String createdAt;
+  String updatedAt;
+
+  Designation(
+      {this.id, this.title, this.description, this.createdAt, this.updatedAt});
+
+  Designation.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    description = json['description'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['description'] = this.description;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    return data;
+  }
 }
 
 class Department {
-  Department({
-    this.id,
-    this.title,
-    this.description,
-    this.hod,
-    this.phone,
-    this.email,
-    this.startingDate,
-    this.totalEmployee,
-    this.createdAt,
-    this.updatedAt,
-  });
-
   int id;
   String title;
   String description;
@@ -126,100 +152,83 @@ class Department {
   String email;
   String startingDate;
   String totalEmployee;
-  DateTime createdAt;
-  DateTime updatedAt;
+  String createdAt;
+  String updatedAt;
 
-  factory Department.fromJson(Map<String, dynamic> json) => Department(
-    id: json["id"],
-    title: json["title"],
-    description: json["description"],
-    hod: json["hod"],
-    phone: json["phone"],
-    email: json["email"],
-    startingDate: json["starting_date"],
-    totalEmployee: json["total_employee"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-  );
+  Department(
+      {this.id,
+        this.title,
+        this.description,
+        this.hod,
+        this.phone,
+        this.email,
+        this.startingDate,
+        this.totalEmployee,
+        this.createdAt,
+        this.updatedAt});
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "description": description,
-    "hod": hod,
-    "phone": phone,
-    "email": email,
-    "starting_date": startingDate,
-    "total_employee": totalEmployee,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-  };
-}
+  Department.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    description = json['description'];
+    hod = json['hod'];
+    phone = json['phone'];
+    email = json['email'];
+    startingDate = json['starting_date'];
+    totalEmployee = json['total_employee'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
 
-class Designation {
-  Designation({
-    this.id,
-    this.title,
-    this.description,
-    this.createdAt,
-    this.updatedAt,
-  });
-
-  int id;
-  String title;
-  String description;
-  DateTime createdAt;
-  DateTime updatedAt;
-
-  factory Designation.fromJson(Map<String, dynamic> json) => Designation(
-    id: json["id"],
-    title: json["title"],
-    description: json["description"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "description": description,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-  };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['description'] = this.description;
+    data['hod'] = this.hod;
+    data['phone'] = this.phone;
+    data['email'] = this.email;
+    data['starting_date'] = this.startingDate;
+    data['total_employee'] = this.totalEmployee;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    return data;
+  }
 }
 
 class EmployeeMedia {
-  EmployeeMedia({
-    this.id,
-    this.employeId,
-    this.type,
-    this.name,
-    this.createdAt,
-    this.updatedAt,
-  });
-
   int id;
   int employeId;
   String type;
   String name;
-  DateTime createdAt;
-  DateTime updatedAt;
+  String createdAt;
+  String updatedAt;
 
-  factory EmployeeMedia.fromJson(Map<String, dynamic> json) => EmployeeMedia(
-    id: json["id"],
-    employeId: json["employe_id"],
-    type: json["type"],
-    name: json["name"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-  );
+  EmployeeMedia(
+      {this.id,
+        this.employeId,
+        this.type,
+        this.name,
+        this.createdAt,
+        this.updatedAt});
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "employe_id": employeId,
-    "type": type,
-    "name": name,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-  };
+  EmployeeMedia.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    employeId = json['employe_id'];
+    type = json['type'];
+    name = json['name'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['employe_id'] = this.employeId;
+    data['type'] = this.type;
+    data['name'] = this.name;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    return data;
+  }
 }

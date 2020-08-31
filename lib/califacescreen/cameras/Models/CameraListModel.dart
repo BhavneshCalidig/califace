@@ -1,78 +1,76 @@
-
-import 'dart:convert';
-
-CameraListModel cameraListModelFromJson(String str) => CameraListModel.fromJson(json.decode(str));
-
-String cameraListModelToJson(CameraListModel data) => json.encode(data.toJson());
-
 class CameraListModel {
-  CameraListModel({
-    this.success,
-    this.title,
-    this.message,
-    this.data,
-    this.again,
-  });
-
   bool success;
   String title;
   String message;
-  List<Datum> data;
-  dynamic again;
+  List<CameraList> cameralist;
+  Null again;
 
-  factory CameraListModel.fromJson(Map<String, dynamic> json) => CameraListModel(
-    success: json["success"],
-    title: json["title"],
-    message: json["message"],
-    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-    again: json["again"],
-  );
+  CameraListModel(
+      {this.success, this.title, this.message, this.cameralist, this.again});
 
-  Map<String, dynamic> toJson() => {
-    "success": success,
-    "title": title,
-    "message": message,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
-    "again": again,
-  };
+  CameraListModel.fromJson(Map<String, dynamic> json) {
+    success = json['success'];
+    title = json['title'];
+    message = json['message'];
+    if (json['data'] != null) {
+      cameralist = new List<CameraList>();
+      json['data'].forEach((v) {
+        cameralist.add(new CameraList.fromJson(v));
+      });
+    }
+    again = json['again'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['success'] = this.success;
+    data['title'] = this.title;
+    data['message'] = this.message;
+    if (this.cameralist != null) {
+      data['data'] = this.cameralist.map((v) => v.toJson()).toList();
+    }
+    data['again'] = this.again;
+    return data;
+  }
 }
 
-class Datum {
-  Datum({
-    this.id,
-    this.cameraIp,
-    this.status,
-    this.createdAt,
-    this.updatedAt,
-    this.protocol,
-    this.port,
-  });
-
+class CameraList {
   int id;
   String cameraIp;
   String status;
-  DateTime createdAt;
-  DateTime updatedAt;
+  String createdAt;
+  String updatedAt;
   String protocol;
   String port;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-    id: json["id"],
-    cameraIp: json["camera_ip"],
-    status: json["status"] == null ? null : json["status"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-    protocol: json["protocol"] == null ? null : json["protocol"],
-    port: json["port"] == null ? null : json["port"],
-  );
+  CameraList(
+      {this.id,
+        this.cameraIp,
+        this.status,
+        this.createdAt,
+        this.updatedAt,
+        this.protocol,
+        this.port});
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "camera_ip": cameraIp,
-    "status": status == null ? null : status,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-    "protocol": protocol == null ? null : protocol,
-    "port": port == null ? null : port,
-  };
+  CameraList.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    cameraIp = json['camera_ip'];
+    status = json['status'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    protocol = json['protocol'];
+    port = json['port'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['camera_ip'] = this.cameraIp;
+    data['status'] = this.status;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    data['protocol'] = this.protocol;
+    data['port'] = this.port;
+    return data;
+  }
 }

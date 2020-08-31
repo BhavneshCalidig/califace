@@ -7,6 +7,7 @@ import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DesignationAddScreen extends StatefulWidget {
 
@@ -17,19 +18,19 @@ class DesignationAddScreen extends StatefulWidget {
 class _DesignationAddScreenState extends State<DesignationAddScreen> {
 String Title;
 String Description;
-var NetworkHelper;
-var UpdateDataList;
+
+DesignationUpdateDataModel UpdateDataList;
  var tittle=TextEditingController();
  var Descriptin=TextEditingController();
 String Id;
 String Url;
 
-Future<DesignationUpdateDataModel> _dudm;
+Future<DesignationUpdateDataModel> _designationUpdateDataModel;
 
 void initState() {
   getID();
   print(Id);
-  _dudm=getData();
+  _designationUpdateDataModel=getData();
   // TODO: implement initState
 
   super.initState();
@@ -41,44 +42,68 @@ void getID(){
   Url =idSingleton.Url;
 
 }
-Future<DesignationUpdateDataModel> getData()async{
-  NetworkHelper=await NetworkServices().getApi(context, Url);
-  UpdateDataList=DesignationUpdateDataModel.fromJson(NetworkHelper);
+ Future<DesignationUpdateDataModel>getData() async {
+  Map<String,dynamic> NetworkHelper = await NetworkServices().getApi(context, Url);
+  UpdateDataList = DesignationUpdateDataModel.fromJson(NetworkHelper);
   return UpdateDataList;
 
 }
 
 
 
-Future<DesignationStoretModel> createDesignation(String Title,String Description) async{
+ createDesignation(String Title,String Description) async {
   Map<String,dynamic > databody={
     "title": Title,
     "description": Description
 
   };
-  var Respose= await NetworkServices().postApi(context, designationStoreUrl, databody);
-  return DesignationStoretModel.fromJson(Respose);
+  Map<String,dynamic> Respose= await NetworkServices().postApi(context, designationStoreUrl, databody);
+ DesignationStoretModel.fromJson(Respose);
 
 }
-Future<DesignationStoretModel> CeateDesignation(String Title,String Description) async{
+CeateDesignation(String Title,String Description) async{
   Map<String,dynamic > databody={
     "title": Title,
     "description": Description
 
   };
-  var Respose= await NetworkServices().postApi(context, designationStoreUrl, databody);
+  Map<String,dynamic> Respose= await NetworkServices().postApi(context, designationStoreUrl, databody);
   return DesignationStoretModel.fromJson(Respose);
 
 }
-Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description,String id) async{
+
+ UpdateDesignation(String Title,String Description,String id) async{
   Map<String,dynamic > databody={
     "title": Title,
   	"id" :id,
   "description": Description
 
   };
-  var Respose= await NetworkServices().postApi(context, designationUpdateUrl, databody);
-  return DesignationUpdateModel.fromJson(Respose);
+  Map<String,dynamic> Respose= await NetworkServices().postApi(context, designationUpdateUrl, databody);
+  try{
+    DesignationUpdateModel designationUpdateModel=DesignationUpdateModel.fromJson(Respose);
+    if (designationUpdateModel.success!=true) {
+       Fluttertoast.showToast(msg: "failed",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+    } else {
+       Fluttertoast.showToast(msg: "Succes",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+    }
+  } catch(e){
+    print(e);
+  }
 
 }
 @override
@@ -92,7 +117,7 @@ Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description
         margin: EdgeInsets.only(top: 10),
         child: SingleChildScrollView(
           child: FutureBuilder<DesignationUpdateDataModel>(
-            future: _dudm,
+            future: _designationUpdateDataModel,
             builder: (context, snapshot) {
               if(snapshot.hasData){
                 var data=snapshot.data.data;
@@ -139,7 +164,7 @@ Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description
                               Description=Descriptin.text;
 
 //                              final DesignationStoretModel model= await createDesignation(Title, Description);
-                              final DesignationUpdateModel md=await UpdateDesignation(Title, Description, Id);
+                              final DesignationUpdateModel md = await UpdateDesignation(Title, Description, Id);
 
 
                             },
@@ -156,6 +181,7 @@ Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description
                       labelText: "Title",
                       onChanged: (Value) {
                         setState(() {
+                          Title=Value.toString();
 
 
                         });
@@ -172,7 +198,8 @@ Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description
                       labelText: "Role and Responsibilities",
                       onChanged: (Value) {
                         setState(() {
-                          Descriptin=Value;
+                          Description=Value.toString();
+
 
                         });
                         // value=Value.toString();
@@ -185,11 +212,33 @@ Future<DesignationUpdateModel> UpdateDesignation(String Title,String Description
 
                       text: "Submit",
                       onPressed: () async{
-                        Title=tittle.text;
-                        Description=Descriptin.text;
 
-//                              final DesignationStoretModel model= await createDesignation(Title, Description);
-                        final DesignationUpdateModel md=await UpdateDesignation(Title, Description, Id);
+
+                              final DesignationStoretModel model = await createDesignation(Title, Description);
+                              var d = model.success.toString();
+                              print(d);
+                              if(model.success=="success"){
+  return Fluttertoast.showToast(msg: "Succes",
+  toastLength: Toast.LENGTH_LONG,
+  gravity: ToastGravity.CENTER,
+  timeInSecForIosWeb: 1,
+
+  backgroundColor: Colors.red,
+  textColor: Colors.white,
+  fontSize: 16.0);
+  }
+  else{
+  return Fluttertoast.showToast(msg: "failed"
+  , toastLength: Toast.LENGTH_LONG,
+  gravity: ToastGravity.CENTER,
+  timeInSecForIosWeb: 1,
+  backgroundColor: Colors.red,
+  textColor: Colors.white,
+  fontSize: 16.0);
+  }
+
+
+//                        final DesignationUpdateModel md = await UpdateDesignation(Title, Description, Id);
 
 
                       },

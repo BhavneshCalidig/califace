@@ -3,17 +3,16 @@ class EmployeeStoreDataModel {
   String title;
   String message;
   EmployeStore employeStore;
-  Null again;
 
   EmployeeStoreDataModel(
-      {this.success, this.title, this.message, this.employeStore, this.again});
+      {this.success, this.title, this.message, this.employeStore, });
 
   EmployeeStoreDataModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
     employeStore = json['data'] != null ? new EmployeStore.fromJson(json['data']) : null;
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class EmployeeStoreDataModel {
     if (this.employeStore != null) {
       data['data'] = this.employeStore.toJson();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

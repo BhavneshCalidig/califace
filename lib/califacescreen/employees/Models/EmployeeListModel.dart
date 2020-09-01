@@ -3,10 +3,10 @@ class EmployeListData {
   String title;
   String message;
   List<Employelist> employelist;
-  Null again;
+
 
   EmployeListData(
-      {this.success, this.title, this.message, this.employelist, this.again});
+      {this.success, this.title, this.message, this.employelist, });
 
   EmployeListData.fromJson(Map<String, dynamic> json) {
     success = json['success'];
@@ -18,7 +18,7 @@ class EmployeListData {
         employelist.add(new Employelist.fromJson(v));
       });
     }
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -29,8 +29,7 @@ class EmployeListData {
     if (this.employelist != null) {
       data['data'] = this.employelist.map((v) => v.toJson()).toList();
     }
-    data['again'] = this.again;
-    return data;
+     return data;
   }
 }
 

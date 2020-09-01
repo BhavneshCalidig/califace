@@ -3,17 +3,17 @@ class DepartmentItemDeleteModel {
   String title;
   String message;
   bool data;
-  Null again;
+
 
   DepartmentItemDeleteModel(
-      {this.success, this.title, this.message, this.data, this.again});
+      {this.success, this.title, this.message, this.data,});
 
   DepartmentItemDeleteModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
     data = json['data'];
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -22,7 +22,6 @@ class DepartmentItemDeleteModel {
     data['title'] = this.title;
     data['message'] = this.message;
     data['data'] = this.data;
-    data['again'] = this.again;
-    return data;
+      return data;
   }
 }

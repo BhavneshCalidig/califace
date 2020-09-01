@@ -3,10 +3,10 @@ class AttandanceListModel {
   String title;
   String message;
   List<AttandanceData > attandanceData ;
-  Null again;
+
 
   AttandanceListModel(
-      {this.success, this.title, this.message, this.attandanceData, this.again});
+      {this.success, this.title, this.message, this.attandanceData, });
 
   AttandanceListModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
@@ -18,7 +18,7 @@ class AttandanceListModel {
         attandanceData.add(new AttandanceData .fromJson(v));
       });
     }
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -29,7 +29,7 @@ class AttandanceListModel {
     if (this.attandanceData != null) {
       data['data'] = this.attandanceData.map((v) => v.toJson()).toList();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

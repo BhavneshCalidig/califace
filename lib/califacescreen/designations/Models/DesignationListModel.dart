@@ -3,10 +3,10 @@ class DesignationlistModel {
   String title;
   String message;
   List<DesignationList> designationList;
-  Null again;
+
 
   DesignationlistModel(
-      {this.success, this.title, this.message, this.designationList, this.again});
+      {this.success, this.title, this.message, this.designationList, });
 
   DesignationlistModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
@@ -18,7 +18,7 @@ class DesignationlistModel {
         designationList.add(new DesignationList.fromJson(v));
       });
     }
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -29,7 +29,7 @@ class DesignationlistModel {
     if (this.designationList != null) {
       data['data'] = this.designationList.map((v) => v.toJson()).toList();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

@@ -3,17 +3,17 @@ class CameraUpdateDataModel {
   String title;
   String message;
   CameraData cameraData;
-  Null again;
+
 
   CameraUpdateDataModel(
-      {this.success, this.title, this.message, this.cameraData, this.again});
+      {this.success, this.title, this.message, this.cameraData, });
 
   CameraUpdateDataModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
     cameraData = json['data'] != null ? new CameraData.fromJson(json['data']) : null;
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -24,7 +24,7 @@ class CameraUpdateDataModel {
     if (this.cameraData != null) {
       data['data'] = this.cameraData.toJson();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

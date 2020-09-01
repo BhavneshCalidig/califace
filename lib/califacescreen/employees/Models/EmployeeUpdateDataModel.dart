@@ -3,17 +3,17 @@ class EmployeeUpdateDataModel {
   String title;
   String message;
   EmployeupdateData employeupdateData;
-  Null again;
+
 
   EmployeeUpdateDataModel(
-      {this.success, this.title, this.message, this.employeupdateData, this.again});
+      {this.success, this.title, this.message, this.employeupdateData, });
 
   EmployeeUpdateDataModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
     employeupdateData = json['data'] != null ? new EmployeupdateData.fromJson(json['data']) : null;
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -24,7 +24,7 @@ class EmployeeUpdateDataModel {
     if (this.employeupdateData != null) {
       data['data'] = this.employeupdateData.toJson();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

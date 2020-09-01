@@ -10,21 +10,20 @@ class VisitorListModel {
     this.title,
     this.message,
     this.data,
-    this.again,
+
   });
 
   bool success;
   String title;
   String message;
   List<Datum> data;
-  dynamic again;
 
   factory VisitorListModel.fromJson(Map<String, dynamic> json) => VisitorListModel(
     success: json["success"],
     title: json["title"],
     message: json["message"],
     data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-    again: json["again"],
+
   );
 
   Map<String, dynamic> toJson() => {
@@ -32,8 +31,7 @@ class VisitorListModel {
     "title": title,
     "message": message,
     "data": List<dynamic>.from(data.map((x) => x.toJson())),
-    "again": again,
-  };
+   };
 }
 
 class Datum {

@@ -3,10 +3,10 @@ class CameraListModel {
   String title;
   String message;
   List<CameraList> cameralist;
-  Null again;
+
 
   CameraListModel(
-      {this.success, this.title, this.message, this.cameralist, this.again});
+      {this.success, this.title, this.message, this.cameralist, });
 
   CameraListModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
@@ -18,7 +18,7 @@ class CameraListModel {
         cameralist.add(new CameraList.fromJson(v));
       });
     }
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -29,7 +29,7 @@ class CameraListModel {
     if (this.cameralist != null) {
       data['data'] = this.cameralist.map((v) => v.toJson()).toList();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

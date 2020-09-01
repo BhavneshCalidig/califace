@@ -216,48 +216,57 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
                                   width: 3,
                                 )),
                               ),
-                              child: DropdownButton<DesignationList>(
-                                isExpanded: true,
-                                hint: Text("Address Type"),
-                                value: des,
+                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<DesignationList>(
+                                  isExpanded: true,
+                                  hint: Text("Select Designation",style: TextStyle(
+                                      color: Theme.of(context).indicatorColor,
+                                      fontSize: 18
+                                  ),),
+                                  value: des,
 //                            validator: (arg) {
 //                              if (arg==null)
 //                                return 'Please select Address type';
 //                              else
 //                                return null;
 //                            },
-                                onChanged: (DesignationList Value) {
+                                  onChanged: (DesignationList Value) {
 //
-                                  setState(() {
-                                    des = Value;
-                                    DesID=des.id;
-                                  });
-                                  print(DesID);
-                                },
-                                items: designationlist
-                                    .map((DesignationList user) {
-                                  return DropdownMenuItem<DesignationList>(
-                                    value: user,
-                                    child: Row(
-                                      children: <Widget>[
-                                        //user.icon,
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            user.title,
-                                            style: TextStyle(
-                                              color: Colors.blue,
-                                            ),
+                                    setState(() {
+                                      des = Value;
+                                      DesID=des.id;
+                                    });
+                                    print(DesID);
+                                  },
+                                  items: designationlist
+                                      .map((DesignationList user) {
+                                    return DropdownMenuItem<DesignationList>(
+                                      value: user,
+                                      child: Row(
+                                        children: <Widget>[
+                                          //user.icon,
+                                          SizedBox(
+                                            width: 10,
                                           ),
-                                        )],
-                                    ),
-                                  );
-                                }).toList(),
+                                          Expanded(
+                                            child: Text(
+                                              user.title,
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          )],
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
                               ),
                             ),
-                          ):Text("failed"),
+                          ):Text("Loading Designation",style: TextStyle(
+                              color: Theme.of(context).indicatorColor,
+                              fontSize: 18
+                          ),),
                         ],
                       ),
                       Row(
@@ -272,48 +281,57 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
                                 )),
                               ),
                               padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-                              child: DropdownButton<DepartmentListData>(
-                                isExpanded: true,
-                                hint: Text("Address Type"),
-                                value: dep,
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<DepartmentListData>(
+                                  isExpanded: true,
+                                  hint: Text("Select Department",style: TextStyle(
+                                      color: Theme.of(context).indicatorColor,
+                                      fontSize: 18
+                                  ),),
+                                  value: dep,
 //                            validator: (arg) {
 //                              if (arg==null)
 //                                return 'Please select Address type';
 //                              else
 //                                return null;
 //                            },
-                                onChanged: (DepartmentListData Value) {
+                                  onChanged: (DepartmentListData Value) {
 //
-                                  setState(() {
-                                    dep = Value ;
-                                    DepID=dep.id;
-                                  });
-                                  print(DepID);
-                                },
-                                items: departmentlist
-                                    .map((DepartmentListData user) {
-                                  return DropdownMenuItem<DepartmentListData>(
-                                    value: user,
-                                    child: Row(
-                                      children: <Widget>[
-                                        //user.icon,
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            user.title,
-                                            style: TextStyle(
-                                              color: Colors.blue,
-                                            ),
+                                    setState(() {
+                                      dep = Value ;
+                                      DepID=dep.id;
+                                    });
+                                    print(DepID);
+                                  },
+                                  items: departmentlist
+                                      .map((DepartmentListData user) {
+                                    return DropdownMenuItem<DepartmentListData>(
+                                      value: user,
+                                      child: Row(
+                                        children: <Widget>[
+                                          //user.icon,
+                                          SizedBox(
+                                            width: 10,
                                           ),
-                                        )],
-                                    ),
-                                  );
-                                }).toList(),
+                                          Expanded(
+                                            child: Text(
+                                              user.title,
+                                              style: TextStyle(
+                                                color: Colors.blue,
+                                              ),
+                                            ),
+                                          )],
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
                               ),
                             ),
-                          ):Text("failed"),
+                          ):Text("Loading Department",style: TextStyle(
+                              color: Theme.of(context).indicatorColor,
+                              fontSize: 18
+                          ),
+                          ),
                         ],
                       ),
 
@@ -445,48 +463,57 @@ child: Center(
                                   width: 3,
                                 )),
                               ),
-                              child: DropdownButton<DesignationList>(
-                                isExpanded: true,
-                                hint: Text("Address Type"),
-                                value: des,
+                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<DesignationList>(
+                                  isExpanded: true,
+                                  hint: Text("Select Designation",style: TextStyle(
+                                      color: Theme.of(context).indicatorColor,
+                                      fontSize: 18
+                                  ),),
+                                  value: des,
 //                            validator: (arg) {
 //                              if (arg==null)
 //                                return 'Please select Address type';
 //                              else
 //                                return null;
 //                            },
-                                onChanged: (DesignationList Value) {
+                                  onChanged: (DesignationList Value) {
 //
-                                  setState(() {
-                                    des = Value;
-                                    DesID=des.id;
-                                  });
-                                  print(DesID);
-                                },
-                                items: designationlist
-                                    .map((DesignationList user) {
-                                  return DropdownMenuItem<DesignationList>(
-                                    value: user,
-                                    child: Row(
-                                      children: <Widget>[
-                                        //user.icon,
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            user.title,
-                                            style: TextStyle(
-                                              color: Colors.blue,
-                                            ),
+                                    setState(() {
+                                      des = Value;
+                                      DesID=des.id;
+                                    });
+                                    print(DesID);
+                                  },
+                                  items: designationlist
+                                      .map((DesignationList user) {
+                                    return DropdownMenuItem<DesignationList>(
+                                      value: user,
+                                      child: Row(
+                                        children: <Widget>[
+                                          //user.icon,
+                                          SizedBox(
+                                            width: 10,
                                           ),
-                                        )],
-                                    ),
-                                  );
-                                }).toList(),
+                                          Expanded(
+                                            child: Text(
+                                              user.title,
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          )],
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
                               ),
                             ),
-                          ):Text("failed"),
+                          ):Text("Loading Designation ",style: TextStyle(
+                              color: Theme.of(context).indicatorColor,
+                              fontSize: 18
+                          ),),
                         ],
                       ),
                       Row(
@@ -501,48 +528,56 @@ child: Center(
                                 )),
                               ),
                               padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-                              child: DropdownButton<DepartmentListData>(
-                                isExpanded: true,
-                                hint: Text("Address Type"),
-                                value: dep,
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<DepartmentListData>(
+                                  isExpanded: true,
+                                  hint: Text("Select Department",style: TextStyle(
+                                      color: Theme.of(context).indicatorColor,
+                                      fontSize: 18
+                                  ),),
+                                  value: dep,
 //                            validator: (arg) {
 //                              if (arg==null)
 //                                return 'Please select Address type';
 //                              else
 //                                return null;
 //                            },
-                                onChanged: (DepartmentListData Value) {
+                                  onChanged: (DepartmentListData Value) {
 //
-                                  setState(() {
-                                    dep = Value ;
-                                    DepID=dep.id;
-                                  });
-                                  print(DepID);
-                                },
-                                items: departmentlist
-                                    .map((DepartmentListData user) {
-                                  return DropdownMenuItem<DepartmentListData>(
-                                    value: user,
-                                    child: Row(
-                                      children: <Widget>[
-                                        //user.icon,
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            user.title,
-                                            style: TextStyle(
-                                              color: Colors.blue,
-                                            ),
+                                    setState(() {
+                                      dep = Value ;
+                                      DepID=dep.id;
+                                    });
+                                    print(DepID);
+                                  },
+                                  items: departmentlist
+                                      .map((DepartmentListData user) {
+                                    return DropdownMenuItem<DepartmentListData>(
+                                      value: user,
+                                      child: Row(
+                                        children: <Widget>[
+                                          //user.icon,
+                                          SizedBox(
+                                            width: 10,
                                           ),
-                                        )],
-                                    ),
-                                  );
-                                }).toList(),
+                                          Expanded(
+                                            child: Text(
+                                              user.title,
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          )],
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
                               ),
                             ),
-                          ):Text("failed"),
+                          ):Text("Loading department",style: TextStyle(
+                              color: Theme.of(context).indicatorColor,
+                              fontSize: 18
+                          ),),
                         ],
                       ),
 

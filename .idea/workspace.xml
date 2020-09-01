@@ -2,152 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e336fd91-404f-46ec-a435-5c5b54b2254c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/.filecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/app.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/debug_android_application.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/kernel_snapshot.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/196cdd196c2b79ea98ac0a43a0920ee0/kernel_snapshot.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/.filecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/app.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/debug_android_application.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/kernel_snapshot.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/d8ef2bd9b0091577501fc271352c9b60/kernel_snapshot.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/activity/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/activity/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/core/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/core/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/customview/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/customview/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/fragment/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/fragment/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/loader/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/loader/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/viewpager/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/androidx/viewpager/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/com/calidig/califace/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/com/calidig/califace/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/io/flutter/plugins/sharedpreferences/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/debug/r/io/flutter/plugins/sharedpreferences/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/libs.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/libs.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/_5W2XF1bayEPK6QW9zcmMoFIgNM=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/_5W2XF1bayEPK6QW9zcmMoFIgNM=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/cFeCfKLqlvyL6_SrpTT00g6SP04=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/cFeCfKLqlvyL6_SrpTT00g6SP04=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/hjvQWwqeFgODBssXfFBSTCGzvPw=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/hjvQWwqeFgODBssXfFBSTCGzvPw=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/_5W2XF1bayEPK6QW9zcmMoFIgNM=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/_5W2XF1bayEPK6QW9zcmMoFIgNM=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/cFeCfKLqlvyL6_SrpTT00g6SP04=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/cFeCfKLqlvyL6_SrpTT00g6SP04=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/hjvQWwqeFgODBssXfFBSTCGzvPw=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/hjvQWwqeFgODBssXfFBSTCGzvPw=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/KepIRzMnqo6H498psEaSPYKMi+k=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/KepIRzMnqo6H498psEaSPYKMi+k=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/N1OghG33X2EvE4fPTAGSbp2SAmY=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/N1OghG33X2EvE4fPTAGSbp2SAmY=" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/instant_app_manifest/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/instant_app_manifest/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/activity/R$drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/activity/R$drawable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/core/R$drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/core/R$drawable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/customview/R$drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/customview/R$drawable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/fragment/R$drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/fragment/R$drawable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/loader/R$drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/loader/R$drawable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/viewpager/R$drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/androidx/viewpager/R$drawable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$drawable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$id.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$integer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$integer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$layout.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$mipmap.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$mipmap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$string.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$string.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$style.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$style.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$styleable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R$styleable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/com/calidig/califace/R.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/io/flutter/plugins/GeneratedPluginRegistrant.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/io/flutter/plugins/GeneratedPluginRegistrant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/io/flutter/plugins/sharedpreferences/R$drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/io/flutter/plugins/sharedpreferences/R$drawable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_java_res/debug/out.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_java_res/debug/out.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/activity/R$drawable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/activity/R$drawable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/core/R$drawable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/core/R$drawable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/customview/R$drawable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/customview/R$drawable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/fragment/R$drawable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/fragment/R$drawable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/loader/R$drawable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/loader/R$drawable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/viewpager/R$drawable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/androidx/viewpager/R$drawable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$drawable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$drawable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$id.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$integer.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$integer.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$layout.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$layout.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$mipmap.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$mipmap.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$string.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$string.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$style.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$style.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$styleable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R$styleable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/com/calidig/califace/R.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/io/flutter/plugins/GeneratedPluginRegistrant.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/io/flutter/plugins/GeneratedPluginRegistrant.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/io/flutter/plugins/sharedpreferences/R$drawable.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/transforms/dexBuilder/debug/0/io/flutter/plugins/sharedpreferences/R$drawable.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/kotlin/compileDebugKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/kotlin/compileDebugKotlin/build-history.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/kotlin/compileDebugKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/kotlin/compileDebugKotlin/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/app.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/HomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/HomeScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/Login/Login_Screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/Login/Login_Screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/Login/Model/LoginModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/Login/Model/LoginModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/Login/Model/UserLoginDataModel.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/attandance/Models/AttandanceListModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/attandance/Models/AttandanceListModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/attandance/Screens/AttandanceListScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/attandance/Screens/AttandanceListScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraDeleteModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraDeleteModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraListModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraListModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraStoreModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraStoreModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraUpdateDataModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraUpdateDataModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraUpdateModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Models/CameraUpdateModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Screens/CameraAddScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Screens/CameraAddScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/cameras/Screens/CameraListScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/cameras/Screens/CameraListScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentItemDeleteModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentItemDeleteModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentListData_Model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentListData_Model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentStoreData_Model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentStoreData_Model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentUpdateDataModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentUpdateDataModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentUpdateModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Model/DepartmentUpdateModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentAddScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentAddScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentListScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/departments/Screens/DepartmentListScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationDeleteItemModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationDeleteItemModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationEditModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationEditModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationListModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationListModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationStoreModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationStoreModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationUpdateDataModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Models/DesignationUpdateDataModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Screens/DesignationAddScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Screens/DesignationAddScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/designations/Screens/DesignationListScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/designations/Screens/DesignationListScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeDeleteModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeDeleteModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeListModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeListModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeStoreDataModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeStoreDataModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeUpdateDataModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeUpdateDataModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeUpdateModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Models/EmployeeUpdateModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeAddScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeAddScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeListScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/Screens/EmployeeListScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/califacescreen/employees/mywidgets/EmpListItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/employees/mywidgets/EmpListItem.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/visitors/Screens/AllVisitor_Screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/visitors/Screens/AllVisitor_Screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/califacescreen/visitors/Screens/Todays_Vistors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/visitors/Screens/Todays_Vistors.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utill/NetworkServices.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utill/NetworkServices.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/califacescreen/visitors/Models/VisitorListModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/califacescreen/visitors/Models/VisitorListModel.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598534024660</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="New Added">
+      <created>1598892565495</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1598892565495</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -330,10 +226,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="375" y="97" key="#main.dart/0.0.1366.728@0.0.1366.728" timestamp="1598199686779" />
-    <state x="322" y="0" key="CommitChangelistDialog2" timestamp="1598534005771">
+    <state x="322" y="0" key="CommitChangelistDialog2" timestamp="1598892539256">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="322" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1598534005771" />
+    <state x="322" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1598892539256" />
     <state x="129" y="55" width="1092" height="610" key="DiffContextDialog" timestamp="1597985363124">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -350,22 +246,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="498" y="240" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1597982650248" />
-    <state width="1323" height="383" key="GridCell.Tab.0.bottom" timestamp="1598878559314">
+    <state width="1323" height="369" key="GridCell.Tab.0.bottom" timestamp="1598940040935">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="383" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1598878559314" />
-    <state width="1323" height="383" key="GridCell.Tab.0.center" timestamp="1598878559314">
+    <state width="1323" height="369" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1598940040935" />
+    <state width="1323" height="369" key="GridCell.Tab.0.center" timestamp="1598940040935">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="383" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1598878559314" />
-    <state width="1323" height="383" key="GridCell.Tab.0.left" timestamp="1598878559313">
+    <state width="1323" height="369" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1598940040935" />
+    <state width="1323" height="369" key="GridCell.Tab.0.left" timestamp="1598940040935">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="383" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1598878559313" />
-    <state width="1323" height="383" key="GridCell.Tab.0.right" timestamp="1598878559314">
+    <state width="1323" height="369" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1598940040935" />
+    <state width="1323" height="369" key="GridCell.Tab.0.right" timestamp="1598940040935">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="383" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1598878559314" />
+    <state width="1323" height="369" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1598940040935" />
     <state x="356" y="63" key="NewModule_or_Project.wizard" timestamp="1598260673950">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -378,10 +274,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1598615403389" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1598534040257">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1598892578956">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1598534040257" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1598892578956" />
     <state x="92" y="92" width="1182" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1598519227948">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

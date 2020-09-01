@@ -3,17 +3,17 @@ class DepartmentUpdateDataModel {
   String title;
   String message;
   Departmentupdatedata departmentupdatedata;
-  Null again;
+
 
   DepartmentUpdateDataModel(
-      {this.success, this.title, this.message, this.departmentupdatedata, this.again});
+      {this.success, this.title, this.message, this.departmentupdatedata,});
 
   DepartmentUpdateDataModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
     departmentupdatedata = json['data'] != null ? new Departmentupdatedata.fromJson(json['data']) : null;
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -24,7 +24,7 @@ class DepartmentUpdateDataModel {
     if (this.departmentupdatedata != null) {
       data['data'] = this.departmentupdatedata.toJson();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

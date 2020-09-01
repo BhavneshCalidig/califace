@@ -3,17 +3,16 @@ class DesignationStoretModel {
   String title;
   String message;
   Data data;
-  Null again;
 
   DesignationStoretModel(
-      {this.success, this.title, this.message, this.data, this.again});
+      {this.success, this.title, this.message, this.data, });
 
   DesignationStoretModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class DesignationStoretModel {
     if (this.data != null) {
       data['data'] = this.data.toJson();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

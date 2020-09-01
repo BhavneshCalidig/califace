@@ -149,7 +149,7 @@ final String Department;
             NetworkImage("$networkImage"),
             backgroundColor: Colors.transparent,
           ),
-          title: Text((Firstname+lasttname)),
+          title: Text((Firstname+" "+lasttname)),
           subtitle: Text(Department),
         ),
       ),

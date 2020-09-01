@@ -3,10 +3,10 @@ class DepartmentListDataModel {
   String title;
   String message;
   List<DepartmentListData> departmentListData;
-  Null again;
+
 
   DepartmentListDataModel(
-      {this.success, this.title, this.message, this.departmentListData, this.again});
+      {this.success, this.title, this.message, this.departmentListData, });
 
   DepartmentListDataModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
@@ -18,7 +18,7 @@ class DepartmentListDataModel {
         departmentListData.add(new DepartmentListData.fromJson(v));
       });
     }
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -29,7 +29,7 @@ class DepartmentListDataModel {
     if (this.departmentListData != null) {
       data['data'] = this.departmentListData.map((v) => v.toJson()).toList();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

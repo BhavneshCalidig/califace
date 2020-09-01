@@ -3,17 +3,17 @@ class CameraStoreModel {
   String title;
   String message;
   Data data;
-  Null again;
+
 
   CameraStoreModel(
-      {this.success, this.title, this.message, this.data, this.again});
+      {this.success, this.title, this.message, this.data, });
 
   CameraStoreModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-    again = json['again'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -24,7 +24,7 @@ class CameraStoreModel {
     if (this.data != null) {
       data['data'] = this.data.toJson();
     }
-    data['again'] = this.again;
+
     return data;
   }
 }

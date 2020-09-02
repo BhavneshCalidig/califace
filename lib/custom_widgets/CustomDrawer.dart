@@ -1,14 +1,20 @@
 
 import 'file:///E:/projects/califace/lib/califacescreen/departments/Screens/DepartmentHomeScreen.dart';
+import 'package:califace/Login.dart';
 import 'package:califace/califacescreen/HomeScreen.dart';
 import 'package:califace/califacescreen/attandance/Screens/AttandanceHomeScreen.dart';
 import 'package:califace/califacescreen/cameras/Screens/CameraHomeScreen.dart';
+import 'package:califace/califacescreen/cameras/mywidgets/CameraSingleton.dart';
+import 'package:califace/califacescreen/departments/mywidgets/DepartmentSingleton.dart';
 import 'package:califace/califacescreen/designations/Screens/DesignationHomeScreen.dart';
+import 'package:califace/califacescreen/designations/mywidgets/SingletonData.dart';
 import 'package:califace/califacescreen/employees/Screens/EmployeeHomeScreen.dart';
+import 'package:califace/califacescreen/employees/mywidgets/EmployeSingleton.dart';
 import 'package:califace/califacescreen/visitors/Screens/VisitorsHomeScreen.dart';
 import 'package:califace/thems/ThemeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -50,6 +56,8 @@ class CustomDrawer extends StatelessWidget {
                ListTile(
                  contentPadding: EdgeInsets.only(left: 5),
                  onTap: (){
+                   EmployeeSingleton employeeSingleton=EmployeeSingleton();
+                   employeeSingleton.id=null;
                    Navigator.push(context, MaterialPageRoute(builder: (context){
                      return EmployeeHomeScreen(1);
                    }));
@@ -73,6 +81,8 @@ class CustomDrawer extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
+                    IdSingleton idSingleton=IdSingleton();
+                    idSingleton.id=null;
                     Navigator.push(context, MaterialPageRoute(builder: (context){
                       return DesignationHomeScreen(whichscreen: 1);
                     }));
@@ -100,6 +110,8 @@ class CustomDrawer extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
+                    DepartmentSingleton departmentSingleton=DepartmentSingleton();
+                    departmentSingleton.id=null;
                     Navigator.push(context, MaterialPageRoute(builder: (context){
                       return DepartmentHomeScreen(whichscreen: 1,);
                     }));
@@ -128,6 +140,8 @@ class CustomDrawer extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.only(left: 5),
                   onTap: (){
+                    CameraSingleton cameraSingleton=CameraSingleton();
+                    cameraSingleton.id=null;
                     Navigator.push(context, MaterialPageRoute(builder: (context){
                       return CameraHomeScreen(whichscreen: 1,);
                     }));
@@ -205,6 +219,24 @@ class CustomDrawer extends StatelessWidget {
                 onTap: ()
                 {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>ThemeScreen()));
+                },
+              ),
+              Divider(),
+              ListTile(
+                contentPadding: EdgeInsets.only(left: 5),
+                title: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Logout",style: TextStyle(color: Theme.of(context).indicatorColor,fontSize: 20),),
+                ),
+                trailing: Icon(Icons.arrow_forward),
+                onTap: ()async
+                {
+                  SharedPreferences prefs = await SharedPreferences.getInstance() ;
+                  prefs.setBool("login", true);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+
+                    return login();
+                  }));
                 },
               ),
 

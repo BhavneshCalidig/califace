@@ -66,7 +66,7 @@ onTap: (){
                     title: Text( "CameraIP : $CameraIp",
 
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                     ),
 
                   ),
@@ -77,7 +77,7 @@ onTap: (){
                     title: Text(
                       "Status : $Status",
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                     ),
 
                   ),
@@ -88,7 +88,7 @@ onTap: (){
                     title: Text(
                       'Port : $Port',
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                     ),
 
                   ),
@@ -99,7 +99,7 @@ onTap: (){
                     title: Text(
                       'Protocol : $Protocol',
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Divider(

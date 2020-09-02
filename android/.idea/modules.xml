@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" group="android" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1472868684/flutter_plugin_android_lifecycle.iml" filepath="$PROJECT_DIR$/.idea/modules/-1472868684/flutter_plugin_android_lifecycle.iml" group="android/flutter_plugin_android_lifecycle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1469753070/fluttertoast.iml" filepath="$PROJECT_DIR$/.idea/modules/1469753070/fluttertoast.iml" group="android/fluttertoast" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1852441669/image_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/1852441669/image_picker.iml" group="android/image_picker" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/2076001349/shared_preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/2076001349/shared_preferences.iml" group="android/shared_preferences" />
     </modules>
   </component>

@@ -8,6 +8,7 @@ import 'package:califace/custom_widgets/CustomTextField.dart';
 import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
+import 'package:califace/utill/myfunction.dart';
 import 'package:flutter/material.dart';
 
 class DepartmentAddScreen extends StatefulWidget {
@@ -39,18 +40,30 @@ var about=TextEditingController();
 @override
 void initState() {
 
-  getId();
+  getDepartmentSingletonId();
   print(Id);
-  print(Url);
-
   super.initState();
-  _departmentUpdateDataModel = getdata();
+
 }
 
-void getId(){
+void getDepartmentSingletonId(){
   DepartmentSingleton departmentSingleton =DepartmentSingleton();
   Id=departmentSingleton.id;
   Url= departmentSingleton.Url;
+  if(Id!=null){
+    _departmentUpdateDataModel = getdata();
+  }
+  else{
+   setState(() {
+     department.text="";
+     date.text="";
+     hod.text="";
+     email.text="";
+     contact.text="";
+     totalEmploye.text="";
+     about.text="";
+   });
+  }
 }
 
 Future<DepartmentStoreDataModel>StoreDepartment (String About,String Email,String Hod,String Contact,String Date,String Deaprtment,String TotalEmploye)async{
@@ -205,7 +218,18 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                         TotalEmploye=totalEmploye.text;
 //                        final DepartmentStoreDataModel model= await StoreDepartment(About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
 //                        print(model);
-                       final DepartmentUpdateModel md= await updateDepartment(Id, About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
+                        if(Deaprtment=="" || Hod=="" || Email==""|| Contact==""||Date==""||About==""||TotalEmploye==""){
+                          showToast(context,"Filed cannot be Empty");
+                        }
+                        else{
+
+
+                          final DepartmentUpdateModel md= await updateDepartment(Id, About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
+                        if(md.success==true){
+                          showToast(context, "sucsess");
+                        }
+                        }
+
                       },
                     ),
                   ],
@@ -216,11 +240,11 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                 return  Column(
                   children: <Widget>[
                     CustomTextField(
-
+                      controller: department,
                       labelText: "Department Name",
                       onChanged: (Value) {
                         setState(() {
-                     Deaprtment=Value.toString();
+                          department=Value;
                         });
                         // value=Value.toString();
                         print(Value.toString());
@@ -231,11 +255,11 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                       height: 10,
                     ),
                     CustomTextField(
-
+                      controller: hod,
                       labelText: "Head of Department",
                       onChanged: (Value) {
                         setState(() {
-                          Hod=Value.toString();
+                          hod=Value;
                         });
                         // value=Value.toString();
                         print(Value.toString());
@@ -245,10 +269,10 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                     SizedBox(
                       height: 10,
                     ),
-                    CustomTextField(labelText: "Email",hintText: "Email",onChanged: (Value) {
+                    CustomTextField(controller: email,labelText: "Email",hintText: "Email",onChanged: (Value) {
                       // value=Value.toString();
                       setState(() {
-                        Email=Value.toString();
+                        email=Value;
                       });
                       print(Value.toString());
                     },validate: true,),
@@ -257,9 +281,9 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                     SizedBox(
                       height: 10,
                     ),
-                    CustomTextField(labelText: "Contact",hintText: "Contact No:",onChanged: (Value) {
+                    CustomTextField(controller: contact,labelText: "Contact",hintText: "Contact No:",onChanged: (Value) {
                       setState(() {
-                        Contact=Value.toString();
+                        contact=Value;
                       });
                       // value=Value.toString();
                       print(Value.toString());
@@ -267,9 +291,10 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                     SizedBox(
                       height: 10,
                     ),
-                    CustomTextField(labelText: "Starting Date:",hintText: "Starting Date",onChanged: (Value) {
+                    CustomTextField(controller: date,labelText: "Starting Date:",hintText: "Starting Date",onChanged: (Value) {
                       // value=Value.toString();
-                      setState(() {Date=Value.toString();
+                      setState(() {
+                        date=Value;
                       });
                       print(Value.toString());
                     },validate: true,),
@@ -277,9 +302,9 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                     SizedBox(
                       height: 10,
                     ),
-                    CustomTextField(labelText: "Total Employee",hintText: "Total Employee",onChanged: (Value) {
+                    CustomTextField(controller:totalEmploye,labelText: "Total Employee",hintText: "Total Employee",onChanged: (Value) {
                       setState(() {
-                        TotalEmploye=Value.toString();
+                        totalEmploye=Value;
                       });
                       // value=Value.toString();
                       print(Value.toString());
@@ -297,10 +322,27 @@ Future<DepartmentUpdateModel>updateDepartment (String id,String About,String Ema
                     Custom_Submit_Button(
                       text: "Submit",
                       onPressed: () async{
+                        Deaprtment=department.text;
+                        Hod=hod.text;
+                        Email=email.text;
+                        Contact=contact.text;
+                        Date=date.text;
+                        About=about.text;
+                        TotalEmploye=totalEmploye.text;
+//                        final DepartmentStoreDataModel model= await StoreDepartment(About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
+//                        print(model);
+                        if(Deaprtment=="" || Hod=="" || Email==""|| Contact==""||Date==""||About==""||TotalEmploye==""){
+                          showToast(context,"Filed cannot be Empty");
+                        }
+                        else{
 
-                        final DepartmentStoreDataModel model= await StoreDepartment(About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
-                        print(model);
-//                        final DepartmentUpdateModel md= await updateDepartment(Id, About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
+                          final DepartmentStoreDataModel model= await StoreDepartment(About, Email, Hod, Contact, Date, Deaprtment, TotalEmploye);
+
+                          if(model.success==true){
+                            showToast(context, "sucsess");
+                          }
+                        }
+
                       },
                     ),
                   ],

@@ -3,6 +3,7 @@ import 'package:califace/califacescreen/employees/Screens/EmployeeHomeScreen.dar
 import 'package:califace/califacescreen/employees/mywidgets/EmployeSingleton.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
+import 'package:califace/utill/myfunction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -19,17 +20,18 @@ final String Department;
   final String gender;
   final String email;
   final String Id;
+  EmployeeDeleteModel _employedeletemodel;
 
   @override
   Widget build(BuildContext context) {
 
-    Future<EmployeeDeleteModel> deleteemployee(String Id) async{
+      deleteemployee(String Id) async{
       Map<String,dynamic > databody={
         "id": Id,
 
       };
-      var Networkhelper=NetworkServices().postApi(context, empDestroyUrl, databody);
-      return EmployeeDeleteModel.fromJson(Networkhelper);
+     Map<String,dynamic> Networkhelper=NetworkServices().postApi(context, empDestroyUrl, databody);
+      return  _employedeletemodel=EmployeeDeleteModel.fromJson(Networkhelper);
     }
 
     return Slidable(
@@ -72,7 +74,7 @@ final String Department;
                                   title: Text( "Name : $Firstname $lasttname",
 
                                     style: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold),
+                                        color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                                   ),
 
                                 ),
@@ -83,7 +85,7 @@ final String Department;
                                   title: Text(
                                     "Department : $Department",
                                     style: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold),
+                                        color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                                   ),
 
                                 ),
@@ -94,7 +96,7 @@ final String Department;
                                   title: Text(
                                     'Designation : $Designation',
                                     style: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold),
+                                        color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                                   ),
 
                                 ),
@@ -105,7 +107,7 @@ final String Department;
                                   title: Text(
                                     'Employee Id : $EmployeeID',
                                     style: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold),
+                                        color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 Divider(
@@ -117,7 +119,7 @@ final String Department;
                                   title: Text(
                                     'Contact : $Conatct',
                                     style: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold),
+                                        color:Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                                   ),
 
                                 ),
@@ -133,7 +135,7 @@ final String Department;
                                   title: Text(
                                     'email : $email',
                                     style: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold),
+                                        color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                                   ),
 
                                 ),
@@ -187,7 +189,10 @@ final String Department;
           icon: Icons.delete,
           onTap: () async{
             EmployeeDeleteModel didm= await deleteemployee(Id);
-            return didm;
+            if(didm.success==true){
+              showToast(context,"Success");
+            }
+
 
           },
         ),

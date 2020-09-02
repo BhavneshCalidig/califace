@@ -3,6 +3,7 @@
 
 import 'package:califace/califacescreen/departments/Model/DepartmentListData_Model.dart';
 import 'package:califace/califacescreen/departments/mywidgets/DepListItem.dart';
+import 'package:califace/califacescreen/departments/mywidgets/DepartmentSingleton.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +19,13 @@ class _DepartmentListScreenState extends State<DepartmentListScreen> {
   Future<DepartmentListDataModel> _departmentListDataModel;
   @override
   void initState() {
-    _departmentListDataModel =getData() ;
+    _departmentListDataModel =getDepartmentData() ;
     super.initState();
+    DepartmentSingleton departmentSingleton=DepartmentSingleton();
+    departmentSingleton.id=null;
 
   }
-  Future<DepartmentListDataModel> getData()async{
+  Future<DepartmentListDataModel> getDepartmentData()async{
    Map<String,dynamic> NetworkHelper= await NetworkServices().getApi(context, departmentListUrl,);
     DepartmentList =DepartmentListDataModel.fromJson(NetworkHelper);
     print(DepartmentList);

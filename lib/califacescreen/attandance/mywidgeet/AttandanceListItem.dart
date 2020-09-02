@@ -49,11 +49,11 @@ class AttandanceListItem extends StatelessWidget{
                               title: Text( "Name :",
 
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text(
                                 (Firstname+" "+lasttname),
-                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                                style: TextStyle(color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Divider(
@@ -63,57 +63,17 @@ class AttandanceListItem extends StatelessWidget{
                               title: Text(
                                 "Department",
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color:Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text(Department,
 
-                                style: TextStyle(color: Colors.white70),
-                              ),
-                            ),
-                            Divider(
-                              height: 2,
-                            ),
-                            ListTile(
-                              title: Text(
-                                '',
-                                style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
-                              ),
-                              subtitle: Text(
-                                "Designation",
-                                style: TextStyle(color: Colors.white70),
-                              ),
-                            ),
-                            Divider(
-                              height: 2,
-                            ),
-                            ListTile(
-                              title: Text(
-                                '',
-                                style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
-                              ),
-                              subtitle: Text(
-                                "Employee Id",
-                                style: TextStyle(color: Colors.white70),
+                                style: TextStyle(color:Theme.of(context).indicatorColor),
                               ),
                             ),
                             Divider(
                               height: 2,
                             ),
 
-
-                            ListTile(
-                              title: Text(
-                                '',
-                                style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
-                              ),
-                              subtitle: Text(
-                                "Contact",
-                                style: TextStyle(color: Colors.white70),
-                              ),
-                            ),
 
                           ],
 
@@ -126,7 +86,7 @@ class AttandanceListItem extends StatelessWidget{
             NetworkImage("$networkImage"),
             backgroundColor: Colors.transparent,
           ),
-          title: Text((Firstname+lasttname)),
+          title: Text((Firstname+" "+lasttname)),
           subtitle: Text(Department),
         ),
       ),
@@ -146,18 +106,18 @@ class AttandanceListItem extends StatelessWidget{
 //        ),
 //      ],
       secondaryActions: <Widget>[
-        IconSlideAction(
-          caption: 'Edit',
-          color: Colors.black45,
-          icon: Icons.more_horiz,
-          onTap: () => print('Edit'),
-        ),
-        IconSlideAction(
-          caption: 'Delete',
-          color: Colors.red,
-          icon: Icons.delete,
-          onTap: () => print('Delete'),
-        ),
+//        IconSlideAction(
+//          caption: 'Edit',
+//          color: Colors.black45,
+//          icon: Icons.more_horiz,
+//          onTap: () => print('Edit'),
+//        ),
+//        IconSlideAction(
+//          caption: 'Delete',
+//          color: Colors.red,
+//          icon: Icons.delete,
+//          onTap: () => print('Delete'),
+//        ),
       ],
     );
   }

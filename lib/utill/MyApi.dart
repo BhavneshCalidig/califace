@@ -1,7 +1,7 @@
 
 
 
-String baseUrl="https://virola-laravel.calidig.com/api/";
+String baseUrl="https://califace-admin.calidig.com/api/";
 
 //get
 String empCreateUrl=baseUrl+"v1/employe/create";
@@ -88,6 +88,6 @@ String adminUpdateUrl=baseUrl+"v1/admin/update";
 String adminDestroyUrl=baseUrl+"v1/admin/destroy";
 
 //post
-String loginUrl="https://virola-laravel.calidig.com/oauth/token";
+String loginUrl="https://califace-admin.calidig.com/oauth/token";
 
 String userUrl=baseUrl+"v1/user";

@@ -2,17 +2,18 @@ class EmployeeStoreDataModel {
   bool success;
   String title;
   String message;
-  EmployeStore employeStore;
+  Data data;
+  Null again;
 
   EmployeeStoreDataModel(
-      {this.success, this.title, this.message, this.employeStore, });
+      {this.success, this.title, this.message, this.data, this.again});
 
   EmployeeStoreDataModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
-    employeStore = json['data'] != null ? new EmployeStore.fromJson(json['data']) : null;
-
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    again = json['again'];
   }
 
   Map<String, dynamic> toJson() {
@@ -20,15 +21,15 @@ class EmployeeStoreDataModel {
     data['success'] = this.success;
     data['title'] = this.title;
     data['message'] = this.message;
-    if (this.employeStore != null) {
-      data['data'] = this.employeStore.toJson();
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
     }
-
+    data['again'] = this.again;
     return data;
   }
 }
 
-class EmployeStore {
+class Data {
   String firstName;
   String lastName;
   String email;
@@ -41,7 +42,7 @@ class EmployeStore {
   String createdAt;
   int id;
 
-  EmployeStore(
+  Data(
       {this.firstName,
         this.lastName,
         this.email,
@@ -54,7 +55,7 @@ class EmployeStore {
         this.createdAt,
         this.id});
 
-  EmployeStore.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     firstName = json['first_name'];
     lastName = json['last_name'];
     email = json['email'];

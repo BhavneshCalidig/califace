@@ -1,4 +1,5 @@
 import 'package:califace/califacescreen/designations/Models/DesignationListModel.dart';
+import 'package:califace/califacescreen/designations/mywidgets/SingletonData.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,13 @@ class _DesignationListScrenState extends State<DesignationListScren> {
   Future<DesignationlistModel> _dlm;
   @override
   void initState() {
+    IdSingleton idSingleton=IdSingleton();
+    idSingleton.id=null;
     // TODO: implement initState
     _dlm=getData();
     super.initState();
   }
+
   Future<DesignationlistModel> getData()async{
     NetworkHelper= await NetworkServices().getApi(context, designationListUrl,);
     DesignationList =DesignationlistModel.fromJson(NetworkHelper);

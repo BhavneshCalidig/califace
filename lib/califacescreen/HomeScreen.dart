@@ -1,5 +1,9 @@
 import 'file:///E:/projects/califace/lib/califacescreen/employees/Screens/EmployeeHomeScreen.dart';
 import 'file:///E:/projects/califace/lib/califacescreen/visitors/Screens/VisitorsHomeScreen.dart';
+import 'package:califace/califacescreen/cameras/mywidgets/CameraSingleton.dart';
+import 'package:califace/califacescreen/departments/mywidgets/DepartmentSingleton.dart';
+import 'package:califace/califacescreen/designations/mywidgets/SingletonData.dart';
+import 'package:califace/califacescreen/employees/mywidgets/EmployeSingleton.dart';
 import 'package:califace/custom_widgets/CustomDrawer.dart';
 import 'package:califace/custom_widgets/CustomHomeButton.dart';
 import 'package:califace/custom_widgets/CustomTextField.dart';
@@ -16,6 +20,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    singleTonsAllScreens();
+    print(singleTonsAllScreens());
+    super.initState();
+  }
+  singleTonsAllScreens(){
+    EmployeeSingleton employeeSingleton=EmployeeSingleton();
+    employeeSingleton.id=null;
+    CameraSingleton cameraSingleton=CameraSingleton();
+    cameraSingleton.id=null;
+    DepartmentSingleton departmentSingleton=DepartmentSingleton();
+    departmentSingleton.id=null;
+    IdSingleton idSingleton=IdSingleton();
+    idSingleton.id=null;
+  }
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override

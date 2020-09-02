@@ -1,4 +1,5 @@
 import 'package:califace/califacescreen/cameras/Models/CameraListModel.dart';
+import 'package:califace/califacescreen/cameras/mywidgets/CameraSingleton.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,12 @@ class _CameraListScrenState extends State<CameraListScren> {
   Future<CameraListModel> _cameralistmodel;
   @override
   void initState() {
-    _cameralistmodel=getData();
+    _cameralistmodel=getCameraData();
     super.initState();
+    CameraSingleton cameraSingleton=CameraSingleton();
+    cameraSingleton.id=null;
   }
-  Future<CameraListModel> getData()async{
+  Future<CameraListModel> getCameraData()async{
    Map<String , dynamic> NetworkHelper= await NetworkServices().getApi(context, cameraListUrl,);
     CameraList =CameraListModel.fromJson(NetworkHelper);
     print(CameraList);

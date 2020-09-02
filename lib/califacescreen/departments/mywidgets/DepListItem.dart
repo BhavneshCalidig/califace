@@ -71,7 +71,7 @@ class DepListItem extends StatelessWidget{
                               title: Text( "Name : $Name",
 
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
 
                             ),
@@ -82,7 +82,7 @@ class DepListItem extends StatelessWidget{
                               title: Text(
                                 "Hod : $Hod",
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
 
                             ),
@@ -93,7 +93,7 @@ class DepListItem extends StatelessWidget{
                               title: Text(
                                 'Phone no : $phNo',
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
 
                             ),
@@ -104,7 +104,7 @@ class DepListItem extends StatelessWidget{
                               title: Text(
                                 'Email : $email',
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Divider(
@@ -116,7 +116,7 @@ class DepListItem extends StatelessWidget{
                               title: Text(
                                 'Starting Date : $date',
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
 
                             ),
@@ -124,7 +124,7 @@ class DepListItem extends StatelessWidget{
                               title: Text(
                                 'Total Employees : $totalEmployee',
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
 
                             ),

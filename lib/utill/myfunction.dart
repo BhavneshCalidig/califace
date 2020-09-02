@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io' show Platform;
 
@@ -128,9 +129,6 @@ showSnakbarWithGlobalKey(GlobalKey<ScaffoldState> globalKey,String msg)
 showSnakbar(BuildContext context,String message) {
   try {
 
-
-
-
     Scaffold.of(context).showSnackBar(SnackBar(
       content: Text(
         message,
@@ -143,6 +141,17 @@ showSnakbar(BuildContext context,String message) {
   } on Exception catch (e, s) {
     print(s);
   }
+}
+showToast(BuildContext context ,String message){
+
+  Fluttertoast.showToast(msg: message,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+
+      backgroundColor: Colors.transparent,
+      textColor: Colors.white,
+      fontSize: 16.0);
 }
 
 getTimeStamp()

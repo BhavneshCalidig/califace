@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:califace/califacescreen/employees/Models/EmployeeListModel.dart';
 import 'package:califace/califacescreen/employees/mywidgets/EmpListItem.dart';
+import 'package:califace/califacescreen/employees/mywidgets/EmployeSingleton.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,12 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   Future<EmployeListData> _employeelistData;
   @override
   void initState() {
-   _employeelistData=getData();
+   _employeelistData=getEmployeeData();
     super.initState();
+    EmployeeSingleton employeeSingleton=EmployeeSingleton();
+    employeeSingleton.id=null;
   }
- Future<EmployeListData>getData()async{
+ Future<EmployeListData>getEmployeeData()async{
  Map<String,dynamic> NetworkHelper= await NetworkServices().getApi(context, empListUrl,);
  employe =EmployeListData.fromJson(NetworkHelper);
   print(employe);

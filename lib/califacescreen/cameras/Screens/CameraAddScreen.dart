@@ -8,6 +8,7 @@ import 'package:califace/custom_widgets/CustomTextField.dart';
 import 'package:califace/custom_widgets/Custom_Submit_Button.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
+import 'package:califace/utill/myfunction.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -37,7 +38,7 @@ Map<String,dynamic > databody={
   "port": Port
 };
 Map<String,dynamic> Response=await NetworkServices().postApi(context,cameraStoreUrl, databody);
-return(CameraStoreModel.fromJson(Response));
+return CameraStoreModel.fromJson(Response);
 
 }
 UpdateCamera(String Id,String CameraIP, String Protocol,String Port, String Status)async{
@@ -58,20 +59,28 @@ catch(e){
 }
 
 }
-Future<CameraUpdateDataModel> getData()async{
+Future<CameraUpdateDataModel> getCameraData()async{
   Map<String,dynamic> response = await NetworkServices().getApi(context, cameraUpdateDataUrl+Id);
   UpdateList = CameraUpdateDataModel.fromJson(response);
   return UpdateList;
 }
-getID(){
+getCameraSingletonId(){
   CameraSingleton cameraSingleton=CameraSingleton();
-  return Id=cameraSingleton.id;
+   Id=cameraSingleton.id;
+   if(Id!=null){
+     _cameraupdateDataModel = getCameraData();
+   }
+   else{
+    setState(() {
+      camerip.text="";
+      port.text="";
+    });
+   }
 }
 
 @override
   void initState() {
-    getID();
-    _cameraupdateDataModel = getData();
+    getCameraSingletonId();
     super.initState();}
 
   @override
@@ -173,8 +182,20 @@ getID(){
                         Port=port.text;
                         print(Protocol);
                         print(Status);
-//                        final CameraStoreModel csm= await CeateUser(CameraIP,Protocol,Port,Status);
+                        if(CameraIP==""||Port==null||Protocol==null||Status==""){
+                          showToast(context, "field Cannot Be Empty");
+                        }
+                        else{
                           CameraUpdateModel cusm=await UpdateCamera(Id, CameraIP, Protocol, Port, Status);
+                          if(cusm.success==true){
+                            showToast(context, "Success");
+                          }
+                          else{
+                            showToast(context, "Something went wrong");
+                          }
+                        }
+//                        final CameraStoreModel csm= await CeateUser(CameraIP,Protocol,Port,Status);
+
 //                          if(cusm.success==true){
 //                            return Fluttertoast.showToast(msg: "Succes",
 //                                toastLength: Toast.LENGTH_LONG,
@@ -204,11 +225,11 @@ getID(){
                 return Column(
                   children: <Widget>[
                     CustomTextField(
-
+                      controller: camerip,
                       labelText: "Camera IP",
                       onChanged: (Value) {
                         setState(() {
-                          CameraIP=Value.toString();
+                          camerip=Value;
                         });
                         // value=Value.toString();
                         print(Value.toString());
@@ -244,10 +265,10 @@ getID(){
                     SizedBox(
                       height: 10,
                     ),
-                    CustomTextField(labelText: "Port",onChanged: (Value) {
+                    CustomTextField(controller:  port,labelText: "Port",onChanged: (Value) {
                       // value=Value.toString();
                       setState(() {
-                       Port=Value.toString();
+                        port=Value;
 
                       });
                       print(Value.toString());
@@ -279,10 +300,24 @@ getID(){
 
                       text: "Submit",
                       onPressed: () async{
-
+                        CameraIP=camerip.text;
+                        Port=port.text;
                         print(Protocol);
                         print(Status);
-                        final CameraStoreModel csm= await CeateUser(CameraIP,Protocol,Port,Status);
+                        print(CameraIP);
+                        print(Port);
+                        if( CameraIP==""  ||Port==null||Protocol==null||Status==""){
+                          showToast(context, "field cannot be Empty");
+                        }
+                       else{
+                          final CameraStoreModel csm= await CeateUser(CameraIP,Protocol,Port,Status);
+                          if(csm.success==true){
+                            showToast(context, "Success");
+                          }
+                          else{
+                            showToast(context, "something went wrong");
+                          }
+                        }
 //                        CameraUpdateModel cusm=await UpdateCamera(Id, CameraIP, Protocol, Port, Status);
 //                          if(cusm.success==true){
 //                            return Fluttertoast.showToast(msg: "Succes",

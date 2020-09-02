@@ -15,12 +15,14 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.validate,
     this.errortxt,
+    this.validator
   });
 
   final TextEditingController controller;
   final String hintText;
   final String labelText;
   final bool validate;
+  final Function validator;
   final String errortxt;
   final Function onChanged;
   final String helpText;
@@ -39,7 +41,8 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         readOnly: null == readOnly ? false : true,
         obscureText: null == isPassword ? false : true,
-        onChanged: onChanged,
+        onSaved: onChanged,
+        validator: validator,
         toolbarOptions: ToolbarOptions(
           cut: true,
           copy: false,
@@ -55,7 +58,7 @@ class CustomTextField extends StatelessWidget {
             fontSize: 18
           ),
 
-          errorText: validate ? null : errortxt,
+         // errorText:errortxt,
 //          focusedBorder: OutlineInputBorder(
 //
 //            borderSide: BorderSide(

@@ -1,8 +1,11 @@
+import 'package:califace/califacescreen/HomeScreen.dart';
 import 'package:califace/califacescreen/Login/Model/LoginModel.dart';
 import 'package:califace/utill/MyApi.dart';
 import 'package:califace/utill/NetworkServices.dart';
+import 'package:califace/utill/myfunction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -20,14 +23,18 @@ class _login extends State<login>{
   String TokenType;
   String password;
   LoginDataModel userDataLoginModel;
-  var NetworkHelper;
- Future<LoginDataModel> _ldm;
+  SharedPreferences prefs ;
+  bool newUSer;
 
-  LoginData(String Username,String password ) async  {
+
+
+
+
+  Future<LoginDataModel> LoginData(String Username,String password ) async  {
     Map<String ,dynamic>dataBody={
 
-      "client_id": "2",
-      "client_secret": "PZMbAud03HubaX8NIZN8vW0U7WZUYWq7SjKHSI5n",
+      "client_id": "4",
+      "client_secret": "j7Gn5jg3Xmiwshb8NJ2hhftfiq03AtBpz5QnYCQu",
       "grant_type": "password",
       "password": password,
       "scope": "",
@@ -35,27 +42,28 @@ class _login extends State<login>{
 
     };
 
-    Map<String, dynamic> map  =await NetworkServices().postLoginApi(context, loginUrl, dataBody);
-    userDataLoginModel=LoginDataModel.fromJson(map);
-
-    try{
-      String token=userDataLoginModel.accessToken;
+    Map<String, dynamic> map  = await NetworkServices().postLoginApi(context, loginUrl, dataBody);
+    return userDataLoginModel=LoginDataModel.fromJson(map);
 
 
-      print("<<"+token);
-    }catch(e)
-    {
-
-    }
 
   }
-//  getUserDetail() async{
-//    var Response = await NetworkServices().getApi(context, userUrl);
-//  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    UserLoggedin();
+  }
+  void UserLoggedin() async {
+    prefs= await SharedPreferences.getInstance();
+    newUSer=prefs.getBool("login") ?? true;
+    print(newUSer);
+    if(newUSer==false){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return HomeScreen();
+      },));
+    }
   }
 
   @override
@@ -85,7 +93,9 @@ class _login extends State<login>{
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.black),
                     onChanged: (value) {
-                      Username=value;
+                     setState(() {
+                       Username=value;
+                     });
                     },
                     decoration: InputDecoration(
                       hintStyle: TextStyle(color: Colors.black),
@@ -115,7 +125,10 @@ class _login extends State<login>{
                     obscureText: true,
                     style: TextStyle(color: Colors.black),
                     onChanged: (value) {
-                      password=value;
+                      setState(() {
+                        password=value;
+                      });
+
                     },
                     decoration: InputDecoration(
                       hintText: 'Password.',
@@ -148,13 +161,26 @@ class _login extends State<login>{
                       elevation: 5.0,
                       child: MaterialButton(
                         onPressed: () async {
-                          // LoginSingleton l=LoginSingleton();
+                          print(Username);
+                          print(password);
 
-                          // LoginDataModel ldm= await
-                          LoginData(Username, password);
-//                 AccesToken=ldm.accessToken;
-//
-//                 return AccesToken!=null?HomeScreen():Text("error");
+
+
+
+                           LoginDataModel ldm= await LoginData(Username, password);
+
+                           if(ldm.accessToken !=null){
+                            prefs.setBool("login", false);
+                            AccesToken=ldm.tokenType+" "+ldm.accessToken;
+                            print(AccesToken);
+                            prefs.setString("accesToken", AccesToken);
+                             Navigator.push(context, MaterialPageRoute(builder: (context) {
+                               return HomeScreen();
+                             },));
+                           }
+                           else{
+                             showToast(context, "Invalid Credentials");
+                           }
 
                         },
                         minWidth: 200.0,
@@ -173,4 +199,6 @@ class _login extends State<login>{
 
     );
   }
+
+
 }

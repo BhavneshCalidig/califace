@@ -40,7 +40,7 @@ class _AttandanceListScreenState extends State<AttandanceListScreen> {
                   itemCount: snapshot.data.attandanceData.length,
                   itemBuilder: (context, index) {
                     var Item=snapshot.data.attandanceData[index];
-                    return AttandanceListItem(Firstname: Item.firstName,lasttname: Item.lastName,Department: Item.department.toString(),networkImage: Item.img,);
+                    return AttandanceListItem(Firstname: Item.firstName,lasttname: Item.lastName,Department: Item.department.title.toString(),networkImage: Item.img,);
                   });
             }
             else{

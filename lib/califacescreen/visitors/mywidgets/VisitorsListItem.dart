@@ -50,7 +50,7 @@ class Visitorslistitems extends StatelessWidget{
                               title: Text( "LastVisited Date : $Firstname ",
 
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color:  Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
 
                             ),
@@ -61,7 +61,7 @@ class Visitorslistitems extends StatelessWidget{
                               title: Text(
                                 "Chechkin : $checkin",
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
 
                             ),
@@ -72,7 +72,7 @@ class Visitorslistitems extends StatelessWidget{
                               title: Text(
                                 'Check Out : $checkOut',
                                 style: TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
+                                    color: Theme.of(context).indicatorColor, fontWeight: FontWeight.bold),
                               ),
 
                             ),
@@ -113,18 +113,18 @@ class Visitorslistitems extends StatelessWidget{
         ),
       ],
       secondaryActions: <Widget>[
-        IconSlideAction(
-          caption: 'Edit',
-          color: Colors.black45,
-          icon: Icons.more_horiz,
-          onTap: () => print('Edit'),
-        ),
-        IconSlideAction(
-          caption: 'Delete',
-          color: Colors.red,
-          icon: Icons.delete,
-          onTap: () => print('Delete'),
-        ),
+//        IconSlideAction(
+//          caption: 'Edit',
+//          color: Colors.black45,
+//          icon: Icons.more_horiz,
+//          onTap: () => print('Edit'),
+//        ),
+//        IconSlideAction(
+//          caption: 'Delete',
+//          color: Colors.red,
+//          icon: Icons.delete,
+//          onTap: () => print('Delete'),
+//        ),
       ],
     );
   }

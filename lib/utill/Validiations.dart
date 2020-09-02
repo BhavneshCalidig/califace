@@ -1,4 +1,6 @@
 
+
+
 String validateEmail(String value) {
 // alphanumeric
   //  static final  validCharacters = RegExp(r'^[a-zA-Z0-9]+$');
@@ -8,7 +10,7 @@ String validateEmail(String value) {
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return 'Enter Valid Email';
+      return "false";
     else
       return null;
   } else

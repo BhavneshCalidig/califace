@@ -2,18 +2,18 @@ class EmployeeUpdateModel {
   bool success;
   String title;
   String message;
-  Employeupdate employeupdate;
-
+  Data data;
+  Null again;
 
   EmployeeUpdateModel(
-      {this.success, this.title, this.message, this.employeupdate, });
+      {this.success, this.title, this.message, this.data, this.again});
 
   EmployeeUpdateModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     title = json['title'];
     message = json['message'];
-    employeupdate = json['data'] != null ? new Employeupdate.fromJson(json['data']) : null;
-
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    again = json['again'];
   }
 
   Map<String, dynamic> toJson() {
@@ -21,15 +21,15 @@ class EmployeeUpdateModel {
     data['success'] = this.success;
     data['title'] = this.title;
     data['message'] = this.message;
-    if (this.employeupdate != null) {
-      data['data'] = this.employeupdate.toJson();
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
     }
-
+    data['again'] = this.again;
     return data;
   }
 }
 
-class Employeupdate {
+class Data {
   int id;
   String firstName;
   String lastName;
@@ -42,7 +42,7 @@ class Employeupdate {
   String createdAt;
   String updatedAt;
 
-  Employeupdate(
+  Data(
       {this.id,
         this.firstName,
         this.lastName,
@@ -55,7 +55,7 @@ class Employeupdate {
         this.createdAt,
         this.updatedAt});
 
-  Employeupdate.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     firstName = json['first_name'];
     lastName = json['last_name'];

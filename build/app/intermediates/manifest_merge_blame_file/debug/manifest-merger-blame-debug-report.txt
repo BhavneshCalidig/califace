@@ -118,6 +118,44 @@
 79                android:resource="@xml/flutter_image_picker_file_paths" />
 79-->[:image_picker] E:\projects\califace\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
 80        </provider>
-81    </application>
-82
-83</manifest>
+81        <provider
+81-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
+82            android:name="com.sangcomz.fishbun.FishBunFileProvider"
+82-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
+83            android:authorities="com.calidig.califace.fishbunfileprovider"
+83-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
+84            android:exported="false"
+84-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
+85            android:grantUriPermissions="true" >
+85-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
+86            <meta-data
+86-->[:image_picker] E:\projects\califace\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+87                android:name="android.support.FILE_PROVIDER_PATHS"
+87-->[:image_picker] E:\projects\califace\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+88                android:resource="@xml/provider_paths" />
+88-->[:image_picker] E:\projects\califace\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+89        </provider>
+90
+91        <activity
+91-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
+92            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
+92-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
+93            android:label="@string/album"
+93-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
+94            android:theme="@style/FishBunTheme" />
+94-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
+95        <activity
+95-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
+96            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
+96-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
+97            android:theme="@style/FishBunTheme" />
+97-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
+98        <activity
+98-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
+99            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
+99-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
+100            android:theme="@style/DetailViewTheme" />
+100-->[com.sangcomz:FishBun:0.11.2] C:\Users\Savi\.gradle\caches\transforms-2\files-2.1\e9441166df6378d1545cd45258a8f79f\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
+101    </application>
+102
+103</manifest>

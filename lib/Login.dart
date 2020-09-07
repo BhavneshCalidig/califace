@@ -72,130 +72,145 @@ class _login extends State<login>{
    return Scaffold(
       backgroundColor: Colors.white,
 
-       body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 14.0,vertical: 25),
-          child: Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height/2,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255,245,245,245),
-                  borderRadius:  BorderRadius.all(Radius.circular(40.0))
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Center(child: Text("Login",style: TextStyle(fontSize: 30),)),
-                  SizedBox(
-                    height: 48.0,
+       body: Stack(
+
+         children: <Widget>[
+
+           Padding(
+              padding: EdgeInsets.symmetric(horizontal: 14.0,vertical: 25),
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  height: 460,
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255,245,245,245),
+                      borderRadius:  BorderRadius.all(Radius.circular(40.0))
                   ),
-                  TextField(
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black),
-                    onChanged: (value) {
-                     setState(() {
-                       Username=value;
-                     });
-                    },
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(color: Colors.black),
-                      hintText: 'Username',
-                      contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Center(child: Text("Login",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),)),
+                      SizedBox(
+                        height: 78.0,
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                        BorderSide(color: Color.fromARGB(255,102,117,223), width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                        BorderSide(color: Color.fromARGB(255,102,117,223), width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  TextField(
-                    textAlign: TextAlign.center,
-                    obscureText: true,
-                    style: TextStyle(color: Colors.black),
-                    onChanged: (value) {
-                      setState(() {
-                        password=value;
-                      });
-
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Password.',
-                      hintStyle: TextStyle(color: Colors.black),
-                      contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                        BorderSide(color: Color.fromARGB(255,102,117,223), width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                        BorderSide(color: Color.fromARGB(255,102,117,223), width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
-                    child: Material(
-                      color: Color.fromARGB(255,102,117,223),
-                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                      elevation: 5.0,
-                      child: MaterialButton(
-                        onPressed: () async {
-                          print(Username);
-                          print(password);
-
-
-
-
-                           LoginDataModel ldm= await LoginData(Username, password);
-
-                           if(ldm.accessToken !=null){
-                            prefs.setBool("login", false);
-                            AccesToken=ldm.tokenType+" "+ldm.accessToken;
-                            print(AccesToken);
-                            prefs.setString("accesToken", AccesToken);
-                             Navigator.push(context, MaterialPageRoute(builder: (context) {
-                               return HomeScreen();
-                             },));
-                           }
-                           else{
-                             showToast(context, "Invalid Credentials");
-                           }
-
+                      TextField(
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black),
+                        onChanged: (value) {
+                         setState(() {
+                           Username=value;
+                         });
                         },
-                        minWidth: 200.0,
-                        height: 42.0,
-                        child: Text(
-                          'Log In',
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          hintText: 'Username',
+                          contentPadding:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color.fromARGB(255,102,117,223), width: 1.0),
+                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color.fromARGB(255,102,117,223), width: 2.0),
+                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          ),
                         ),
                       ),
-                    ),
+                      SizedBox(
+                        height: 8.0,
+                      ),
+                      TextField(
+                        textAlign: TextAlign.center,
+                        obscureText: true,
+                        style: TextStyle(color: Colors.black),
+                        onChanged: (value) {
+                          setState(() {
+                            password=value;
+                          });
+
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Password.',
+                          hintStyle: TextStyle(color: Colors.black),
+                          contentPadding:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color.fromARGB(255,102,117,223), width: 1.0),
+                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Color.fromARGB(255,102,117,223), width: 2.0),
+                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 24.0,
+
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
+                        child: Material(
+                          color: Color.fromARGB(255,102,117,223),
+                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          elevation: 5.0,
+                          child: MaterialButton(
+
+                            onPressed: () async {
+                              print(Username);
+                              print(password);
+                              if(Username==null||Username==""||password==null||password==""){
+                                showToast(context, "Field cannot be Empty");
+                              }
+                              else{
+                                LoginDataModel ldm= await LoginData(Username, password);
+
+                                if(ldm.accessToken !=null){
+                                  prefs.setBool("login", false);
+                                  AccesToken=ldm.tokenType+" "+ldm.accessToken;
+                                  print(AccesToken);
+                                  prefs.setString("accesToken", AccesToken);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                    return HomeScreen();
+                                  },));
+                                }
+                                else{
+                                  showToast(context, "Invalid Credentials");
+                                }
+                              }
+
+
+
+
+
+
+                            },
+                            minWidth: 250.0,
+                            height: 42.0,
+                            child: Text(
+                              'Log In',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-        ),
+            ), Positioned(left: 20,top: 45,child: Image(image: AssetImage("assets/images/calidigLogo.png"),height: 200,width: 350,)),
+         ],
+       ),
 
     );
   }

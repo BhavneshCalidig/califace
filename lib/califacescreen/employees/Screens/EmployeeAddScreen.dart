@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:califace/califacescreen/departments/Model/DepartmentListData_Model.dart';
 import 'package:califace/califacescreen/designations/Models/DesignationListModel.dart';
 import 'package:califace/califacescreen/employees/Models/EmployeeStoreDataModel.dart';
@@ -14,6 +15,7 @@ import 'package:califace/utill/NetworkServices.dart';
 import 'package:califace/utill/myfunction.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 class EmployeeAddScreen extends StatefulWidget {
   @override
@@ -47,24 +49,72 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
   String DepID;
   EmployeeUpdateDataModel Updatelist;
   File _image;
+  File _Vdo;
+  Uint8List imagefile;
   List<DesignationList> designationlist;
   List<DepartmentListData> departmentlist;
   DepartmentListData dep;
   DesignationList des;
   Future<EmployeeUpdateDataModel> _employeeupdateDataModel;
   Future<DesignationlistModel> _dlm;
+  List<Asset> images = List<Asset>();
+  String _error = 'No Error Dectected';
 
-  getImage() async {
-// ignore: deprecated_member_use
+  Future<void> loadAssets() async {
+    List<Asset> resultList = List<Asset>();
+    String error = 'No Error Dectected';
+
+    try {
+      resultList = await MultiImagePicker.pickImages(
+        maxImages: 300,
+        enableCamera: true,
+        selectedAssets: images,
+        cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
+        materialOptions: MaterialOptions(
+          actionBarColor: "#abcdef",
+          actionBarTitle: "Example App",
+          allViewTitle: "All Photos",
+          useDetailsView: false,
+          selectCircleStrokeColor: "#000000",
+        ),
+      );
+    } on Exception catch (e) {
+      error = e.toString();
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      images = resultList;
+      _error = error;
+    });
+  }
+  Future<void> getVdo() async {
+    // ignore: deprecated_member_use
+    File video = await ImagePicker.pickVideo(source: ImageSource.camera );
+
+
+    this.setState(() {
+      _Vdo = video;
+
+    });
+  }
+
+ Future<void> getImage() async {
+    // ignore: deprecated_member_use
     var pic = await ImagePicker.pickImage(
-        source: ImageSource.gallery, maxHeight: 200, maxWidth: 200);
+        source: ImageSource.gallery, maxHeight: 100, maxWidth: 100);
+
     this.setState(() {
       _image = pic;
+
     });
   }
 
   Future<EmployeeStoreDataModel> StoreEmployee(
-
     String FirstNameEmp,
     String LastNameEmp,
     String EmailEmp,
@@ -72,7 +122,8 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
     String EmpIdEmp,
       String DepID,
       String DesID,
-      String ge,
+      String ge,File _image,
+
   ) async {
     Map<String, dynamic> databody = {
       "first_name": FirstNameEmp,
@@ -83,6 +134,7 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
       "designation_id": DepID,
       "contact_no": ContactEmp,
       "employee_id": EmpIdEmp,
+      "file[]" : _image,
     };
 
     Map<String, dynamic> Respose =
@@ -395,7 +447,7 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
                                                       child: Text(
                                                         user.title,
                                                         style: TextStyle(
-                                                          color: Colors.blue,
+                                                          color: Colors.black,
                                                         ),
                                                       ),
                                                     )
@@ -437,8 +489,8 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
                           ),
                           Container(
                             color: Colors.white,
-                            width: 150,
-                            height: 50,
+                            width: 250,
+                            height: 250,
                             child: Center(
                               child: IconButton(
                                 icon: Icon(Icons.add_a_photo),
@@ -744,21 +796,27 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
                           ),
                           Container(
                             color: Colors.white,
-                            width: 150,
-                            height: 50,
-                            child: Center(
-                              child: IconButton(
-                                icon: Icon(Icons.add_a_photo),
-                                onPressed: () {
-                                  return getImage();
-                                },
-                              ),
+                            width: 350,
+                            height: 150,
+                            child: Column(
+                              children: <Widget>[
+                                Center(
+                                  child: IconButton(
+                                    icon: Icon(Icons.add_a_photo),
+                                    onPressed: () {
+                                      return getImage();
+                                    },
+                                  ),
+                                ),
+                                 _image == null ? Text("no image") : Image.file(_image),
+                              ],
                             ),
                           ),
                           Custom_Submit_Button(
                             text: "Submit",
                             color: darkgrey,
                             onPressed: () async {
+                              print(_image.path);
                               FirstNameEmp = firstnameController.text;
                               LastNameEmp = LastnameController.text;
                               EmailEmp = EmailController.text.trim();
@@ -774,20 +832,24 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
                                   DesID == null) {
                                 showToast(context, "Field cannot be Empty");
                               } else {
-                                final EmployeeStoreDataModel stemp =
-                                    await StoreEmployee(
-                                        FirstNameEmp,
-                                        LastNameEmp,
-                                        EmailEmp,
-                                        ContactEmp,
-                                        EmpIdEmp,
-                                        DepID,
-                                        DesID,
-                                        ge);
-                                print(stemp);
-                                if (stemp.success == true) {
-                                  showToast(context, "Sucess");
-                                }
+//                                final EmployeeStoreDataModel stemp =
+//                                    await StoreEmployee(
+//                                        FirstNameEmp,
+//                                        LastNameEmp,
+//                                        EmailEmp,
+//                                        ContactEmp,
+//                                        EmpIdEmp,
+//                                        DepID,
+//                                        DesID,
+//                                        ge,
+//                                      _image
+//                                        );
+//                                print(stemp);
+//                                if (stemp.success == true) {
+//                                  showToast(context, "Sucess");
+//                                }
+//
+EmployeeStoreDataModel emp =await NetworkServices().httpstreamupload(context,_image, FirstNameEmp, LastNameEmp, EmailEmp, ContactEmp, EmpIdEmp, DepID, DesID, ge);
                               }
                             },
                           ),

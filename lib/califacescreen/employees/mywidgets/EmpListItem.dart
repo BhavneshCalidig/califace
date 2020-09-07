@@ -20,17 +20,18 @@ final String Department;
   final String gender;
   final String email;
   final String Id;
+
   EmployeeDeleteModel _employedeletemodel;
 
   @override
   Widget build(BuildContext context) {
 
       deleteemployee(String Id) async{
-      Map<String,dynamic > databody={
+      Map<String,String > databody={
         "id": Id,
 
       };
-     Map<String,dynamic> Networkhelper=NetworkServices().postApi(context, empDestroyUrl, databody);
+     Map<String,dynamic> Networkhelper=await NetworkServices().postApi(context, empDestroyUrl, databody);
       return  _employedeletemodel=EmployeeDeleteModel.fromJson(Networkhelper);
     }
 

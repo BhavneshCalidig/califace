@@ -2,7 +2,7 @@ class EmployeeStoreDataModel {
   bool success;
   String title;
   String message;
-  Data data;
+  EmployeeStoreList data;
   Null again;
 
   EmployeeStoreDataModel(
@@ -12,7 +12,7 @@ class EmployeeStoreDataModel {
     success = json['success'];
     title = json['title'];
     message = json['message'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? new EmployeeStoreList.fromJson(json['data']) : null;
     again = json['again'];
   }
 
@@ -29,7 +29,7 @@ class EmployeeStoreDataModel {
   }
 }
 
-class Data {
+class EmployeeStoreList {
   String firstName;
   String lastName;
   String email;
@@ -42,7 +42,7 @@ class Data {
   String createdAt;
   int id;
 
-  Data(
+  EmployeeStoreList(
       {this.firstName,
         this.lastName,
         this.email,
@@ -55,7 +55,7 @@ class Data {
         this.createdAt,
         this.id});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  EmployeeStoreList.fromJson(Map<String, dynamic> json) {
     firstName = json['first_name'];
     lastName = json['last_name'];
     email = json['email'];

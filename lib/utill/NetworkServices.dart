@@ -151,7 +151,7 @@ getApi(BuildContext context, String myUrl)async{
   }
 
 
-  httpstreamupload(BuildContext context,File imageFile,String FirstNameEmp,
+  httpstreamupload(BuildContext context,List<File> imageFile,String FirstNameEmp,
       String LastNameEmp,
       String EmailEmp,
       String ContactEmp,
@@ -160,13 +160,13 @@ getApi(BuildContext context, String myUrl)async{
       String DesID,
       String ge,) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String fileName = imageFile.path.split('/').last;
+
 //    String VdoFileName = vdofile.path.split('/').last;
-    var stream = new http.ByteStream((imageFile.openRead()));
+
 //    var Vdostream= new http.B
     // get file length
-    var length = await imageFile.length(); //imageFile is your image file
-    print("<<length " + length.toString());
+
+
     Map<String, String> headers = {
       "Authorization":prefs.get("accesToken"),
     }; // ignore this headers if there is no authentication
@@ -178,12 +178,22 @@ getApi(BuildContext context, String myUrl)async{
     var request = new http.MultipartRequest("POST", uri);
 
     // multipart that takes file
-    var multipartFileSign = new http.MultipartFile('file[]', stream, length,
-        filename : fileName);
+    for(int i=0;i<imageFile.length;i++){
+
+      var stream = new http.ByteStream((imageFile[i].openRead()));
+      String fileName = imageFile[i].path.split('/').last;
+      var length = await imageFile[i].length();
+      print("<<length " + length.toString());
+
+      var multipartFileSign = new http.MultipartFile('file[]', stream, length,
+          filename : fileName);
+      request.files.add(multipartFileSign);
+    }
+
 //    var Vdomultipart = new http.MultipartFile('videos[]', stream, length,filename:VdoFileName );
 
     // add file to multipart
-    request.files.add(multipartFileSign);
+
 //    request.files.add(Vdomultipart);
 
     //add headers
@@ -213,56 +223,80 @@ showToast(context, "Success");
       print("streamupload> " + value);
     });
   }
-Future<EmployeeStoreDataModel>  dioapi(BuildContext context,File _image,String FirstNameEmp,
+  Updatehttpstreamupload(BuildContext context,List<File> imageFile,String FirstNameEmp,
+      String Id,
       String LastNameEmp,
       String EmailEmp,
       String ContactEmp,
       String EmpIdEmp,
       String DepID,
       String DesID,
-      String ge) async {
-
-    String fileName = _image.path.split('/').last;
+      String ge,) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    FormData formData = new FormData.fromMap({
-      "first_name": FirstNameEmp,
-      "last_name": LastNameEmp,
-      "email": EmailEmp,
-      "gender": ge,
-      "department_id": DepID,
-      "designation_id": DepID,
-      "contact_no": ContactEmp,
-      "employee_id": EmpIdEmp,
-//      "file" :  MultipartFile.fromFile(_image.path,filename: fileName,contentType: MediaType('file','jpg') ),
-      "type":"file/png"
 
+//    String VdoFileName = vdofile.path.split('/').last;
+
+//    var Vdostream= new http.B
+    // get file length
+
+
+    Map<String, String> headers = {
+      "Authorization":prefs.get("accesToken"),
+    }; // ignore this headers if there is no authentication
+
+    // string to uri
+    var uri = Uri.parse(empUpdateUrl);
+
+    // create multipart request
+    var request = new http.MultipartRequest("POST", uri);
+
+    // multipart that takes file
+    for(int i=0;i<imageFile.length;i++){
+
+      var stream = new http.ByteStream((imageFile[i].openRead()));
+      String fileName = imageFile[i].path.split('/').last;
+      var length = await imageFile[i].length();
+      print("<<length " + length.toString());
+
+      var multipartFileSign = new http.MultipartFile('file[]', stream, length,
+          filename : fileName);
+      request.files.add(multipartFileSign);
+    }
+
+//    var Vdomultipart = new http.MultipartFile('videos[]', stream, length,filename:VdoFileName );
+
+    // add file to multipart
+
+//    request.files.add(Vdomultipart);
+
+    //add headers
+    request.headers.addAll(headers);
+
+
+    request.fields['id']=Id;
+    request.fields['first_name'] = FirstNameEmp;
+    request.fields['last_name'] = LastNameEmp;
+    request.fields['email'] = EmailEmp;
+    request.fields['gender'] =ge;
+    request.fields['department_id'] =DepID;
+    request.fields['designation_id'] =DesID;
+    request.fields['contact_no'] =ContactEmp;
+    request.fields['employee_id'] =EmpIdEmp;
+
+
+    showAlertDialog(context);
+
+    var response = await request.send();
+
+    print("streamupload> " + response.statusCode.toString());
+    Navigator.pop(context);
+    showToast(context, "Success");
+    // listen for response
+    response.stream.transform(utf8.decoder).listen((value) {
+      print("streamupload> " + value);
     });
-    print(fileName);
-    print(_image.path);
+  }
 
-   try{
-     print("servicesApi>>");
-     showAlertDialog(context);
-     var dio=Dio();
-
-     Response response = await dio.post(empStoreUrl,data: formData,options: Options(headers: {
-       'accept':"*/*",
-       'Content-Type': 'application/json',
-       'Authorization': prefs.get("accesToken"),
-     },responseType: ResponseType.json));
-     Navigator.pop(context);
-     if (response.statusCode == 200 || response.statusCode == 500) {
-       print(response.statusCode);
-       return EmployeeStoreDataModel.fromJson(json.decode(response.toString()));
-     } else {
-       throw Exception('Failed to upload!');
-     }
-   } catch(e){
-     print(e);
-   }
-
-
-}
 
 }
 
